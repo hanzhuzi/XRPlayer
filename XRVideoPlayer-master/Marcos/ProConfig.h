@@ -11,7 +11,6 @@
 #define ProConfig_h
 
 // 网络视频URL
-#define VideoURL1 @"http://7xt95f.com2.z0.glb.qiniucdn.com/6e86ae2b08492d1c2d7a2d88e02780be.mp4"
-#define VideoURL2 @"http://7xt95f.com2.z0.glb.qiniucdn.com/job_6e86ae2b08492d1c2d7a2d88e02780be.mp4"
+#define VideoURL  @"http://c.3g.163.com/nc/video/list/VAP4BFR16/y/0-10.html"
 
 #endif /* ProConfig_h */

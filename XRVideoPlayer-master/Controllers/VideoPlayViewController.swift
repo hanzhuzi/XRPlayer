@@ -13,7 +13,9 @@ class VideoPlayViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        let playerView = XRVideoPlayer(frame: CGRectMake(0, 0, self.view.frame.width, 200.0), videoURL: "http://7xt95f.com2.z0.glb.qiniucdn.com/job_6e86ae2b08492d1c2d7a2d88e02780be.mp4")
+        self.view.backgroundColor = UIColor.whiteColor()
+        
+        let playerView = XRVideoPlayer(frame: CGRectMake(0, 0, self.view.frame.width, 200.0), videoURL: "http://flv2.bn.netease.com/videolib3/1604/22/XOhxp6812/SD/movie_index.m3u8")
         playerView.backgroundColor = UIColor.blackColor()
         playerView.center = self.view.center
         self.view.addSubview(playerView)
@@ -35,7 +37,18 @@ class VideoPlayViewController: UIViewController {
         // Dispose of any resources that can be recreated.
     }
     
-
+    override func preferredStatusBarStyle() -> UIStatusBarStyle {
+        return .LightContent
+    }
+    
+    override func prefersStatusBarHidden() -> Bool {
+        return false
+    }
+    
+    override func supportedInterfaceOrientations() -> UIInterfaceOrientationMask {
+        return .All
+    }
+    
     /*
     // MARK: - Navigation
 

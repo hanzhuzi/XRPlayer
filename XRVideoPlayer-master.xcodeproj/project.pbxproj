@@ -9,6 +9,14 @@
 /* Begin PBXBuildFile section */
 		0105C2F01CCB4E2F00F268E0 /* XRVideoToolBottomView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0105C2EF1CCB4E2F00F268E0 /* XRVideoToolBottomView.swift */; };
 		0105C2F21CCB680000F268E0 /* RegulationBrightness.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0105C2F11CCB680000F268E0 /* RegulationBrightness.swift */; };
+		01C2A97F1CCE165E001342D4 /* player-progress-point-h@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 01C2A97D1CCE165E001342D4 /* player-progress-point-h@2x.png */; };
+		01C2A9801CCE165E001342D4 /* player-progress-point-h@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 01C2A97E1CCE165E001342D4 /* player-progress-point-h@3x.png */; };
+		01C2A9861CCE166E001342D4 /* player_loadin_1@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 01C2A9811CCE166E001342D4 /* player_loadin_1@2x.png */; };
+		01C2A9871CCE166E001342D4 /* player_loadin_2@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 01C2A9821CCE166E001342D4 /* player_loadin_2@2x.png */; };
+		01C2A9881CCE166E001342D4 /* player_loadin_3@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 01C2A9831CCE166E001342D4 /* player_loadin_3@2x.png */; };
+		01C2A9891CCE166E001342D4 /* player_loadin_4@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 01C2A9841CCE166E001342D4 /* player_loadin_4@2x.png */; };
+		01C2A98A1CCE166E001342D4 /* player_loadin_5@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 01C2A9851CCE166E001342D4 /* player_loadin_5@2x.png */; };
+		01C2A98C1CCE381B001342D4 /* XRActivityInditor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01C2A98B1CCE381B001342D4 /* XRActivityInditor.swift */; };
 		01E254DC1CCA288A004D7FA2 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01E254DB1CCA288A004D7FA2 /* AppDelegate.swift */; };
 		01E254DE1CCA288A004D7FA2 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01E254DD1CCA288A004D7FA2 /* ViewController.swift */; };
 		01E254E11CCA288A004D7FA2 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 01E254DF1CCA288A004D7FA2 /* Main.storyboard */; };
@@ -40,6 +48,14 @@
 /* Begin PBXFileReference section */
 		0105C2EF1CCB4E2F00F268E0 /* XRVideoToolBottomView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = XRVideoToolBottomView.swift; sourceTree = "<group>"; };
 		0105C2F11CCB680000F268E0 /* RegulationBrightness.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RegulationBrightness.swift; sourceTree = "<group>"; };
+		01C2A97D1CCE165E001342D4 /* player-progress-point-h@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "player-progress-point-h@2x.png"; sourceTree = "<group>"; };
+		01C2A97E1CCE165E001342D4 /* player-progress-point-h@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "player-progress-point-h@3x.png"; sourceTree = "<group>"; };
+		01C2A9811CCE166E001342D4 /* player_loadin_1@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "player_loadin_1@2x.png"; sourceTree = "<group>"; };
+		01C2A9821CCE166E001342D4 /* player_loadin_2@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "player_loadin_2@2x.png"; sourceTree = "<group>"; };
+		01C2A9831CCE166E001342D4 /* player_loadin_3@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "player_loadin_3@2x.png"; sourceTree = "<group>"; };
+		01C2A9841CCE166E001342D4 /* player_loadin_4@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "player_loadin_4@2x.png"; sourceTree = "<group>"; };
+		01C2A9851CCE166E001342D4 /* player_loadin_5@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "player_loadin_5@2x.png"; sourceTree = "<group>"; };
+		01C2A98B1CCE381B001342D4 /* XRActivityInditor.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = XRActivityInditor.swift; sourceTree = "<group>"; };
 		01E254D81CCA288A004D7FA2 /* XRVideoPlayer-master.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "XRVideoPlayer-master.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		01E254DB1CCA288A004D7FA2 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		01E254DD1CCA288A004D7FA2 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -83,6 +99,20 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		01276EE11CCDCD4400EB5C05 /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				01C2A9811CCE166E001342D4 /* player_loadin_1@2x.png */,
+				01C2A9821CCE166E001342D4 /* player_loadin_2@2x.png */,
+				01C2A9831CCE166E001342D4 /* player_loadin_3@2x.png */,
+				01C2A9841CCE166E001342D4 /* player_loadin_4@2x.png */,
+				01C2A9851CCE166E001342D4 /* player_loadin_5@2x.png */,
+				01C2A97D1CCE165E001342D4 /* player-progress-point-h@2x.png */,
+				01C2A97E1CCE165E001342D4 /* player-progress-point-h@3x.png */,
+			);
+			path = Resources;
+			sourceTree = "<group>";
+		};
 		01E254CF1CCA288A004D7FA2 = {
 			isa = PBXGroup;
 			children = (
@@ -138,6 +168,7 @@
 		01E255091CCA28BB004D7FA2 /* Classes */ = {
 			isa = PBXGroup;
 			children = (
+				01276EE11CCDCD4400EB5C05 /* Resources */,
 				01E2550E1CCA28EF004D7FA2 /* Marcos */,
 				01E2550D1CCA28E9004D7FA2 /* Common */,
 				01E2550C1CCA28DF004D7FA2 /* Controllers */,
@@ -152,6 +183,7 @@
 			children = (
 				01E255111CCA2ED1004D7FA2 /* XRVideoPlayer.swift */,
 				0105C2EF1CCB4E2F00F268E0 /* XRVideoToolBottomView.swift */,
+				01C2A98B1CCE381B001342D4 /* XRActivityInditor.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -297,9 +329,16 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				01C2A9881CCE166E001342D4 /* player_loadin_3@2x.png in Resources */,
 				01E254E61CCA288A004D7FA2 /* LaunchScreen.storyboard in Resources */,
 				01E254E31CCA288A004D7FA2 /* Assets.xcassets in Resources */,
+				01C2A97F1CCE165E001342D4 /* player-progress-point-h@2x.png in Resources */,
+				01C2A98A1CCE166E001342D4 /* player_loadin_5@2x.png in Resources */,
+				01C2A9871CCE166E001342D4 /* player_loadin_2@2x.png in Resources */,
+				01C2A9891CCE166E001342D4 /* player_loadin_4@2x.png in Resources */,
 				01E254E11CCA288A004D7FA2 /* Main.storyboard in Resources */,
+				01C2A9861CCE166E001342D4 /* player_loadin_1@2x.png in Resources */,
+				01C2A9801CCE165E001342D4 /* player-progress-point-h@3x.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -327,6 +366,7 @@
 				0105C2F01CCB4E2F00F268E0 /* XRVideoToolBottomView.swift in Sources */,
 				01E255141CCA404B004D7FA2 /* VideoPlayViewController.swift in Sources */,
 				01E255121CCA2ED1004D7FA2 /* XRVideoPlayer.swift in Sources */,
+				01C2A98C1CCE381B001342D4 /* XRActivityInditor.swift in Sources */,
 				01E254DE1CCA288A004D7FA2 /* ViewController.swift in Sources */,
 				0105C2F21CCB680000F268E0 /* RegulationBrightness.swift in Sources */,
 				01E254DC1CCA288A004D7FA2 /* AppDelegate.swift in Sources */,
@@ -471,12 +511,13 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				CODE_SIGN_IDENTITY = "iPhone Developer";
+				CODE_SIGN_IDENTITY = "iPhone Developer: Yuening Wu (Z5NZY5E4ZS)";
 				INFOPLIST_FILE = "XRVideoPlayer-master/Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "com.kkguan.XRVideoPlayer-master";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "d4e8cab2-8ef8-46c4-9ac1-152b8bac95df";
 			};
 			name = Debug;
 		};
@@ -484,12 +525,13 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				CODE_SIGN_IDENTITY = "iPhone Developer";
+				CODE_SIGN_IDENTITY = "iPhone Developer: Yuening Wu (Z5NZY5E4ZS)";
 				INFOPLIST_FILE = "XRVideoPlayer-master/Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "com.kkguan.XRVideoPlayer-master";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "d4e8cab2-8ef8-46c4-9ac1-152b8bac95df";
 			};
 			name = Release;
 		};
