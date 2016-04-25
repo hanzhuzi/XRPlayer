@@ -16,7 +16,7 @@ import UIKit
 import Foundation
 import AVFoundation
 
-let bottomViewHeight: CGFloat = 35.0
+let bottomViewHeight: CGFloat = 40.0
 
 class XRVideoPlayer: UIView {
     
@@ -67,7 +67,7 @@ class XRVideoPlayer: UIView {
             self.observePlayerItemPlayStatus(playerItem!)
             
             loadingView = XRActivityInditor(frame: CGRectMake(0, 0, 60, 60))
-            loadingView?.center = center
+            loadingView?.center = CGPointMake(self.bounds.width * 0.5, self.bounds.height * 0.5)
             self.addSubview(loadingView!)
             loadingView?.startAnimation()
         }
@@ -106,7 +106,6 @@ class XRVideoPlayer: UIView {
         bottomView.sliderValueChangedClosure = { [weak self](value) -> () in
             if let weakSelf = self {
                 if let item = weakSelf.playerItem {
-                    weakSelf.pauseVideoPlay()
                     let secconds = CMTimeGetSeconds(item.duration) * Float64(value)
                     weakSelf.seekTimeToPlay(Int64(secconds), toPlay: true)
                 }
@@ -129,11 +128,14 @@ class XRVideoPlayer: UIView {
     func seekTimeToPlay(value: Int64, toPlay: Bool = true) -> Void {
         
         if let videoPlayer = player {
-            self.pauseVideoPlay()
             videoPlayer.seekToTime(CMTimeMake(value, 1), completionHandler: { (finished) in
                 if finished {
                     if toPlay && self.isPlaying {
                         self.playVideo()
+                        self.isPlaying = true
+                        dispatch_async(dispatch_get_main_queue(), { 
+                            self.bottomView.setPlayButtonState(true)
+                        })
                     }
                 }
             })
@@ -258,6 +260,8 @@ class XRVideoPlayer: UIView {
         playerLayer?.frame = self.bounds
         bottomView.frame = CGRectMake(0, CGRectGetMaxY(self.bounds) - bottomViewHeight, CGRectGetWidth(self.frame), bottomViewHeight)
         bottomView.layoutIfNeeded()
+        loadingView?.center = CGPointMake(self.bounds.width * 0.5, self.bounds.height * 0.5)
+        loadingView?.layoutIfNeeded()
     }
     
     // MARK: - KVO
@@ -276,12 +280,17 @@ class XRVideoPlayer: UIView {
                             if let item = playerItem {
                                 bottomView.setEndTimeWithSecconds(CMTimeGetSeconds(item.duration))
                             }
+                            
+                            loadingView?.stopAnimation()
                             if player?.rate == 1.0 {
+                                loadingView?.stopAnimation()
+                                bottomView.setPlayButtonState(true)
+                                isPlaying = true
+                            }else {
                                 loadingView?.stopAnimation()
                                 bottomView.setPlayButtonState(false)
                                 isPlaying = false
                             }
-                            
                         case .Failed:
                             print("error: \(player?.error?.localizedDescription)")
                             bottomView.setPlayButtonState(false)
@@ -316,7 +325,9 @@ class XRVideoPlayer: UIView {
                                 }else {
                                     videoPlayer.prerollAtRate(1.0, completionHandler: { (finish) in
                                         if finish {
-                                            self.playVideo()
+                                            dispatch_async(dispatch_get_main_queue(), {
+                                                self.loadingView?.stopAnimation()
+                                            })
                                         }
                                     })
                                 }

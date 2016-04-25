@@ -31,7 +31,7 @@ class XRVideoToolBottomView: UIView {
     override init(frame: CGRect) {
         super.init(frame: frame)
         
-        playButton.frame = CGRectMake(10, (self.frame.height - 20.0) * 0.5, 20, 20)
+        playButton.frame = CGRectMake(15, (self.frame.height - 30.0) * 0.5, 30, 30)
         playButton.setImage(UIImage(named: "play"), forState: .Normal)
         playButton.setImage(UIImage(named: "pause"), forState: .Selected)
         playButton.addTarget(self, action: #selector(self.playButtonClick), forControlEvents: .TouchUpInside)
@@ -44,7 +44,7 @@ class XRVideoToolBottomView: UIView {
         startTimeLbl.text = "00:00:00"
         self.addSubview(startTimeLbl)
         
-        rotateButton.frame = CGRectMake(CGRectGetMaxX(self.frame) - 10.0 - 20.0, (self.frame.height - 20.0) * 0.5, 20, 20)
+        rotateButton.frame = CGRectMake(CGRectGetMaxX(self.frame) - 10.0 - 30.0, (self.frame.height - 30.0) * 0.5, 30, 30)
         rotateButton.setImage(UIImage(named: "tofull"), forState: .Normal)
         rotateButton.setImage(UIImage(named: "closefull"), forState: .Selected)
         rotateButton.addTarget(self, action: #selector(self.rotateOrientation), forControlEvents: .TouchUpInside)
@@ -63,7 +63,7 @@ class XRVideoToolBottomView: UIView {
         progressBar.trackTintColor = UIColor.lightGrayColor()
         self.addSubview(progressBar)
         
-        slider.frame = CGRectMake(CGRectGetMaxX(startTimeLbl.frame) + 5.0, (bounds.height - 20.0) * 0.5, CGRectGetMinX(endTimeLbl.frame) - 10.0 - CGRectGetMaxX(startTimeLbl.frame) - 5.0, 20.0)
+        slider.frame = CGRectMake(CGRectGetMaxX(startTimeLbl.frame) + 5.0, (bounds.height - 25.0) * 0.5, CGRectGetMinX(endTimeLbl.frame) - 10.0 - CGRectGetMaxX(startTimeLbl.frame) - 5.0, 25.0)
         slider.backgroundColor = UIColor.clearColor()
         slider.maximumTrackTintColor = UIColor.clearColor()
         slider.setThumbImage(UIImage(named: "player-progress-point-h"), forState: .Normal)
@@ -81,16 +81,16 @@ class XRVideoToolBottomView: UIView {
     override func layoutSubviews() {
         super.layoutSubviews()
         
-        playButton.frame = CGRectMake(10, (self.frame.height - 20.0) * 0.5, 20, 20)
+        playButton.frame = CGRectMake(15, (self.frame.height - 30.0) * 0.5, 30, 30)
         
         startTimeLbl.frame = CGRectMake(CGRectGetMaxX(playButton.frame) + 5.0, 0.0, 50.0, self.frame.height)
         
-        rotateButton.frame = CGRectMake(CGRectGetMaxX(self.frame) - 10.0 - 20.0, (self.frame.height - 20.0) * 0.5, 20, 20)
+        rotateButton.frame = CGRectMake(CGRectGetMaxX(self.frame) - 10.0 - 30.0, (self.frame.height - 30.0) * 0.5, 30, 30)
         
         endTimeLbl.frame = CGRectMake(CGRectGetMinX(rotateButton.frame) - 50.0, 0.0, 50.0, self.frame.height)
         
         progressBar.frame = CGRectMake(CGRectGetMaxX(startTimeLbl.frame) + 8.0, bounds.height * 0.5 - 1.0, CGRectGetMinX(endTimeLbl.frame) - 10.0 - CGRectGetMaxX(startTimeLbl.frame) - 8.0, 2.0)
-        slider.frame = CGRectMake(CGRectGetMaxX(startTimeLbl.frame) + 5.0, (bounds.height - 20.0) * 0.5, CGRectGetMinX(endTimeLbl.frame) - 10.0 - CGRectGetMaxX(startTimeLbl.frame) - 5.0, 20.0)
+        slider.frame = CGRectMake(CGRectGetMaxX(startTimeLbl.frame) + 5.0, (bounds.height - 25.0) * 0.5, CGRectGetMinX(endTimeLbl.frame) - 10.0 - CGRectGetMaxX(startTimeLbl.frame) - 5.0, 25.0)
     }
     
     func sliderValueChanged(slider: UISlider) -> Void {

@@ -16,12 +16,10 @@ class XRActivityInditor: UIView {
     override init(frame: CGRect) {
         super.init(frame: frame)
         
-        self.layer.masksToBounds = true
+        self.userInteractionEnabled = false
         self.layer.cornerRadius = 10.0
-        self.backgroundColor = UIColor.blackColor().colorWithAlphaComponent(0.5)
-        activityInditor.center = self.center
-        activityInditor.frame = self.bounds
-        activityInditor.hidden = false
+        self.backgroundColor = UIColor.blackColor().colorWithAlphaComponent(0.6)
+        activityInditor.center = CGPointMake(self.frame.width * 0.5, self.frame.height * 0.5)
         isAnimating = activityInditor.isAnimating()
         self.addSubview(activityInditor)
     }
@@ -33,16 +31,23 @@ class XRActivityInditor: UIView {
     override func layoutSubviews() {
         super.layoutSubviews()
         
-        activityInditor.center = center
+        activityInditor.center = CGPointMake(self.frame.width * 0.5, self.frame.height * 0.5)
     }
     
     func startAnimation() -> Void {
-        activityInditor.startAnimating()
-        isAnimating = activityInditor.isAnimating()
+        if !activityInditor.isAnimating() {
+            activityInditor.startAnimating()
+            self.hidden = false
+            isAnimating = activityInditor.isAnimating()
+        }
     }
     
     func stopAnimation() -> Void {
-        activityInditor.stopAnimating()
-        isAnimating = activityInditor.isAnimating()
+        if activityInditor.isAnimating() {
+            activityInditor.stopAnimating()
+            self.hidden = true
+            isAnimating = activityInditor.isAnimating()
+        }
     }
 }
+
