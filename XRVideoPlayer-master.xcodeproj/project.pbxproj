@@ -9,6 +9,8 @@
 /* Begin PBXBuildFile section */
 		0105C2F01CCB4E2F00F268E0 /* XRVideoToolBottomView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0105C2EF1CCB4E2F00F268E0 /* XRVideoToolBottomView.swift */; };
 		0105C2F21CCB680000F268E0 /* RegulationBrightness.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0105C2F11CCB680000F268E0 /* RegulationBrightness.swift */; };
+		01BD7AFE1CCF3E1600BE6587 /* VideoPlayLIstViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01BD7AFD1CCF3E1600BE6587 /* VideoPlayLIstViewController.swift */; };
+		01BD7B211CCF4F2300BE6587 /* XRRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01BD7B201CCF4F2300BE6587 /* XRRequest.swift */; };
 		01C2A97F1CCE165E001342D4 /* player-progress-point-h@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 01C2A97D1CCE165E001342D4 /* player-progress-point-h@2x.png */; };
 		01C2A9801CCE165E001342D4 /* player-progress-point-h@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 01C2A97E1CCE165E001342D4 /* player-progress-point-h@3x.png */; };
 		01C2A9861CCE166E001342D4 /* player_loadin_1@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 01C2A9811CCE166E001342D4 /* player_loadin_1@2x.png */; };
@@ -26,6 +28,13 @@
 		01E254FC1CCA288B004D7FA2 /* XRVideoPlayer_masterUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01E254FB1CCA288B004D7FA2 /* XRVideoPlayer_masterUITests.swift */; };
 		01E255121CCA2ED1004D7FA2 /* XRVideoPlayer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01E255111CCA2ED1004D7FA2 /* XRVideoPlayer.swift */; };
 		01E255141CCA404B004D7FA2 /* VideoPlayViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01E255131CCA404B004D7FA2 /* VideoPlayViewController.swift */; };
+		01F8185D1CCF58DC0007B4EE /* Alamofire+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01F8185C1CCF58DC0007B4EE /* Alamofire+Extension.swift */; };
+		01F818BF1CCF87FD0007B4EE /* SwiftyJSON.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 01F818B21CCF87C70007B4EE /* SwiftyJSON.framework */; };
+		01F818C01CCF87FD0007B4EE /* SwiftyJSON.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 01F818B21CCF87C70007B4EE /* SwiftyJSON.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		01F818C31CCF88020007B4EE /* Alamofire.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 01F8189A1CCF87A00007B4EE /* Alamofire.framework */; };
+		01F818C41CCF88020007B4EE /* Alamofire.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 01F8189A1CCF87A00007B4EE /* Alamofire.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		01F818E01CCF94DC0007B4EE /* ObjectMapper.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 01F818D31CCF94C50007B4EE /* ObjectMapper.framework */; };
+		01F818E11CCF94DC0007B4EE /* ObjectMapper.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 01F818D31CCF94C50007B4EE /* ObjectMapper.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -43,11 +52,198 @@
 			remoteGlobalIDString = 01E254D71CCA288A004D7FA2;
 			remoteInfo = "XRVideoPlayer-master";
 		};
+		01F818991CCF87A00007B4EE /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 01F8188F1CCF87A00007B4EE /* Alamofire.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = F8111E3319A95C8B0040E7D1;
+			remoteInfo = "Alamofire iOS";
+		};
+		01F8189B1CCF87A00007B4EE /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 01F8188F1CCF87A00007B4EE /* Alamofire.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = F8111E3E19A95C8B0040E7D1;
+			remoteInfo = "Alamofire iOS Tests";
+		};
+		01F8189D1CCF87A00007B4EE /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 01F8188F1CCF87A00007B4EE /* Alamofire.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = 4DD67C0B1A5C55C900ED2280;
+			remoteInfo = "Alamofire OSX";
+		};
+		01F8189F1CCF87A00007B4EE /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 01F8188F1CCF87A00007B4EE /* Alamofire.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = F829C6B21A7A94F100A2CD59;
+			remoteInfo = "Alamofire OSX Tests";
+		};
+		01F818A11CCF87A00007B4EE /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 01F8188F1CCF87A00007B4EE /* Alamofire.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = 4CF626EF1BA7CB3E0011A099;
+			remoteInfo = "Alamofire tvOS";
+		};
+		01F818A31CCF87A00007B4EE /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 01F8188F1CCF87A00007B4EE /* Alamofire.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = 4CF626F81BA7CB3E0011A099;
+			remoteInfo = "Alamofire tvOS Tests";
+		};
+		01F818A51CCF87A00007B4EE /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 01F8188F1CCF87A00007B4EE /* Alamofire.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = E4202FE01B667AA100C997FB;
+			remoteInfo = "Alamofire watchOS";
+		};
+		01F818B11CCF87C70007B4EE /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 01F818A71CCF87C70007B4EE /* SwiftyJSON.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = 2E4FEFDB19575BE100351305;
+			remoteInfo = "SwiftyJSON iOS";
+		};
+		01F818B31CCF87C70007B4EE /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 01F818A71CCF87C70007B4EE /* SwiftyJSON.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = 2E4FEFE619575BE100351305;
+			remoteInfo = "SwiftyJSON iOS Tests";
+		};
+		01F818B51CCF87C70007B4EE /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 01F818A71CCF87C70007B4EE /* SwiftyJSON.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = 9C7DFC5B1A9102BD005AA3F7;
+			remoteInfo = "SwiftyJSON OSX";
+		};
+		01F818B71CCF87C70007B4EE /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 01F818A71CCF87C70007B4EE /* SwiftyJSON.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = 9C7DFC651A9102BD005AA3F7;
+			remoteInfo = "SwiftyJSON OSX Tests";
+		};
+		01F818B91CCF87C70007B4EE /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 01F818A71CCF87C70007B4EE /* SwiftyJSON.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = E4D7CCE81B9465A700EE7221;
+			remoteInfo = "SwiftyJSON watchOS";
+		};
+		01F818BB1CCF87C70007B4EE /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 01F818A71CCF87C70007B4EE /* SwiftyJSON.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = 7236B4F61BAC14150020529B;
+			remoteInfo = "SwiftyJSON tvOS";
+		};
+		01F818BD1CCF87C70007B4EE /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 01F818A71CCF87C70007B4EE /* SwiftyJSON.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = A8580F741BCF5C5B00DA927B;
+			remoteInfo = "SwiftyJSON tvOS Tests";
+		};
+		01F818C11CCF87FD0007B4EE /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 01F818A71CCF87C70007B4EE /* SwiftyJSON.xcodeproj */;
+			proxyType = 1;
+			remoteGlobalIDString = 2E4FEFDA19575BE100351305;
+			remoteInfo = "SwiftyJSON iOS";
+		};
+		01F818C51CCF88020007B4EE /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 01F8188F1CCF87A00007B4EE /* Alamofire.xcodeproj */;
+			proxyType = 1;
+			remoteGlobalIDString = F8111E3219A95C8B0040E7D1;
+			remoteInfo = "Alamofire iOS";
+		};
+		01F818D21CCF94C50007B4EE /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 01F818C81CCF94C50007B4EE /* ObjectMapper.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = 6AAC8F7619F03C2900E7A677;
+			remoteInfo = "ObjectMapper-iOS";
+		};
+		01F818D41CCF94C50007B4EE /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 01F818C81CCF94C50007B4EE /* ObjectMapper.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = CD1602FF1AC023D5000CD69A;
+			remoteInfo = "ObjectMapper-Mac";
+		};
+		01F818D61CCF94C50007B4EE /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 01F818C81CCF94C50007B4EE /* ObjectMapper.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = 6A2AD03D1B2C78540097E150;
+			remoteInfo = "ObjectMapper-watchOS";
+		};
+		01F818D81CCF94C50007B4EE /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 01F818C81CCF94C50007B4EE /* ObjectMapper.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = 6A05B7A61BE274BE00F19B53;
+			remoteInfo = "ObjectMapper-tvOS";
+		};
+		01F818DA1CCF94C50007B4EE /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 01F818C81CCF94C50007B4EE /* ObjectMapper.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = 6AAC8F8119F03C2900E7A677;
+			remoteInfo = "ObjectMapper-iOSTests";
+		};
+		01F818DC1CCF94C50007B4EE /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 01F818C81CCF94C50007B4EE /* ObjectMapper.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = CD1603091AC023D6000CD69A;
+			remoteInfo = "ObjectMapper-MacTests";
+		};
+		01F818DE1CCF94C50007B4EE /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 01F818C81CCF94C50007B4EE /* ObjectMapper.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = 6A05B7AF1BE274BE00F19B53;
+			remoteInfo = "ObjectMapper-tvOSTests";
+		};
+		01F818E21CCF94DC0007B4EE /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 01F818C81CCF94C50007B4EE /* ObjectMapper.xcodeproj */;
+			proxyType = 1;
+			remoteGlobalIDString = 6AAC8F7519F03C2900E7A677;
+			remoteInfo = "ObjectMapper-iOS";
+		};
 /* End PBXContainerItemProxy section */
+
+/* Begin PBXCopyFilesBuildPhase section */
+		01BD7B1F1CCF4DB200BE6587 /* Embed Frameworks */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 10;
+			files = (
+				01F818E11CCF94DC0007B4EE /* ObjectMapper.framework in Embed Frameworks */,
+				01F818C01CCF87FD0007B4EE /* SwiftyJSON.framework in Embed Frameworks */,
+				01F818C41CCF88020007B4EE /* Alamofire.framework in Embed Frameworks */,
+			);
+			name = "Embed Frameworks";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
 		0105C2EF1CCB4E2F00F268E0 /* XRVideoToolBottomView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = XRVideoToolBottomView.swift; sourceTree = "<group>"; };
 		0105C2F11CCB680000F268E0 /* RegulationBrightness.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RegulationBrightness.swift; sourceTree = "<group>"; };
+		01BD7AFD1CCF3E1600BE6587 /* VideoPlayLIstViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = VideoPlayLIstViewController.swift; sourceTree = "<group>"; };
+		01BD7AFF1CCF3EDD00BE6587 /* XRVideoPlayer-master-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "XRVideoPlayer-master-Bridging-Header.h"; sourceTree = "<group>"; };
+		01BD7B201CCF4F2300BE6587 /* XRRequest.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = XRRequest.swift; sourceTree = "<group>"; };
 		01C2A97D1CCE165E001342D4 /* player-progress-point-h@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "player-progress-point-h@2x.png"; sourceTree = "<group>"; };
 		01C2A97E1CCE165E001342D4 /* player-progress-point-h@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "player-progress-point-h@3x.png"; sourceTree = "<group>"; };
 		01C2A9811CCE166E001342D4 /* player_loadin_1@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "player_loadin_1@2x.png"; sourceTree = "<group>"; };
@@ -72,6 +268,11 @@
 		01E255101CCA297B004D7FA2 /* ProConfig.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ProConfig.h; sourceTree = "<group>"; };
 		01E255111CCA2ED1004D7FA2 /* XRVideoPlayer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = XRVideoPlayer.swift; sourceTree = "<group>"; };
 		01E255131CCA404B004D7FA2 /* VideoPlayViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = VideoPlayViewController.swift; sourceTree = "<group>"; };
+		01F8185C1CCF58DC0007B4EE /* Alamofire+Extension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Alamofire+Extension.swift"; sourceTree = "<group>"; };
+		01F8185E1CCF631E0007B4EE /* XRVideoPlayer-precompile.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "XRVideoPlayer-precompile.h"; sourceTree = "<group>"; };
+		01F8188F1CCF87A00007B4EE /* Alamofire.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = Alamofire.xcodeproj; path = Alamofire/Alamofire.xcodeproj; sourceTree = "<group>"; };
+		01F818A71CCF87C70007B4EE /* SwiftyJSON.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = SwiftyJSON.xcodeproj; path = SwiftyJSON/SwiftyJSON.xcodeproj; sourceTree = "<group>"; };
+		01F818C81CCF94C50007B4EE /* ObjectMapper.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = ObjectMapper.xcodeproj; path = ObjectMapper/ObjectMapper.xcodeproj; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -79,6 +280,9 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				01F818E01CCF94DC0007B4EE /* ObjectMapper.framework in Frameworks */,
+				01F818BF1CCF87FD0007B4EE /* SwiftyJSON.framework in Frameworks */,
+				01F818C31CCF88020007B4EE /* Alamofire.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -116,6 +320,9 @@
 		01E254CF1CCA288A004D7FA2 = {
 			isa = PBXGroup;
 			children = (
+				01F818C81CCF94C50007B4EE /* ObjectMapper.xcodeproj */,
+				01F818A71CCF87C70007B4EE /* SwiftyJSON.xcodeproj */,
+				01F8188F1CCF87A00007B4EE /* Alamofire.xcodeproj */,
 				01E254DA1CCA288A004D7FA2 /* XRVideoPlayer-master */,
 				01E254EF1CCA288B004D7FA2 /* XRVideoPlayer-masterTests */,
 				01E254FA1CCA288B004D7FA2 /* XRVideoPlayer-masterUITests */,
@@ -139,10 +346,12 @@
 				01E255091CCA28BB004D7FA2 /* Classes */,
 				01E254DB1CCA288A004D7FA2 /* AppDelegate.swift */,
 				01E254DD1CCA288A004D7FA2 /* ViewController.swift */,
+				01F8185E1CCF631E0007B4EE /* XRVideoPlayer-precompile.h */,
 				01E254DF1CCA288A004D7FA2 /* Main.storyboard */,
 				01E254E21CCA288A004D7FA2 /* Assets.xcassets */,
 				01E254E41CCA288A004D7FA2 /* LaunchScreen.storyboard */,
 				01E254E71CCA288A004D7FA2 /* Info.plist */,
+				01BD7AFF1CCF3EDD00BE6587 /* XRVideoPlayer-master-Bridging-Header.h */,
 			);
 			path = "XRVideoPlayer-master";
 			sourceTree = "<group>";
@@ -199,6 +408,7 @@
 			isa = PBXGroup;
 			children = (
 				01E255131CCA404B004D7FA2 /* VideoPlayViewController.swift */,
+				01BD7AFD1CCF3E1600BE6587 /* VideoPlayLIstViewController.swift */,
 			);
 			path = Controllers;
 			sourceTree = "<group>";
@@ -207,6 +417,8 @@
 			isa = PBXGroup;
 			children = (
 				0105C2F11CCB680000F268E0 /* RegulationBrightness.swift */,
+				01BD7B201CCF4F2300BE6587 /* XRRequest.swift */,
+				01F8185C1CCF58DC0007B4EE /* Alamofire+Extension.swift */,
 			);
 			path = Common;
 			sourceTree = "<group>";
@@ -219,6 +431,48 @@
 			path = Marcos;
 			sourceTree = "<group>";
 		};
+		01F818901CCF87A00007B4EE /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				01F8189A1CCF87A00007B4EE /* Alamofire.framework */,
+				01F8189C1CCF87A00007B4EE /* Alamofire iOS Tests.xctest */,
+				01F8189E1CCF87A00007B4EE /* Alamofire.framework */,
+				01F818A01CCF87A00007B4EE /* Alamofire OSX Tests.xctest */,
+				01F818A21CCF87A00007B4EE /* Alamofire.framework */,
+				01F818A41CCF87A00007B4EE /* Alamofire tvOS Tests.xctest */,
+				01F818A61CCF87A00007B4EE /* Alamofire.framework */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		01F818A81CCF87C70007B4EE /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				01F818B21CCF87C70007B4EE /* SwiftyJSON.framework */,
+				01F818B41CCF87C70007B4EE /* SwiftyJSON iOS Tests.xctest */,
+				01F818B61CCF87C70007B4EE /* SwiftyJSON.framework */,
+				01F818B81CCF87C70007B4EE /* SwiftyJSON OSX Tests.xctest */,
+				01F818BA1CCF87C70007B4EE /* SwiftyJSON.framework */,
+				01F818BC1CCF87C70007B4EE /* SwiftyJSON.framework */,
+				01F818BE1CCF87C70007B4EE /* SwiftyJSON tvOS Tests.xctest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		01F818C91CCF94C50007B4EE /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				01F818D31CCF94C50007B4EE /* ObjectMapper.framework */,
+				01F818D51CCF94C50007B4EE /* ObjectMapper.framework */,
+				01F818D71CCF94C50007B4EE /* ObjectMapper.framework */,
+				01F818D91CCF94C50007B4EE /* ObjectMapper.framework */,
+				01F818DB1CCF94C50007B4EE /* ObjectMapper-iOSTests.xctest */,
+				01F818DD1CCF94C50007B4EE /* ObjectMapper-MacTests.xctest */,
+				01F818DF1CCF94C50007B4EE /* ObjectMapper-tvOSTests.xctest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -229,10 +483,14 @@
 				01E254D41CCA288A004D7FA2 /* Sources */,
 				01E254D51CCA288A004D7FA2 /* Frameworks */,
 				01E254D61CCA288A004D7FA2 /* Resources */,
+				01BD7B1F1CCF4DB200BE6587 /* Embed Frameworks */,
 			);
 			buildRules = (
 			);
 			dependencies = (
+				01F818C21CCF87FD0007B4EE /* PBXTargetDependency */,
+				01F818C61CCF88020007B4EE /* PBXTargetDependency */,
+				01F818E31CCF94DC0007B4EE /* PBXTargetDependency */,
 			);
 			name = "XRVideoPlayer-master";
 			productName = "XRVideoPlayer-master";
@@ -315,6 +573,20 @@
 			mainGroup = 01E254CF1CCA288A004D7FA2;
 			productRefGroup = 01E254D91CCA288A004D7FA2 /* Products */;
 			projectDirPath = "";
+			projectReferences = (
+				{
+					ProductGroup = 01F818901CCF87A00007B4EE /* Products */;
+					ProjectRef = 01F8188F1CCF87A00007B4EE /* Alamofire.xcodeproj */;
+				},
+				{
+					ProductGroup = 01F818C91CCF94C50007B4EE /* Products */;
+					ProjectRef = 01F818C81CCF94C50007B4EE /* ObjectMapper.xcodeproj */;
+				},
+				{
+					ProductGroup = 01F818A81CCF87C70007B4EE /* Products */;
+					ProjectRef = 01F818A71CCF87C70007B4EE /* SwiftyJSON.xcodeproj */;
+				},
+			);
 			projectRoot = "";
 			targets = (
 				01E254D71CCA288A004D7FA2 /* XRVideoPlayer-master */,
@@ -323,6 +595,156 @@
 			);
 		};
 /* End PBXProject section */
+
+/* Begin PBXReferenceProxy section */
+		01F8189A1CCF87A00007B4EE /* Alamofire.framework */ = {
+			isa = PBXReferenceProxy;
+			fileType = wrapper.framework;
+			path = Alamofire.framework;
+			remoteRef = 01F818991CCF87A00007B4EE /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		01F8189C1CCF87A00007B4EE /* Alamofire iOS Tests.xctest */ = {
+			isa = PBXReferenceProxy;
+			fileType = wrapper.cfbundle;
+			path = "Alamofire iOS Tests.xctest";
+			remoteRef = 01F8189B1CCF87A00007B4EE /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		01F8189E1CCF87A00007B4EE /* Alamofire.framework */ = {
+			isa = PBXReferenceProxy;
+			fileType = wrapper.framework;
+			path = Alamofire.framework;
+			remoteRef = 01F8189D1CCF87A00007B4EE /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		01F818A01CCF87A00007B4EE /* Alamofire OSX Tests.xctest */ = {
+			isa = PBXReferenceProxy;
+			fileType = wrapper.cfbundle;
+			path = "Alamofire OSX Tests.xctest";
+			remoteRef = 01F8189F1CCF87A00007B4EE /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		01F818A21CCF87A00007B4EE /* Alamofire.framework */ = {
+			isa = PBXReferenceProxy;
+			fileType = wrapper.framework;
+			path = Alamofire.framework;
+			remoteRef = 01F818A11CCF87A00007B4EE /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		01F818A41CCF87A00007B4EE /* Alamofire tvOS Tests.xctest */ = {
+			isa = PBXReferenceProxy;
+			fileType = wrapper.cfbundle;
+			path = "Alamofire tvOS Tests.xctest";
+			remoteRef = 01F818A31CCF87A00007B4EE /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		01F818A61CCF87A00007B4EE /* Alamofire.framework */ = {
+			isa = PBXReferenceProxy;
+			fileType = wrapper.framework;
+			path = Alamofire.framework;
+			remoteRef = 01F818A51CCF87A00007B4EE /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		01F818B21CCF87C70007B4EE /* SwiftyJSON.framework */ = {
+			isa = PBXReferenceProxy;
+			fileType = wrapper.framework;
+			path = SwiftyJSON.framework;
+			remoteRef = 01F818B11CCF87C70007B4EE /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		01F818B41CCF87C70007B4EE /* SwiftyJSON iOS Tests.xctest */ = {
+			isa = PBXReferenceProxy;
+			fileType = wrapper.cfbundle;
+			path = "SwiftyJSON iOS Tests.xctest";
+			remoteRef = 01F818B31CCF87C70007B4EE /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		01F818B61CCF87C70007B4EE /* SwiftyJSON.framework */ = {
+			isa = PBXReferenceProxy;
+			fileType = wrapper.framework;
+			path = SwiftyJSON.framework;
+			remoteRef = 01F818B51CCF87C70007B4EE /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		01F818B81CCF87C70007B4EE /* SwiftyJSON OSX Tests.xctest */ = {
+			isa = PBXReferenceProxy;
+			fileType = wrapper.cfbundle;
+			path = "SwiftyJSON OSX Tests.xctest";
+			remoteRef = 01F818B71CCF87C70007B4EE /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		01F818BA1CCF87C70007B4EE /* SwiftyJSON.framework */ = {
+			isa = PBXReferenceProxy;
+			fileType = wrapper.framework;
+			path = SwiftyJSON.framework;
+			remoteRef = 01F818B91CCF87C70007B4EE /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		01F818BC1CCF87C70007B4EE /* SwiftyJSON.framework */ = {
+			isa = PBXReferenceProxy;
+			fileType = wrapper.framework;
+			path = SwiftyJSON.framework;
+			remoteRef = 01F818BB1CCF87C70007B4EE /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		01F818BE1CCF87C70007B4EE /* SwiftyJSON tvOS Tests.xctest */ = {
+			isa = PBXReferenceProxy;
+			fileType = wrapper.cfbundle;
+			path = "SwiftyJSON tvOS Tests.xctest";
+			remoteRef = 01F818BD1CCF87C70007B4EE /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		01F818D31CCF94C50007B4EE /* ObjectMapper.framework */ = {
+			isa = PBXReferenceProxy;
+			fileType = wrapper.framework;
+			path = ObjectMapper.framework;
+			remoteRef = 01F818D21CCF94C50007B4EE /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		01F818D51CCF94C50007B4EE /* ObjectMapper.framework */ = {
+			isa = PBXReferenceProxy;
+			fileType = wrapper.framework;
+			path = ObjectMapper.framework;
+			remoteRef = 01F818D41CCF94C50007B4EE /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		01F818D71CCF94C50007B4EE /* ObjectMapper.framework */ = {
+			isa = PBXReferenceProxy;
+			fileType = wrapper.framework;
+			path = ObjectMapper.framework;
+			remoteRef = 01F818D61CCF94C50007B4EE /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		01F818D91CCF94C50007B4EE /* ObjectMapper.framework */ = {
+			isa = PBXReferenceProxy;
+			fileType = wrapper.framework;
+			path = ObjectMapper.framework;
+			remoteRef = 01F818D81CCF94C50007B4EE /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		01F818DB1CCF94C50007B4EE /* ObjectMapper-iOSTests.xctest */ = {
+			isa = PBXReferenceProxy;
+			fileType = wrapper.cfbundle;
+			path = "ObjectMapper-iOSTests.xctest";
+			remoteRef = 01F818DA1CCF94C50007B4EE /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		01F818DD1CCF94C50007B4EE /* ObjectMapper-MacTests.xctest */ = {
+			isa = PBXReferenceProxy;
+			fileType = wrapper.cfbundle;
+			path = "ObjectMapper-MacTests.xctest";
+			remoteRef = 01F818DC1CCF94C50007B4EE /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		01F818DF1CCF94C50007B4EE /* ObjectMapper-tvOSTests.xctest */ = {
+			isa = PBXReferenceProxy;
+			fileType = wrapper.cfbundle;
+			path = "ObjectMapper-tvOSTests.xctest";
+			remoteRef = 01F818DE1CCF94C50007B4EE /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+/* End PBXReferenceProxy section */
 
 /* Begin PBXResourcesBuildPhase section */
 		01E254D61CCA288A004D7FA2 /* Resources */ = {
@@ -367,8 +789,11 @@
 				01E255141CCA404B004D7FA2 /* VideoPlayViewController.swift in Sources */,
 				01E255121CCA2ED1004D7FA2 /* XRVideoPlayer.swift in Sources */,
 				01C2A98C1CCE381B001342D4 /* XRActivityInditor.swift in Sources */,
+				01BD7AFE1CCF3E1600BE6587 /* VideoPlayLIstViewController.swift in Sources */,
 				01E254DE1CCA288A004D7FA2 /* ViewController.swift in Sources */,
 				0105C2F21CCB680000F268E0 /* RegulationBrightness.swift in Sources */,
+				01BD7B211CCF4F2300BE6587 /* XRRequest.swift in Sources */,
+				01F8185D1CCF58DC0007B4EE /* Alamofire+Extension.swift in Sources */,
 				01E254DC1CCA288A004D7FA2 /* AppDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -401,6 +826,21 @@
 			isa = PBXTargetDependency;
 			target = 01E254D71CCA288A004D7FA2 /* XRVideoPlayer-master */;
 			targetProxy = 01E254F81CCA288B004D7FA2 /* PBXContainerItemProxy */;
+		};
+		01F818C21CCF87FD0007B4EE /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			name = "SwiftyJSON iOS";
+			targetProxy = 01F818C11CCF87FD0007B4EE /* PBXContainerItemProxy */;
+		};
+		01F818C61CCF88020007B4EE /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			name = "Alamofire iOS";
+			targetProxy = 01F818C51CCF88020007B4EE /* PBXContainerItemProxy */;
+		};
+		01F818E31CCF94DC0007B4EE /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			name = "ObjectMapper-iOS";
+			targetProxy = 01F818E21CCF94DC0007B4EE /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
 
@@ -511,13 +951,19 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_IDENTITY = "iPhone Developer: Yuening Wu (Z5NZY5E4ZS)";
+				EMBEDDED_CONTENT_CONTAINS_SWIFT = YES;
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "$(SRCROOT)/XRVideoPlayer-master/XRVideoPlayer-precompile.h";
 				INFOPLIST_FILE = "XRVideoPlayer-master/Info.plist";
-				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "com.kkguan.XRVideoPlayer-master";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "d4e8cab2-8ef8-46c4-9ac1-152b8bac95df";
+				SWIFT_OBJC_BRIDGING_HEADER = "XRVideoPlayer-master/XRVideoPlayer-master-Bridging-Header.h";
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 			};
 			name = Debug;
 		};
@@ -525,13 +971,18 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_IDENTITY = "iPhone Developer: Yuening Wu (Z5NZY5E4ZS)";
+				EMBEDDED_CONTENT_CONTAINS_SWIFT = YES;
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "$(SRCROOT)/XRVideoPlayer-master/XRVideoPlayer-precompile.h";
 				INFOPLIST_FILE = "XRVideoPlayer-master/Info.plist";
-				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "com.kkguan.XRVideoPlayer-master";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "d4e8cab2-8ef8-46c4-9ac1-152b8bac95df";
+				SWIFT_OBJC_BRIDGING_HEADER = "XRVideoPlayer-master/XRVideoPlayer-master-Bridging-Header.h";
 			};
 			name = Release;
 		};

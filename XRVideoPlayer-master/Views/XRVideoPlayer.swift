@@ -27,6 +27,8 @@ class XRVideoPlayer: UIView {
     private var isPlaying: Bool = false
     private var loadingView: XRActivityInditor?
     private var portraintFrame: CGRect?
+    var changedOrientationClosure: ((isFull: Bool) -> ())?
+    
     lazy private var keyWindow: UIWindow = {
         
         return UIApplication.sharedApplication().keyWindow!
@@ -37,6 +39,7 @@ class XRVideoPlayer: UIView {
     deinit {
         self.player?.removeTimeObserver(self)
         self.removePlayerItemObserve(playerItem!)
+        print("player is destory!")
     }
     
     private override init(frame: CGRect) {
@@ -117,6 +120,14 @@ class XRVideoPlayer: UIView {
         fatalError("init(coder:) has not been implemented")
     }
     
+    // destory player
+    func releaseVideoPlayer() -> Void {
+        
+        self.pauseVideoPlay()
+        self.player = nil
+        self.removeFromSuperview()
+    }
+    
     func videoPlayToEnd() -> Void {
         
         print("播放完成")
@@ -124,7 +135,7 @@ class XRVideoPlayer: UIView {
         bottomView.setPlayButtonState(false)
     }
     
-    // 默认是加载完后播放
+    // seek to time to play...
     func seekTimeToPlay(value: Int64, toPlay: Bool = true) -> Void {
         
         if let videoPlayer = player {
@@ -200,6 +211,9 @@ class XRVideoPlayer: UIView {
                 if let weakSelf = self {
                     weakSelf.layoutIfNeeded()
                     weakSelf.isFull = true
+                    if let closure = weakSelf.changedOrientationClosure {
+                        closure(isFull: weakSelf.isFull)
+                    }
                 }
         }
     }
@@ -216,6 +230,9 @@ class XRVideoPlayer: UIView {
                 if let weakSelf = self {
                     weakSelf.layoutIfNeeded()
                     weakSelf.isFull = false
+                    if let closure = weakSelf.changedOrientationClosure {
+                        closure(isFull: weakSelf.isFull)
+                    }
                 }
         }
     }
@@ -223,18 +240,20 @@ class XRVideoPlayer: UIView {
     // 监听播放器的播放进度
     func observePlayerPlayTime() -> Void {
         
-        let playerItem = player?.currentItem
-        if let item = playerItem {
-            player?.addPeriodicTimeObserverForInterval(CMTimeMake(1, 1), queue: dispatch_get_main_queue(), usingBlock: { [weak self](time) in
-                if let weakSelf = self {
-                    let currentTime = CMTimeGetSeconds(time)
-                    let duration = CMTimeGetSeconds(item.duration)
-                    weakSelf.bottomView.setStartTimeWithSecconds(Double(currentTime))
-                    weakSelf.bottomView.setEndTimeWithSecconds(Double(isnan(duration) ? 0.0 : duration))
-                    let prencent = isnan(duration) ? 0.0 : currentTime / duration
-                    weakSelf.bottomView.setSliderProgress(prencent)
-                }
-            })
+        if let videoPlayer = player {
+            let playerItem = videoPlayer.currentItem
+            if let item = playerItem {
+                videoPlayer.addPeriodicTimeObserverForInterval(CMTimeMake(1, 1), queue: dispatch_get_main_queue(), usingBlock: { [weak self](time) in
+                    if let weakSelf = self {
+                        let currentTime = CMTimeGetSeconds(time)
+                        let duration = CMTimeGetSeconds(item.duration)
+                        weakSelf.bottomView.setStartTimeWithSecconds(Double(currentTime))
+                        weakSelf.bottomView.setEndTimeWithSecconds(Double(isnan(duration) ? 0.0 : duration))
+                        let prencent = isnan(duration) ? 0.0 : currentTime / duration
+                        weakSelf.bottomView.setSliderProgress(prencent)
+                    }
+                    })
+            }
         }
     }
     

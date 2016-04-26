@@ -10,16 +10,86 @@ import UIKit
 
 class VideoPlayViewController: UIViewController {
     
-    override func viewDidLoad() {
-        super.viewDidLoad()
+    var playerView: XRVideoPlayer?
+    var topNavView: UIView = UIView()
+    var isFull: Bool = false
+    
+    let backBtn: UIButton = {
+        
+        return UIButton(type: .Custom)
+    }()
+    
+    let moreBtn: UIButton = {
+        
+        return UIButton(type: .Custom)
+    }()
+    
+    func setupUI() {
         
         self.view.backgroundColor = UIColor.whiteColor()
         
-        let playerView = XRVideoPlayer(frame: CGRectMake(0, 0, self.view.frame.width, 200.0), videoURL: "http://flv2.bn.netease.com/videolib3/1604/22/XOhxp6812/SD/movie_index.m3u8")
-        playerView.backgroundColor = UIColor.blackColor()
-        playerView.center = self.view.center
-        self.view.addSubview(playerView)
-        playerView.playVideo()
+        playerView = XRVideoPlayer(frame: CGRectMake(0, 0, self.view.frame.width, 240.0), videoURL: "http://zyvideo1.oss-cn-qingdao.aliyuncs.com/zyvd/7c/de/04ec95f4fd42d9d01f63b9683ad0")
+        playerView?.backgroundColor = UIColor.blackColor().colorWithAlphaComponent(0.9)
+        self.view.addSubview(playerView!)
+        playerView?.playVideo()
+        
+        playerView?.changedOrientationClosure = {[weak self](isFull) -> () in
+            
+            if let weakSelf = self {
+                weakSelf.isFull = isFull
+                weakSelf.topNavView.frame = CGRectMake(0, 0, weakSelf.view.frame.width, 64.0)
+                weakSelf.backBtn.frame = CGRectMake(12, 26, 32, 32)
+                weakSelf.moreBtn.frame = CGRectMake(CGRectGetMaxX(weakSelf.view.frame) - 32.0 - 12.0, 26, 32, 32)
+            }
+        }
+        
+        topNavView.frame = CGRectMake(0, 0, self.view.frame.width, 64.0)
+        topNavView.backgroundColor = UIColor.blackColor().colorWithAlphaComponent(0.01)
+        
+        backBtn.frame = CGRectMake(12, 26, 32, 32)
+        backBtn.setImage(UIImage(named: "back"), forState: .Normal)
+        backBtn.addTarget(self, action: #selector(self.backAction), forControlEvents: .TouchUpInside)
+        topNavView.addSubview(backBtn)
+        
+        moreBtn.frame = CGRectMake(CGRectGetMaxX(self.view.frame) - 32.0 - 12.0, 26, 32, 32)
+        moreBtn.setImage(UIImage(named: "more"), forState: .Normal)
+        moreBtn.addTarget(self, action: #selector(self.moreAction), forControlEvents: .TouchUpInside)
+        topNavView.addSubview(moreBtn)
+        
+        self.view.addSubview(topNavView)
+    }
+    
+    func backAction() -> Void {
+        
+        if isFull {
+            // 退出全屏
+            playerView?.orientationPortraintScreen()
+        }else {
+            self.navigationController?.popViewControllerAnimated(true)
+        }
+    }
+    
+    func moreAction() -> Void {
+        
+        
+    }
+    
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        
+        self.setupUI()
+    }
+    
+    override func viewWillAppear(animated: Bool) {
+        super.viewWillAppear(animated)
+        
+        self.navigationController?.setNavigationBarHidden(true, animated: true)
+    }
+    
+    override func viewWillDisappear(animated: Bool) {
+        super.viewWillAppear(animated)
+        
+        self.navigationController?.setNavigationBarHidden(false, animated: true)
     }
     
     override func viewDidAppear(animated: Bool) {
@@ -30,6 +100,8 @@ class VideoPlayViewController: UIViewController {
     override func viewDidDisappear(animated: Bool) {
         super.viewDidDisappear(animated)
         
+        // 释放播放器对象
+        playerView?.releaseVideoPlayer()
     }
     
     override func didReceiveMemoryWarning() {

@@ -5,7 +5,7 @@
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="10085"/>
     </dependencies>
     <scenes>
-        <!--视频列表-->
+        <!--Video Play View Controller-->
         <scene sceneID="tne-QT-ifu">
             <objects>
                 <viewController id="BYZ-38-t0r" customClass="VideoPlayViewController" customModule="XRVideoPlayer_master" customModuleProvider="target" sceneMemberID="viewController">
@@ -18,12 +18,12 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                     </view>
-                    <navigationItem key="navigationItem" title="视频列表" id="481-Qf-d5X"/>
+                    <navigationItem key="navigationItem" id="481-Qf-d5X"/>
                     <simulatedScreenMetrics key="simulatedDestinationMetrics"/>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1026" y="128"/>
+            <point key="canvasLocation" x="1354" y="97"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="07G-qg-khV">
@@ -37,12 +37,32 @@
                     </navigationBar>
                     <nil name="viewControllers"/>
                     <connections>
-                        <segue destination="BYZ-38-t0r" kind="relationship" relationship="rootViewController" id="Cyb-NT-2Pa"/>
+                        <segue destination="u1R-A8-SRF" kind="relationship" relationship="rootViewController" id="XIr-5J-YDg"/>
                     </connections>
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="e5n-0M-YHX" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="525" y="128"/>
+            <point key="canvasLocation" x="479" y="97"/>
+        </scene>
+        <!--视频列表-->
+        <scene sceneID="Awa-Hn-iZU">
+            <objects>
+                <viewController id="u1R-A8-SRF" customClass="VideoPlayLIstViewController" customModule="XRVideoPlayer_master" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="AI0-9z-Sg1"/>
+                        <viewControllerLayoutGuide type="bottom" id="A7R-zG-73H"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="BLm-ye-RTB">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="480"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    </view>
+                    <navigationItem key="navigationItem" title="视频列表" id="NIn-bp-Orw"/>
+                    <simulatedScreenMetrics key="simulatedDestinationMetrics"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="LVs-3U-DXn" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="893" y="97"/>
         </scene>
     </scenes>
 </document>
