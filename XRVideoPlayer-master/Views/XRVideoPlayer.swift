@@ -310,14 +310,19 @@ class XRVideoPlayer: UIView {
                                 bottomView.setPlayButtonState(false)
                                 isPlaying = false
                             }
+                            bottomView.playButton.enabled = true
                         case .Failed:
                             print("error: \(player?.error?.localizedDescription)")
                             bottomView.setPlayButtonState(false)
                             isPlaying = false
+                            loadingView?.stopAnimation()
+                            bottomView.playButton.enabled = false
                         case .Unknown:
                             print("error: \(player?.error?.localizedDescription)")
                             bottomView.setPlayButtonState(false)
                             isPlaying = false
+                            loadingView?.stopAnimation()
+                            bottomView.playButton.enabled = false
                         }
                     }
                 }

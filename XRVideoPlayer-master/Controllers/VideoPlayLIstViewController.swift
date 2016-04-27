@@ -29,6 +29,7 @@ class VideoPlayLIstViewController: UIViewController, UITableViewDelegate, UITabl
         myTableView.backgroundColor = UIColor.whiteColor()
         myTableView.showsVerticalScrollIndicator = false
         myTableView.showsHorizontalScrollIndicator = false
+        myTableView.separatorColor = UIColor.grayColor()
         myTableView.registerClass(VideoListCell.self, forCellReuseIdentifier: videoCellIdentifier)
         myTableView.tableFooterView = UIView()
         
@@ -100,6 +101,19 @@ class VideoPlayLIstViewController: UIViewController, UITableViewDelegate, UITabl
     }
     
     func tableView(tableView: UITableView, heightForRowAtIndexPath indexPath: NSIndexPath) -> CGFloat {
-        return 200.0
+        
+        return VideoListCell.cellHeight()
     }
+
+    func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
+        
+        if let model = videoList where model.videoList != nil {
+            let video = model.videoList![indexPath.row]
+            let videoDetailVc = VideoPlayViewController()
+            videoDetailVc.videoURL = video.mp4_url
+            self.navigationController?.pushViewController(videoDetailVc, animated: true)
+        }
+    }
+    
+    
 }

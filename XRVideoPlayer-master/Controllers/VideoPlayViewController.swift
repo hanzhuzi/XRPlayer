@@ -13,6 +13,7 @@ class VideoPlayViewController: UIViewController {
     var playerView: XRVideoPlayer?
     var topNavView: UIView = UIView()
     var isFull: Bool = false
+    var videoURL: String?
     
     let backBtn: UIButton = {
         
@@ -24,11 +25,9 @@ class VideoPlayViewController: UIViewController {
         return UIButton(type: .Custom)
     }()
     
-    func setupUI() {
+    func setupPlayerView(videoURL: String) {
         
-        self.view.backgroundColor = UIColor.whiteColor()
-        
-        playerView = XRVideoPlayer(frame: CGRectMake(0, 0, self.view.frame.width, 240.0), videoURL: "http://zyvideo1.oss-cn-qingdao.aliyuncs.com/zyvd/7c/de/04ec95f4fd42d9d01f63b9683ad0")
+        playerView = XRVideoPlayer(frame: CGRectMake(0, 0, self.view.frame.width, 240.0), videoURL: videoURL)
         playerView?.backgroundColor = UIColor.blackColor().colorWithAlphaComponent(0.9)
         self.view.addSubview(playerView!)
         playerView?.playVideo()
@@ -41,6 +40,16 @@ class VideoPlayViewController: UIViewController {
                 weakSelf.backBtn.frame = CGRectMake(12, 26, 32, 32)
                 weakSelf.moreBtn.frame = CGRectMake(CGRectGetMaxX(weakSelf.view.frame) - 32.0 - 12.0, 26, 32, 32)
             }
+        }
+
+    }
+    
+    func setupUI() {
+        
+        self.view.backgroundColor = UIColor.whiteColor()
+        
+        if let url = videoURL {
+            setupPlayerView(url)
         }
         
         topNavView.frame = CGRectMake(0, 0, self.view.frame.width, 64.0)
