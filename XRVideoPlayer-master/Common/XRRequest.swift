@@ -23,20 +23,20 @@ public func xrRequest(method: Method,
 // Objective-C 使用 XRRequest
 @objc public class XRRequest: NSObject {
     
-    private let baseURLString = {
+    private static let baseURLString = {
         return RequestBaseURL
     }()
     
-    static func packgeParam(code requestCode: String, params: [String : AnyObject]? = nil) -> String? {
+    static func packgeParam(code requestCode: String, parameters: [String : AnyObject]? = nil) -> String? {
         
         var param: [String : AnyObject] = [:]
         
-        param["code"] = requestCode
-        param["os"] = "iOS" // 自定义参数
+        param["code"] = requestCode // 后台协定拼接完整URL地址
+        param["os"] = "iOS" // 自定义参数 系统平台
         
         let reqParam = NSMutableDictionary()
         
-        if let packParam = params {
+        if let packParam = parameters {
             reqParam.addEntriesFromDictionary(packParam)
         }
         
@@ -46,7 +46,7 @@ public func xrRequest(method: Method,
                 let jsonStr = NSString(data: jsonData, encoding: NSUTF8StringEncoding)
                 param["params"] = jsonStr
             }catch {
-                
+                // error
             }
         }
         
@@ -62,16 +62,17 @@ public func xrRequest(method: Method,
     
     public static func postWithCodeString(method: Method, codeString: String, params: [String : AnyObject]? = nil, keyPath: String? = nil, complationHandle: ((AnyObject?, NSError?) -> Void)) -> Request? {
         
-        if let dataStr = packgeParam(code: codeString, params: params) {
+        if let dataStr = packgeParam(code: codeString, parameters: params) {
             
             var param: [String : AnyObject] = [:]
             
             param["data"] = dataStr
             
-            let request = xrRequest(method, RequestBaseURL)
+            let request = xrRequest(method, baseURLString)
             request.responseJSONSerializer(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), keyPath: keyPath, complationHandle: { (request, response, retDict, error) in
-                
-                complationHandle(retDict, error)
+                dispatch_async(dispatch_get_main_queue(), { 
+                    complationHandle(retDict, error)
+                })
             })
             
             return request
@@ -80,8 +81,21 @@ public func xrRequest(method: Method,
         return nil
     }
     
-    
-    
+    public static func getWithCodeString(codeString: String, keyPath: String? = nil, complationHandle: ((AnyObject?, NSError?) -> Void)) -> Request? {
+        
+        if !codeString.isEmpty {
+            let request = xrRequest(.GET, codeString)
+            request.responseJSONSerializer(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), keyPath: keyPath, complationHandle: { (request, response, retDict, error) in
+                dispatch_async(dispatch_get_main_queue(), { 
+                    complationHandle(retDict, error)
+                })
+            })
+            
+            return request
+        }
+        
+        return nil
+    }
     
     
 }

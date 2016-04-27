@@ -9,8 +9,13 @@
 /* Begin PBXBuildFile section */
 		0105C2F01CCB4E2F00F268E0 /* XRVideoToolBottomView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0105C2EF1CCB4E2F00F268E0 /* XRVideoToolBottomView.swift */; };
 		0105C2F21CCB680000F268E0 /* RegulationBrightness.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0105C2F11CCB680000F268E0 /* RegulationBrightness.swift */; };
+		013E53211CD06908009CA523 /* VideoListCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 013E53201CD06908009CA523 /* VideoListCell.swift */; };
+		013E534C1CD06A5F009CA523 /* SnapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 013E533F1CD06A2C009CA523 /* SnapKit.framework */; };
+		013E534D1CD06A5F009CA523 /* SnapKit.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 013E533F1CD06A2C009CA523 /* SnapKit.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		013E53511CD087CD009CA523 /* UIImageView+SyncImageCache.swift in Sources */ = {isa = PBXBuildFile; fileRef = 013E53501CD087CD009CA523 /* UIImageView+SyncImageCache.swift */; };
 		01BD7AFE1CCF3E1600BE6587 /* VideoPlayLIstViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01BD7AFD1CCF3E1600BE6587 /* VideoPlayLIstViewController.swift */; };
 		01BD7B211CCF4F2300BE6587 /* XRRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01BD7B201CCF4F2300BE6587 /* XRRequest.swift */; };
+		01C23B3D1CD05FED00AF2B91 /* VideoListModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01C23B3C1CD05FED00AF2B91 /* VideoListModel.swift */; };
 		01C2A97F1CCE165E001342D4 /* player-progress-point-h@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 01C2A97D1CCE165E001342D4 /* player-progress-point-h@2x.png */; };
 		01C2A9801CCE165E001342D4 /* player-progress-point-h@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 01C2A97E1CCE165E001342D4 /* player-progress-point-h@3x.png */; };
 		01C2A9861CCE166E001342D4 /* player_loadin_1@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 01C2A9811CCE166E001342D4 /* player_loadin_1@2x.png */; };
@@ -38,6 +43,62 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
+		013E533E1CD06A2C009CA523 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 013E53341CD06A2B009CA523 /* SnapKit.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = EEBCC9D819CC627D0083B827;
+			remoteInfo = "SnapKit iOS";
+		};
+		013E53401CD06A2C009CA523 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 013E53341CD06A2B009CA523 /* SnapKit.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = 537DCE921C35CC8800B5B899;
+			remoteInfo = "SnapKit tvOS";
+		};
+		013E53421CD06A2C009CA523 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 013E53341CD06A2B009CA523 /* SnapKit.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = EECDB37A1AC0C9D4006BBC11;
+			remoteInfo = "SnapKit OSX";
+		};
+		013E53441CD06A2C009CA523 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 013E53341CD06A2B009CA523 /* SnapKit.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = EEBCC9E219CC627E0083B827;
+			remoteInfo = "SnapKit iOS Tests";
+		};
+		013E53461CD06A2C009CA523 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 013E53341CD06A2B009CA523 /* SnapKit.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = 537DCEAF1C35D90A00B5B899;
+			remoteInfo = "SnapKit tvOS Tests";
+		};
+		013E53481CD06A2C009CA523 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 013E53341CD06A2B009CA523 /* SnapKit.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = EECDB3841AC0C9D4006BBC11;
+			remoteInfo = "SnapKit OSX Tests";
+		};
+		013E534A1CD06A2C009CA523 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 013E53341CD06A2B009CA523 /* SnapKit.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = 56A0DC091C859E30005973AB;
+			remoteInfo = "Example-iOS";
+		};
+		013E534E1CD06A5F009CA523 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 013E53341CD06A2B009CA523 /* SnapKit.xcodeproj */;
+			proxyType = 1;
+			remoteGlobalIDString = EEBCC9D719CC627D0083B827;
+			remoteInfo = "SnapKit iOS";
+		};
 		01E254ED1CCA288B004D7FA2 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = 01E254D01CCA288A004D7FA2 /* Project object */;
@@ -232,6 +293,7 @@
 				01F818E11CCF94DC0007B4EE /* ObjectMapper.framework in Embed Frameworks */,
 				01F818C01CCF87FD0007B4EE /* SwiftyJSON.framework in Embed Frameworks */,
 				01F818C41CCF88020007B4EE /* Alamofire.framework in Embed Frameworks */,
+				013E534D1CD06A5F009CA523 /* SnapKit.framework in Embed Frameworks */,
 			);
 			name = "Embed Frameworks";
 			runOnlyForDeploymentPostprocessing = 0;
@@ -241,9 +303,13 @@
 /* Begin PBXFileReference section */
 		0105C2EF1CCB4E2F00F268E0 /* XRVideoToolBottomView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = XRVideoToolBottomView.swift; sourceTree = "<group>"; };
 		0105C2F11CCB680000F268E0 /* RegulationBrightness.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RegulationBrightness.swift; sourceTree = "<group>"; };
+		013E53201CD06908009CA523 /* VideoListCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = VideoListCell.swift; sourceTree = "<group>"; };
+		013E53341CD06A2B009CA523 /* SnapKit.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = SnapKit.xcodeproj; path = SnapKit/SnapKit.xcodeproj; sourceTree = "<group>"; };
+		013E53501CD087CD009CA523 /* UIImageView+SyncImageCache.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIImageView+SyncImageCache.swift"; sourceTree = "<group>"; };
 		01BD7AFD1CCF3E1600BE6587 /* VideoPlayLIstViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = VideoPlayLIstViewController.swift; sourceTree = "<group>"; };
 		01BD7AFF1CCF3EDD00BE6587 /* XRVideoPlayer-master-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "XRVideoPlayer-master-Bridging-Header.h"; sourceTree = "<group>"; };
 		01BD7B201CCF4F2300BE6587 /* XRRequest.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = XRRequest.swift; sourceTree = "<group>"; };
+		01C23B3C1CD05FED00AF2B91 /* VideoListModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = VideoListModel.swift; path = "XRVideoPlayer-master/VideoListModel.swift"; sourceTree = SOURCE_ROOT; };
 		01C2A97D1CCE165E001342D4 /* player-progress-point-h@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "player-progress-point-h@2x.png"; sourceTree = "<group>"; };
 		01C2A97E1CCE165E001342D4 /* player-progress-point-h@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "player-progress-point-h@3x.png"; sourceTree = "<group>"; };
 		01C2A9811CCE166E001342D4 /* player_loadin_1@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "player_loadin_1@2x.png"; sourceTree = "<group>"; };
@@ -283,6 +349,7 @@
 				01F818E01CCF94DC0007B4EE /* ObjectMapper.framework in Frameworks */,
 				01F818BF1CCF87FD0007B4EE /* SwiftyJSON.framework in Frameworks */,
 				01F818C31CCF88020007B4EE /* Alamofire.framework in Frameworks */,
+				013E534C1CD06A5F009CA523 /* SnapKit.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -317,9 +384,24 @@
 			path = Resources;
 			sourceTree = "<group>";
 		};
+		013E53351CD06A2B009CA523 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				013E533F1CD06A2C009CA523 /* SnapKit.framework */,
+				013E53411CD06A2C009CA523 /* SnapKit.framework */,
+				013E53431CD06A2C009CA523 /* SnapKit.framework */,
+				013E53451CD06A2C009CA523 /* SnapKit iOS Tests.xctest */,
+				013E53471CD06A2C009CA523 /* SnapKit tvOS Tests.xctest */,
+				013E53491CD06A2C009CA523 /* SnapKit OSX Tests.xctest */,
+				013E534B1CD06A2C009CA523 /* Example-iOS.app */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
 		01E254CF1CCA288A004D7FA2 = {
 			isa = PBXGroup;
 			children = (
+				013E53341CD06A2B009CA523 /* SnapKit.xcodeproj */,
 				01F818C81CCF94C50007B4EE /* ObjectMapper.xcodeproj */,
 				01F818A71CCF87C70007B4EE /* SwiftyJSON.xcodeproj */,
 				01F8188F1CCF87A00007B4EE /* Alamofire.xcodeproj */,
@@ -393,6 +475,7 @@
 				01E255111CCA2ED1004D7FA2 /* XRVideoPlayer.swift */,
 				0105C2EF1CCB4E2F00F268E0 /* XRVideoToolBottomView.swift */,
 				01C2A98B1CCE381B001342D4 /* XRActivityInditor.swift */,
+				013E53201CD06908009CA523 /* VideoListCell.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -400,6 +483,7 @@
 		01E2550B1CCA28D1004D7FA2 /* Models */ = {
 			isa = PBXGroup;
 			children = (
+				01C23B3C1CD05FED00AF2B91 /* VideoListModel.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -419,6 +503,7 @@
 				0105C2F11CCB680000F268E0 /* RegulationBrightness.swift */,
 				01BD7B201CCF4F2300BE6587 /* XRRequest.swift */,
 				01F8185C1CCF58DC0007B4EE /* Alamofire+Extension.swift */,
+				013E53501CD087CD009CA523 /* UIImageView+SyncImageCache.swift */,
 			);
 			path = Common;
 			sourceTree = "<group>";
@@ -491,6 +576,7 @@
 				01F818C21CCF87FD0007B4EE /* PBXTargetDependency */,
 				01F818C61CCF88020007B4EE /* PBXTargetDependency */,
 				01F818E31CCF94DC0007B4EE /* PBXTargetDependency */,
+				013E534F1CD06A5F009CA523 /* PBXTargetDependency */,
 			);
 			name = "XRVideoPlayer-master";
 			productName = "XRVideoPlayer-master";
@@ -583,6 +669,10 @@
 					ProjectRef = 01F818C81CCF94C50007B4EE /* ObjectMapper.xcodeproj */;
 				},
 				{
+					ProductGroup = 013E53351CD06A2B009CA523 /* Products */;
+					ProjectRef = 013E53341CD06A2B009CA523 /* SnapKit.xcodeproj */;
+				},
+				{
 					ProductGroup = 01F818A81CCF87C70007B4EE /* Products */;
 					ProjectRef = 01F818A71CCF87C70007B4EE /* SwiftyJSON.xcodeproj */;
 				},
@@ -597,6 +687,55 @@
 /* End PBXProject section */
 
 /* Begin PBXReferenceProxy section */
+		013E533F1CD06A2C009CA523 /* SnapKit.framework */ = {
+			isa = PBXReferenceProxy;
+			fileType = wrapper.framework;
+			path = SnapKit.framework;
+			remoteRef = 013E533E1CD06A2C009CA523 /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		013E53411CD06A2C009CA523 /* SnapKit.framework */ = {
+			isa = PBXReferenceProxy;
+			fileType = wrapper.framework;
+			path = SnapKit.framework;
+			remoteRef = 013E53401CD06A2C009CA523 /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		013E53431CD06A2C009CA523 /* SnapKit.framework */ = {
+			isa = PBXReferenceProxy;
+			fileType = wrapper.framework;
+			path = SnapKit.framework;
+			remoteRef = 013E53421CD06A2C009CA523 /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		013E53451CD06A2C009CA523 /* SnapKit iOS Tests.xctest */ = {
+			isa = PBXReferenceProxy;
+			fileType = wrapper.cfbundle;
+			path = "SnapKit iOS Tests.xctest";
+			remoteRef = 013E53441CD06A2C009CA523 /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		013E53471CD06A2C009CA523 /* SnapKit tvOS Tests.xctest */ = {
+			isa = PBXReferenceProxy;
+			fileType = wrapper.cfbundle;
+			path = "SnapKit tvOS Tests.xctest";
+			remoteRef = 013E53461CD06A2C009CA523 /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		013E53491CD06A2C009CA523 /* SnapKit OSX Tests.xctest */ = {
+			isa = PBXReferenceProxy;
+			fileType = wrapper.cfbundle;
+			path = "SnapKit OSX Tests.xctest";
+			remoteRef = 013E53481CD06A2C009CA523 /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		013E534B1CD06A2C009CA523 /* Example-iOS.app */ = {
+			isa = PBXReferenceProxy;
+			fileType = wrapper.application;
+			path = "Example-iOS.app";
+			remoteRef = 013E534A1CD06A2C009CA523 /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
 		01F8189A1CCF87A00007B4EE /* Alamofire.framework */ = {
 			isa = PBXReferenceProxy;
 			fileType = wrapper.framework;
@@ -788,13 +927,16 @@
 				0105C2F01CCB4E2F00F268E0 /* XRVideoToolBottomView.swift in Sources */,
 				01E255141CCA404B004D7FA2 /* VideoPlayViewController.swift in Sources */,
 				01E255121CCA2ED1004D7FA2 /* XRVideoPlayer.swift in Sources */,
+				01C23B3D1CD05FED00AF2B91 /* VideoListModel.swift in Sources */,
 				01C2A98C1CCE381B001342D4 /* XRActivityInditor.swift in Sources */,
+				013E53211CD06908009CA523 /* VideoListCell.swift in Sources */,
 				01BD7AFE1CCF3E1600BE6587 /* VideoPlayLIstViewController.swift in Sources */,
 				01E254DE1CCA288A004D7FA2 /* ViewController.swift in Sources */,
 				0105C2F21CCB680000F268E0 /* RegulationBrightness.swift in Sources */,
 				01BD7B211CCF4F2300BE6587 /* XRRequest.swift in Sources */,
 				01F8185D1CCF58DC0007B4EE /* Alamofire+Extension.swift in Sources */,
 				01E254DC1CCA288A004D7FA2 /* AppDelegate.swift in Sources */,
+				013E53511CD087CD009CA523 /* UIImageView+SyncImageCache.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -817,6 +959,11 @@
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXTargetDependency section */
+		013E534F1CD06A5F009CA523 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			name = "SnapKit iOS";
+			targetProxy = 013E534E1CD06A5F009CA523 /* PBXContainerItemProxy */;
+		};
 		01E254EE1CCA288B004D7FA2 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
 			target = 01E254D71CCA288A004D7FA2 /* XRVideoPlayer-master */;
