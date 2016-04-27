@@ -61,6 +61,8 @@ class VideoPlayLIstViewController: UIViewController, UITableViewDelegate, UITabl
         
         self.setupUI()
         self.requestDataFromURL()
+        
+        
     }
     
     override func didReceiveMemoryWarning() {
@@ -110,7 +112,8 @@ class VideoPlayLIstViewController: UIViewController, UITableViewDelegate, UITabl
         if let model = videoList where model.videoList != nil {
             let video = model.videoList![indexPath.row]
             let videoDetailVc = VideoPlayViewController()
-            videoDetailVc.videoURL = video.mp4_url
+            videoDetailVc.videoURL = video.m3u8_url
+            videoDetailVc.videoDescription = video.description
             self.navigationController?.pushViewController(videoDetailVc, animated: true)
         }
     }

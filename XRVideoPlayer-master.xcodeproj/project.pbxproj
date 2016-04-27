@@ -15,6 +15,8 @@
 		013E535D1CD0B0AC009CA523 /* AsyncImageCache.swift in Sources */ = {isa = PBXBuildFile; fileRef = 013E535A1CD0B0AC009CA523 /* AsyncImageCache.swift */; };
 		013E535E1CD0B0AC009CA523 /* AsyncImageDownloader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 013E535B1CD0B0AC009CA523 /* AsyncImageDownloader.swift */; };
 		013E535F1CD0B0AC009CA523 /* UIImageView+AsyncImageCache.swift in Sources */ = {isa = PBXBuildFile; fileRef = 013E535C1CD0B0AC009CA523 /* UIImageView+AsyncImageCache.swift */; };
+		013E53721CD0BF0B009CA523 /* CryptoSwift.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 013E53691CD0BEFE009CA523 /* CryptoSwift.framework */; };
+		013E53731CD0BF0B009CA523 /* CryptoSwift.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 013E53691CD0BEFE009CA523 /* CryptoSwift.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		01BD7AFE1CCF3E1600BE6587 /* VideoPlayLIstViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01BD7AFD1CCF3E1600BE6587 /* VideoPlayLIstViewController.swift */; };
 		01BD7B211CCF4F2300BE6587 /* XRRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01BD7B201CCF4F2300BE6587 /* XRRequest.swift */; };
 		01C23B3D1CD05FED00AF2B91 /* VideoListModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01C23B3C1CD05FED00AF2B91 /* VideoListModel.swift */; };
@@ -100,6 +102,48 @@
 			proxyType = 1;
 			remoteGlobalIDString = EEBCC9D719CC627D0083B827;
 			remoteInfo = "SnapKit iOS";
+		};
+		013E53681CD0BEFE009CA523 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 013E53601CD0BEFD009CA523 /* CryptoSwift.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = 754BE45519693E190098E6F3;
+			remoteInfo = "CryptoSwift iOS";
+		};
+		013E536A1CD0BEFE009CA523 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 013E53601CD0BEFD009CA523 /* CryptoSwift.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = 5596BDBB1BC8F220007E38D5;
+			remoteInfo = "CryptoSwift watchOS";
+		};
+		013E536C1CD0BEFE009CA523 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 013E53601CD0BEFD009CA523 /* CryptoSwift.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = 75DF77721BC8EB59006E9520;
+			remoteInfo = "CryptoSwift OSX";
+		};
+		013E536E1CD0BEFE009CA523 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 013E53601CD0BEFD009CA523 /* CryptoSwift.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = 75D614BF1BD844F2001358B2;
+			remoteInfo = "CryptoSwift tvOS";
+		};
+		013E53701CD0BEFE009CA523 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 013E53601CD0BEFD009CA523 /* CryptoSwift.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = 754BE46019693E190098E6F3;
+			remoteInfo = CryptoSwiftTests;
+		};
+		013E53741CD0BF0B009CA523 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 013E53601CD0BEFD009CA523 /* CryptoSwift.xcodeproj */;
+			proxyType = 1;
+			remoteGlobalIDString = 754BE45419693E190098E6F3;
+			remoteInfo = "CryptoSwift iOS";
 		};
 		01E254ED1CCA288B004D7FA2 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
@@ -295,6 +339,7 @@
 				01F818E11CCF94DC0007B4EE /* ObjectMapper.framework in Embed Frameworks */,
 				01F818C01CCF87FD0007B4EE /* SwiftyJSON.framework in Embed Frameworks */,
 				01F818C41CCF88020007B4EE /* Alamofire.framework in Embed Frameworks */,
+				013E53731CD0BF0B009CA523 /* CryptoSwift.framework in Embed Frameworks */,
 				013E534D1CD06A5F009CA523 /* SnapKit.framework in Embed Frameworks */,
 			);
 			name = "Embed Frameworks";
@@ -310,6 +355,7 @@
 		013E535A1CD0B0AC009CA523 /* AsyncImageCache.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AsyncImageCache.swift; sourceTree = "<group>"; };
 		013E535B1CD0B0AC009CA523 /* AsyncImageDownloader.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AsyncImageDownloader.swift; sourceTree = "<group>"; };
 		013E535C1CD0B0AC009CA523 /* UIImageView+AsyncImageCache.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIImageView+AsyncImageCache.swift"; sourceTree = "<group>"; };
+		013E53601CD0BEFD009CA523 /* CryptoSwift.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = CryptoSwift.xcodeproj; path = CryptoSwift/CryptoSwift.xcodeproj; sourceTree = "<group>"; };
 		01BD7AFD1CCF3E1600BE6587 /* VideoPlayLIstViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = VideoPlayLIstViewController.swift; sourceTree = "<group>"; };
 		01BD7AFF1CCF3EDD00BE6587 /* XRVideoPlayer-master-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "XRVideoPlayer-master-Bridging-Header.h"; sourceTree = "<group>"; };
 		01BD7B201CCF4F2300BE6587 /* XRRequest.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = XRRequest.swift; sourceTree = "<group>"; };
@@ -353,6 +399,7 @@
 				01F818E01CCF94DC0007B4EE /* ObjectMapper.framework in Frameworks */,
 				01F818BF1CCF87FD0007B4EE /* SwiftyJSON.framework in Frameworks */,
 				01F818C31CCF88020007B4EE /* Alamofire.framework in Frameworks */,
+				013E53721CD0BF0B009CA523 /* CryptoSwift.framework in Frameworks */,
 				013E534C1CD06A5F009CA523 /* SnapKit.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -412,9 +459,22 @@
 			path = AsyncWebImage;
 			sourceTree = "<group>";
 		};
+		013E53611CD0BEFD009CA523 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				013E53691CD0BEFE009CA523 /* CryptoSwift.framework */,
+				013E536B1CD0BEFE009CA523 /* CryptoSwift.framework */,
+				013E536D1CD0BEFE009CA523 /* CryptoSwift.framework */,
+				013E536F1CD0BEFE009CA523 /* CryptoSwift.framework */,
+				013E53711CD0BEFE009CA523 /* CryptoSwiftTests.xctest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
 		01E254CF1CCA288A004D7FA2 = {
 			isa = PBXGroup;
 			children = (
+				013E53601CD0BEFD009CA523 /* CryptoSwift.xcodeproj */,
 				013E53341CD06A2B009CA523 /* SnapKit.xcodeproj */,
 				01F818C81CCF94C50007B4EE /* ObjectMapper.xcodeproj */,
 				01F818A71CCF87C70007B4EE /* SwiftyJSON.xcodeproj */,
@@ -591,6 +651,7 @@
 				01F818C61CCF88020007B4EE /* PBXTargetDependency */,
 				01F818E31CCF94DC0007B4EE /* PBXTargetDependency */,
 				013E534F1CD06A5F009CA523 /* PBXTargetDependency */,
+				013E53751CD0BF0B009CA523 /* PBXTargetDependency */,
 			);
 			name = "XRVideoPlayer-master";
 			productName = "XRVideoPlayer-master";
@@ -679,6 +740,10 @@
 					ProjectRef = 01F8188F1CCF87A00007B4EE /* Alamofire.xcodeproj */;
 				},
 				{
+					ProductGroup = 013E53611CD0BEFD009CA523 /* Products */;
+					ProjectRef = 013E53601CD0BEFD009CA523 /* CryptoSwift.xcodeproj */;
+				},
+				{
 					ProductGroup = 01F818C91CCF94C50007B4EE /* Products */;
 					ProjectRef = 01F818C81CCF94C50007B4EE /* ObjectMapper.xcodeproj */;
 				},
@@ -748,6 +813,41 @@
 			fileType = wrapper.application;
 			path = "Example-iOS.app";
 			remoteRef = 013E534A1CD06A2C009CA523 /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		013E53691CD0BEFE009CA523 /* CryptoSwift.framework */ = {
+			isa = PBXReferenceProxy;
+			fileType = wrapper.framework;
+			path = CryptoSwift.framework;
+			remoteRef = 013E53681CD0BEFE009CA523 /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		013E536B1CD0BEFE009CA523 /* CryptoSwift.framework */ = {
+			isa = PBXReferenceProxy;
+			fileType = wrapper.framework;
+			path = CryptoSwift.framework;
+			remoteRef = 013E536A1CD0BEFE009CA523 /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		013E536D1CD0BEFE009CA523 /* CryptoSwift.framework */ = {
+			isa = PBXReferenceProxy;
+			fileType = wrapper.framework;
+			path = CryptoSwift.framework;
+			remoteRef = 013E536C1CD0BEFE009CA523 /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		013E536F1CD0BEFE009CA523 /* CryptoSwift.framework */ = {
+			isa = PBXReferenceProxy;
+			fileType = wrapper.framework;
+			path = CryptoSwift.framework;
+			remoteRef = 013E536E1CD0BEFE009CA523 /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		013E53711CD0BEFE009CA523 /* CryptoSwiftTests.xctest */ = {
+			isa = PBXReferenceProxy;
+			fileType = wrapper.cfbundle;
+			path = CryptoSwiftTests.xctest;
+			remoteRef = 013E53701CD0BEFE009CA523 /* PBXContainerItemProxy */;
 			sourceTree = BUILT_PRODUCTS_DIR;
 		};
 		01F8189A1CCF87A00007B4EE /* Alamofire.framework */ = {
@@ -980,6 +1080,11 @@
 			name = "SnapKit iOS";
 			targetProxy = 013E534E1CD06A5F009CA523 /* PBXContainerItemProxy */;
 		};
+		013E53751CD0BF0B009CA523 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			name = "CryptoSwift iOS";
+			targetProxy = 013E53741CD0BF0B009CA523 /* PBXContainerItemProxy */;
+		};
 		01E254EE1CCA288B004D7FA2 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
 			target = 01E254D71CCA288A004D7FA2 /* XRVideoPlayer-master */;
@@ -1120,7 +1225,7 @@
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "$(SRCROOT)/XRVideoPlayer-master/XRVideoPlayer-precompile.h";
 				INFOPLIST_FILE = "XRVideoPlayer-master/Info.plist";
-				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "com.kkguan.XRVideoPlayer-master";
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -1140,7 +1245,7 @@
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "$(SRCROOT)/XRVideoPlayer-master/XRVideoPlayer-precompile.h";
 				INFOPLIST_FILE = "XRVideoPlayer-master/Info.plist";
-				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "com.kkguan.XRVideoPlayer-master";
 				PRODUCT_NAME = "$(TARGET_NAME)";

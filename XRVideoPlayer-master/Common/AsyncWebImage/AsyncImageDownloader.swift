@@ -59,7 +59,8 @@ class AsyncImageDownloader: NSObject {
                     let dataTask = weakSelf.URLSession.dataTaskWithRequest(request, completionHandler: { (data, response, error) in
                         
                         if let imageData = data {
-                            let image: UIImage = UIImage(data: imageData)!
+                            let image = UIImage.init(data: imageData)
+                            AsyncImageCache.sharedCache().cacheImageToDisk(image, imageData: imageData, key: urlStr)
                             dispatch_async(dispatch_get_main_queue(), {
                                 complationHandle(image: image)
                             })

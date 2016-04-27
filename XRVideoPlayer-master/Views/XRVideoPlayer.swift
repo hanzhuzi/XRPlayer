@@ -202,18 +202,18 @@ class XRVideoPlayer: UIView {
         
         UIDevice.currentDevice().setValue(UIInterfaceOrientation.LandscapeRight.rawValue, forKey: "orientation")
         UIApplication.sharedApplication().setStatusBarOrientation(.LandscapeRight, animated: true)
-        
+        isFull = true
         UIView.animateWithDuration(0.3, animations: { [weak self]() -> Void in
             if let weakSelf = self {
                 weakSelf.frame = weakSelf.keyWindow.bounds
+                if let closure = weakSelf.changedOrientationClosure {
+                    closure(isFull: weakSelf.isFull)
+                }
             }
             }) { [weak self](finish) in
                 if let weakSelf = self {
                     weakSelf.layoutIfNeeded()
                     weakSelf.isFull = true
-                    if let closure = weakSelf.changedOrientationClosure {
-                        closure(isFull: weakSelf.isFull)
-                    }
                 }
         }
     }
@@ -222,17 +222,18 @@ class XRVideoPlayer: UIView {
         
         UIDevice.currentDevice().setValue(UIInterfaceOrientation.Portrait.rawValue, forKey: "orientation")
         UIApplication.sharedApplication().setStatusBarOrientation(.Portrait, animated: true)
+        isFull = false
         UIView.animateWithDuration(0.3, animations: { [weak self] () -> Void in
             if let weakSelf = self {
                 weakSelf.frame = weakSelf.portraintFrame!
+                if let closure = weakSelf.changedOrientationClosure {
+                    closure(isFull: weakSelf.isFull)
+                }
             }
             }) { [weak self](finish) in
                 if let weakSelf = self {
                     weakSelf.layoutIfNeeded()
                     weakSelf.isFull = false
-                    if let closure = weakSelf.changedOrientationClosure {
-                        closure(isFull: weakSelf.isFull)
-                    }
                 }
         }
     }

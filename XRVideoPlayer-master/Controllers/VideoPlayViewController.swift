@@ -11,9 +11,11 @@ import UIKit
 class VideoPlayViewController: UIViewController {
     
     var playerView: XRVideoPlayer?
-    var topNavView: UIView = UIView()
+    lazy var topNavView: UIView = UIView()
+    var descripTextView: UITextView?
     var isFull: Bool = false
     var videoURL: String?
+    var videoDescription: String?
     
     let backBtn: UIButton = {
         
@@ -33,15 +35,15 @@ class VideoPlayViewController: UIViewController {
         playerView?.playVideo()
         
         playerView?.changedOrientationClosure = {[weak self](isFull) -> () in
-            
+            // 旋转屏幕执行动画改变子控件的frame
             if let weakSelf = self {
                 weakSelf.isFull = isFull
                 weakSelf.topNavView.frame = CGRectMake(0, 0, weakSelf.view.frame.width, 64.0)
                 weakSelf.backBtn.frame = CGRectMake(12, 26, 32, 32)
                 weakSelf.moreBtn.frame = CGRectMake(CGRectGetMaxX(weakSelf.view.frame) - 32.0 - 12.0, 26, 32, 32)
+                weakSelf.descripTextView?.frame = CGRectMake(10.0, CGRectGetMaxY(weakSelf.playerView!.frame) + 10.0, weakSelf.view.frame.width - 20.0, 100.0)
             }
         }
-
     }
     
     func setupUI() {
@@ -66,6 +68,18 @@ class VideoPlayViewController: UIViewController {
         topNavView.addSubview(moreBtn)
         
         self.view.addSubview(topNavView)
+        
+        if let descrip = videoDescription {
+            descripTextView = UITextView(frame: CGRectMake(10.0, CGRectGetMaxY(playerView!.frame) + 10.0, self.view.frame.width - 20.0, 100.0), textContainer: nil)
+            descripTextView?.backgroundColor = UIColor.whiteColor()
+            descripTextView?.textColor = UIColor.blackColor()
+            descripTextView?.font = UIFont.systemFontOfSize(15.0)
+            descripTextView?.textAlignment = .Left
+            descripTextView?.editable = false
+            descripTextView?.selectable = false
+            descripTextView?.text = descrip
+            self.view.addSubview(descripTextView!)
+        }
     }
     
     func backAction() -> Void {
