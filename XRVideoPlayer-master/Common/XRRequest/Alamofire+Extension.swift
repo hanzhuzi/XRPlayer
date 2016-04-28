@@ -6,6 +6,12 @@
 //  Copyright © 2016年 黯丶野火. All rights reserved.
 //
 
+/**
+ *  @brief  Alamofire 扩展
+ *
+ *  @by     黯丶野火
+ **/
+
 import Foundation
 import Alamofire
 import SwiftyJSON

@@ -7,7 +7,10 @@
 //
 
 /**
- *  图片资源下载
+ *  AsyncImageDownloader
+ *
+ *  @brief  图片资源下载
+ *  @by     黯丶野火
  **/
 
 import Foundation
@@ -52,24 +55,38 @@ class AsyncImageDownloader: NSObject {
         
         if let urlStr = URLString {
             
-            operationQueue.addOperationWithBlock({ [weak self]() -> Void in
-                if let weakSelf = self {
-                    
-                    let request = NSURLRequest(URL: NSURL(string: urlStr)!, cachePolicy: NSURLRequestCachePolicy.ReloadIgnoringLocalAndRemoteCacheData, timeoutInterval: 15.0)
-                    let dataTask = weakSelf.URLSession.dataTaskWithRequest(request, completionHandler: { (data, response, error) in
-                        
-                        if let imageData = data {
-                            let image = UIImage.init(data: imageData)
-                            AsyncImageCache.sharedCache().cacheImageToDisk(image, imageData: imageData, key: urlStr)
-                            dispatch_async(dispatch_get_main_queue(), {
-                                complationHandle(image: image)
-                            })
-                        }
+            // 检测图片是否缓存了
+            if AsyncImageCache.sharedCache().disImageIsExsistWithKey(urlStr) {
+                let cacheFilePath = AsyncImageCache.sharedCache().getCacheFilePathWithKey(urlStr)
+                if let cachePath = cacheFilePath {
+                    // 取出本地缓存好的图片
+                    operationQueue.addOperationWithBlock({ 
+                        let cacheImage = UIImage(contentsOfFile: cachePath)
+                        dispatch_async(dispatch_get_main_queue(), { 
+                            complationHandle(image: cacheImage)
+                        })
                     })
-                    
-                    dataTask.resume()
                 }
-                })
+            }else {
+                operationQueue.addOperationWithBlock({ [weak self]() -> Void in
+                    if let weakSelf = self {
+                        
+                        let request = NSURLRequest(URL: NSURL(string: urlStr)!, cachePolicy: NSURLRequestCachePolicy.ReloadIgnoringLocalAndRemoteCacheData, timeoutInterval: 15.0)
+                        let dataTask = weakSelf.URLSession.dataTaskWithRequest(request, completionHandler: { (data, response, error) in
+                            
+                            if let imageData = data {
+                                let image = UIImage.init(data: imageData)
+                                AsyncImageCache.sharedCache().cacheImageToDisk(image, imageData: imageData, key: urlStr)
+                                dispatch_async(dispatch_get_main_queue(), {
+                                    complationHandle(image: image)
+                                })
+                            }
+                        })
+                        
+                        dataTask.resume()
+                    }
+                    })
+            }
         }
     }
     

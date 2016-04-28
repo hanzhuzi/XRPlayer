@@ -7,7 +7,10 @@
 //
 
 /**
- *  图片缓存
+ *  UIImageView+AsyncImageCache
+ *
+ *  @brief  从网络获取图片资源并设置到UIImageView上，图片将缓存到磁盘.
+ *  @by     黯丶野火
  **/
 
 import Foundation
@@ -15,15 +18,11 @@ import UIKit
 
 extension UIImageView {
     
-    /**
-     *  从网络获取图片资源设置到UIImageView上
-     **/
+    // set image to UIImageView.
     public func async_setImageWithURL(URLString: String?, placeHoldImage: UIImage?) {
         
         if let placeImage = placeHoldImage {
             self.image = placeImage
-        }else {
-            self.image = nil
         }
         
         if URLString != nil && !URLString!.isEmpty {

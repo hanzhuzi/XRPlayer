@@ -44,7 +44,7 @@ class VideoListCell: UITableViewCell {
             make.height.equalTo(coverHeight)
         }
         
-        playBackgroundView.backgroundColor = UIColor.blackColor().colorWithAlphaComponent(0.2)
+        playBackgroundView.backgroundColor = UIColor.grayColor().colorWithAlphaComponent(0.2)
         self.contentView.addSubview(playBackgroundView)
         playBackgroundView.snp_makeConstraints { (make) in
             make.width.equalTo(self.coverImageView.snp_width)

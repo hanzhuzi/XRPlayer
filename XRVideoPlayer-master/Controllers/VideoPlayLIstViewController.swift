@@ -14,6 +14,9 @@ private let videoCellIdentifier = "videoCellIdentifier"
 class VideoPlayLIstViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
     
     var videoList: VideoListModel?
+    private let activityIndicator = {
+        return UIActivityIndicatorView(activityIndicatorStyle: .Gray)
+    }()
     private lazy var myTableView: UITableView = {
        
         return UITableView(frame: CGRectMake(0, 0, self.view.frame.width, self.view.frame.height), style: UITableViewStyle.Plain)
@@ -34,6 +37,11 @@ class VideoPlayLIstViewController: UIViewController, UITableViewDelegate, UITabl
         myTableView.tableFooterView = UIView()
         
         self.view.addSubview(myTableView)
+        self.activityIndicator.frame = CGRectMake(0, 0, 60, 60)
+        self.activityIndicator.center = self.view.center
+        self.view.addSubview(activityIndicator)
+        activityIndicator.hidesWhenStopped = true
+        activityIndicator.startAnimating()
     }
     
     func requestDataFromURL() -> Void {
@@ -41,6 +49,7 @@ class VideoPlayLIstViewController: UIViewController, UITableViewDelegate, UITabl
         XRRequest.getWithCodeString(CODE_VIDEOLIST) { [weak self](dict, error) in
             
             if let weakSelf = self {
+                weakSelf.activityIndicator.stopAnimating()
                 if error == nil {
                     
                     if let retDict = dict {

@@ -6,9 +6,15 @@
 //  Copyright © 2016年 黯丶野火. All rights reserved.
 //
 
-import Alamofire // 此处不能引用UIKit和Foundation，Method会和系统的Method冲突
+/**
+ *  @brief  Alamorefire封装网络请求
+ *
+ *  @by     黯丶野火
+ **/
 
-public func xrRequest(method: Method,
+import Alamofire
+
+private func xrRequest(method: Method,
                       _ URLString: URLStringConvertible,
                         parameters: [String: AnyObject]? = nil,
                         encoding: ParameterEncoding = .URL) -> Request {

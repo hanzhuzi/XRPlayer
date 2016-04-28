@@ -6,6 +6,12 @@
 //  Copyright © 2016年 黯丶野火. All rights reserved.
 //
 
+/**
+ *  @brief  模仿支付宝付款页面呼吸灯效果
+ *  
+ *  @by     黯丶野火
+ */
+
 import UIKit
 
 class RegulationBrightness: NSObject {

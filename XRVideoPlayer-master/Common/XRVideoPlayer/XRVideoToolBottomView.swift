@@ -40,7 +40,7 @@ class XRVideoToolBottomView: UIView {
         startTimeLbl.frame = CGRectMake(CGRectGetMaxX(playButton.frame) + 5.0, 0.0, 50.0, self.frame.height)
         startTimeLbl.textColor = UIColor.whiteColor()
         startTimeLbl.textAlignment = .Right
-        startTimeLbl.font = UIFont.systemFontOfSize(10.0)
+        startTimeLbl.font = UIFont.systemFontOfSize(11.0)
         startTimeLbl.text = "00:00:00"
         self.addSubview(startTimeLbl)
         
@@ -53,7 +53,7 @@ class XRVideoToolBottomView: UIView {
         endTimeLbl.frame = CGRectMake(CGRectGetMinX(rotateButton.frame) - 50.0, 0.0, 50.0, self.frame.height)
         endTimeLbl.textColor = UIColor.whiteColor()
         endTimeLbl.textAlignment = .Left
-        endTimeLbl.font = UIFont.systemFontOfSize(10.0)
+        endTimeLbl.font = UIFont.systemFontOfSize(11.0)
         endTimeLbl.text = "00:00:00"
         self.addSubview(endTimeLbl)
         
