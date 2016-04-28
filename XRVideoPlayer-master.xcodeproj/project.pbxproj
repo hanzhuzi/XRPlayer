@@ -16,6 +16,7 @@
 		013E535F1CD0B0AC009CA523 /* UIImageView+AsyncImageCache.swift in Sources */ = {isa = PBXBuildFile; fileRef = 013E535C1CD0B0AC009CA523 /* UIImageView+AsyncImageCache.swift */; };
 		013E53721CD0BF0B009CA523 /* CryptoSwift.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 013E53691CD0BEFE009CA523 /* CryptoSwift.framework */; };
 		013E53731CD0BF0B009CA523 /* CryptoSwift.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 013E53691CD0BEFE009CA523 /* CryptoSwift.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		015867731CD1EB04007DDFFB /* UINavigationController+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 015867721CD1EB04007DDFFB /* UINavigationController+Extension.swift */; };
 		01BD7AFE1CCF3E1600BE6587 /* VideoPlayLIstViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01BD7AFD1CCF3E1600BE6587 /* VideoPlayLIstViewController.swift */; };
 		01C23B3D1CD05FED00AF2B91 /* VideoListModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01C23B3C1CD05FED00AF2B91 /* VideoListModel.swift */; };
 		01C2A97F1CCE165E001342D4 /* player-progress-point-h@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 01C2A97D1CCE165E001342D4 /* player-progress-point-h@2x.png */; };
@@ -25,6 +26,7 @@
 		01C2A9881CCE166E001342D4 /* player_loadin_3@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 01C2A9831CCE166E001342D4 /* player_loadin_3@2x.png */; };
 		01C2A9891CCE166E001342D4 /* player_loadin_4@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 01C2A9841CCE166E001342D4 /* player_loadin_4@2x.png */; };
 		01C2A98A1CCE166E001342D4 /* player_loadin_5@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 01C2A9851CCE166E001342D4 /* player_loadin_5@2x.png */; };
+		01CDA4281CD1F97200A2449C /* UIColor+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01CDA4271CD1F97200A2449C /* UIColor+Extension.swift */; };
 		01DD69861CD1BFCB006B8607 /* Alamofire+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01DD69841CD1BFCB006B8607 /* Alamofire+Extension.swift */; };
 		01DD69871CD1BFCB006B8607 /* XRRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01DD69851CD1BFCB006B8607 /* XRRequest.swift */; };
 		01DD698C1CD1C081006B8607 /* XRActivityInditor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01DD69891CD1C081006B8607 /* XRActivityInditor.swift */; };
@@ -355,6 +357,7 @@
 		013E535B1CD0B0AC009CA523 /* AsyncImageDownloader.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AsyncImageDownloader.swift; sourceTree = "<group>"; };
 		013E535C1CD0B0AC009CA523 /* UIImageView+AsyncImageCache.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIImageView+AsyncImageCache.swift"; sourceTree = "<group>"; };
 		013E53601CD0BEFD009CA523 /* CryptoSwift.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = CryptoSwift.xcodeproj; path = CryptoSwift/CryptoSwift.xcodeproj; sourceTree = "<group>"; };
+		015867721CD1EB04007DDFFB /* UINavigationController+Extension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UINavigationController+Extension.swift"; sourceTree = "<group>"; };
 		01BD7AFD1CCF3E1600BE6587 /* VideoPlayLIstViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = VideoPlayLIstViewController.swift; sourceTree = "<group>"; };
 		01BD7AFF1CCF3EDD00BE6587 /* XRVideoPlayer-master-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "XRVideoPlayer-master-Bridging-Header.h"; sourceTree = "<group>"; };
 		01C23B3C1CD05FED00AF2B91 /* VideoListModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = VideoListModel.swift; path = "XRVideoPlayer-master/VideoListModel.swift"; sourceTree = SOURCE_ROOT; };
@@ -365,6 +368,7 @@
 		01C2A9831CCE166E001342D4 /* player_loadin_3@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "player_loadin_3@2x.png"; sourceTree = "<group>"; };
 		01C2A9841CCE166E001342D4 /* player_loadin_4@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "player_loadin_4@2x.png"; sourceTree = "<group>"; };
 		01C2A9851CCE166E001342D4 /* player_loadin_5@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "player_loadin_5@2x.png"; sourceTree = "<group>"; };
+		01CDA4271CD1F97200A2449C /* UIColor+Extension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIColor+Extension.swift"; sourceTree = "<group>"; };
 		01DD69841CD1BFCB006B8607 /* Alamofire+Extension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Alamofire+Extension.swift"; sourceTree = "<group>"; };
 		01DD69851CD1BFCB006B8607 /* XRRequest.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = XRRequest.swift; sourceTree = "<group>"; };
 		01DD69891CD1C081006B8607 /* XRActivityInditor.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = XRActivityInditor.swift; sourceTree = "<group>"; };
@@ -486,6 +490,8 @@
 				01DD69891CD1C081006B8607 /* XRActivityInditor.swift */,
 				01DD698A1CD1C081006B8607 /* XRVideoPlayer.swift */,
 				01DD698B1CD1C081006B8607 /* XRVideoToolBottomView.swift */,
+				015867721CD1EB04007DDFFB /* UINavigationController+Extension.swift */,
+				01CDA4271CD1F97200A2449C /* UIColor+Extension.swift */,
 			);
 			path = XRVideoPlayer;
 			sourceTree = "<group>";
@@ -1058,6 +1064,7 @@
 				01DD698C1CD1C081006B8607 /* XRActivityInditor.swift in Sources */,
 				01C23B3D1CD05FED00AF2B91 /* VideoListModel.swift in Sources */,
 				01DD698E1CD1C081006B8607 /* XRVideoToolBottomView.swift in Sources */,
+				01CDA4281CD1F97200A2449C /* UIColor+Extension.swift in Sources */,
 				013E535D1CD0B0AC009CA523 /* AsyncImageCache.swift in Sources */,
 				01DD69861CD1BFCB006B8607 /* Alamofire+Extension.swift in Sources */,
 				01DD698D1CD1C081006B8607 /* XRVideoPlayer.swift in Sources */,
@@ -1065,6 +1072,7 @@
 				013E535E1CD0B0AC009CA523 /* AsyncImageDownloader.swift in Sources */,
 				01BD7AFE1CCF3E1600BE6587 /* VideoPlayLIstViewController.swift in Sources */,
 				01DD69871CD1BFCB006B8607 /* XRRequest.swift in Sources */,
+				015867731CD1EB04007DDFFB /* UINavigationController+Extension.swift in Sources */,
 				01E254DE1CCA288A004D7FA2 /* ViewController.swift in Sources */,
 				013E535F1CD0B0AC009CA523 /* UIImageView+AsyncImageCache.swift in Sources */,
 				0105C2F21CCB680000F268E0 /* RegulationBrightness.swift in Sources */,

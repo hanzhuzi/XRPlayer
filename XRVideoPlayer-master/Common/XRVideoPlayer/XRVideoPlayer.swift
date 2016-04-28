@@ -49,6 +49,7 @@ class XRVideoPlayer: UIView {
     init(frame: CGRect, videoURL: String) {
         super.init(frame: frame)
         
+        NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(self.applicationActiveStatusChanged(_:)), name: "ApplicationActiveStatusChanged", object: nil)
         self.videoURL = videoURL
         if let vURL =  self.videoURL where !vURL.isEmpty {
             if vURL.hasPrefix("http://") || vURL.hasPrefix("https://") || vURL.hasPrefix("rtsp://") {
@@ -128,6 +129,24 @@ class XRVideoPlayer: UIView {
         self.removeFromSuperview()
     }
     
+    func applicationActiveStatusChanged(notif: NSNotification?) -> Void {
+        
+        if let nf = notif {
+            let isActive = nf.object as? Bool
+            if let active = isActive {
+                if active {
+                    // App激活
+                    print("App Active")
+                    playVideo()
+                }else {
+                    // App挂起
+                    print("App EndBackground")
+                    pauseVideoPlay()
+                }
+            }
+        }
+    }
+    
     func videoPlayToEnd() -> Void {
         
         print("播放完成")
@@ -193,38 +212,55 @@ class XRVideoPlayer: UIView {
         self.observePlayerItemPlayStatus(playerItem!)
     }
     
-    // 左旋转屏幕，全屏播放
+    // radian to angle.
+    func radianToAngle(radian: CGFloat) -> CGFloat {
+        return radian / CGFloat(M_PI) * 180.0
+    }
+    
+    // rangle to radian.
+    func angleToRadian(rangle: CGFloat) -> CGFloat {
+        return rangle / 180.0 * CGFloat(M_PI)
+    }
+    
+    // 右旋转屏幕，全屏播放
     func orientationRightFullScreen() -> Void {
         
         if !isFull {
             portraintFrame = self.frame
         }
-        
-        UIDevice.currentDevice().setValue(UIInterfaceOrientation.LandscapeRight.rawValue, forKey: "orientation")
+
+        // 最好使用旋转单个View配合旋转状态栏的方法进行屏幕旋转，比较容易控制，体验比较好，且大部分的视频播放软件都是采用的这种方式.
+        /* UIDevice.currentDevice().setValue(UIInterfaceOrientation.LandscapeRight.rawValue, forKey: "orientation")
+           这个方法虽然可以，但是在程序前后台切换时会导致横竖屏的混乱.
+        */
         UIApplication.sharedApplication().setStatusBarOrientation(.LandscapeRight, animated: true)
         isFull = true
         UIView.animateWithDuration(0.3, animations: { [weak self]() -> Void in
             if let weakSelf = self {
+                weakSelf.transform = CGAffineTransformMakeRotation(weakSelf.angleToRadian(90.0))
                 weakSelf.frame = weakSelf.keyWindow.bounds
+                weakSelf.bottomView.frame = CGRectMake(0, CGRectGetMaxY(weakSelf.bounds) - bottomViewHeight, CGRectGetHeight(weakSelf.frame), bottomViewHeight)
+                print(weakSelf.bottomView.frame)
                 if let closure = weakSelf.changedOrientationClosure {
                     closure(isFull: weakSelf.isFull)
                 }
             }
             }) { [weak self](finish) in
                 if let weakSelf = self {
-                    weakSelf.layoutIfNeeded()
+//                    weakSelf.layoutIfNeeded()
                     weakSelf.isFull = true
                 }
         }
     }
     
+    // 竖屏模式
     func orientationPortraintScreen() -> Void {
         
-        UIDevice.currentDevice().setValue(UIInterfaceOrientation.Portrait.rawValue, forKey: "orientation")
         UIApplication.sharedApplication().setStatusBarOrientation(.Portrait, animated: true)
         isFull = false
         UIView.animateWithDuration(0.3, animations: { [weak self] () -> Void in
             if let weakSelf = self {
+                weakSelf.transform = CGAffineTransformMakeRotation(weakSelf.angleToRadian(-0.0))
                 weakSelf.frame = weakSelf.portraintFrame!
                 if let closure = weakSelf.changedOrientationClosure {
                     closure(isFull: weakSelf.isFull)
@@ -277,11 +313,19 @@ class XRVideoPlayer: UIView {
     override func layoutSubviews() {
         super.layoutSubviews()
         
-        playerLayer?.frame = self.bounds
-        bottomView.frame = CGRectMake(0, CGRectGetMaxY(self.bounds) - bottomViewHeight, CGRectGetWidth(self.frame), bottomViewHeight)
-        bottomView.layoutIfNeeded()
-        loadingView?.center = CGPointMake(self.bounds.width * 0.5, self.bounds.height * 0.5)
-        loadingView?.layoutIfNeeded()
+        if isFull {
+            playerLayer?.frame = self.bounds
+            bottomView.frame = CGRectMake(0, CGRectGetMaxY(self.bounds) - bottomViewHeight, CGRectGetHeight(self.frame), bottomViewHeight)
+            bottomView.layoutIfNeeded()
+            loadingView?.center = CGPointMake(self.bounds.height * 0.5, self.bounds.width * 0.5)
+            loadingView?.layoutIfNeeded()
+        }else {
+            playerLayer?.frame = self.bounds
+            bottomView.frame = CGRectMake(0, CGRectGetMaxY(self.bounds) - bottomViewHeight, CGRectGetWidth(self.frame), bottomViewHeight)
+            bottomView.layoutIfNeeded()
+            loadingView?.center = CGPointMake(self.bounds.width * 0.5, self.bounds.height * 0.5)
+            loadingView?.layoutIfNeeded()
+        }
     }
     
     // MARK: - KVO

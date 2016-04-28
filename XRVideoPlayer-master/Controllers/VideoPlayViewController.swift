@@ -11,7 +11,6 @@ import UIKit
 class VideoPlayViewController: UIViewController {
     
     var playerView: XRVideoPlayer?
-    lazy var topNavView: UIView = UIView()
     var descripTextView: UITextView?
     var isFull: Bool = false
     var videoURL: String?
@@ -38,36 +37,18 @@ class VideoPlayViewController: UIViewController {
             // 旋转屏幕执行动画改变子控件的frame
             if let weakSelf = self {
                 weakSelf.isFull = isFull
-                weakSelf.topNavView.frame = CGRectMake(0, 0, weakSelf.view.frame.width, 64.0)
-                weakSelf.backBtn.frame = CGRectMake(12, 26, 32, 32)
-                weakSelf.moreBtn.frame = CGRectMake(CGRectGetMaxX(weakSelf.view.frame) - 32.0 - 12.0, 26, 32, 32)
-                weakSelf.descripTextView?.frame = CGRectMake(10.0, CGRectGetMaxY(weakSelf.playerView!.frame) + 10.0, weakSelf.view.frame.width - 20.0, 100.0)
+                
             }
         }
     }
     
     func setupUI() {
         
-        self.view.backgroundColor = UIColor.whiteColor()
+        self.view.backgroundColor = UIColor.RGBColor(255, g: 255, b: 255, a: 1.0)
         
         if let url = videoURL {
             setupPlayerView(url)
         }
-        
-        topNavView.frame = CGRectMake(0, 0, self.view.frame.width, 64.0)
-        topNavView.backgroundColor = UIColor.blackColor().colorWithAlphaComponent(0.01)
-        
-        backBtn.frame = CGRectMake(12, 26, 32, 32)
-        backBtn.setImage(UIImage(named: "back"), forState: .Normal)
-        backBtn.addTarget(self, action: #selector(self.backAction), forControlEvents: .TouchUpInside)
-        topNavView.addSubview(backBtn)
-        
-        moreBtn.frame = CGRectMake(CGRectGetMaxX(self.view.frame) - 32.0 - 12.0, 26, 32, 32)
-        moreBtn.setImage(UIImage(named: "more"), forState: .Normal)
-        moreBtn.addTarget(self, action: #selector(self.moreAction), forControlEvents: .TouchUpInside)
-        topNavView.addSubview(moreBtn)
-        
-        self.view.addSubview(topNavView)
         
         if let descrip = videoDescription {
             descripTextView = UITextView(frame: CGRectMake(10.0, CGRectGetMaxY(playerView!.frame) + 10.0, self.view.frame.width - 20.0, 100.0), textContainer: nil)
@@ -78,7 +59,11 @@ class VideoPlayViewController: UIViewController {
             descripTextView?.editable = false
             descripTextView?.selectable = false
             descripTextView?.text = descrip
-            self.view.addSubview(descripTextView!)
+            if let playView = playerView {
+                self.view.insertSubview(descripTextView!, belowSubview: playView)
+            }else {
+                self.view.addSubview(descripTextView!)
+            }
         }
     }
     
@@ -142,6 +127,11 @@ class VideoPlayViewController: UIViewController {
     
     override func supportedInterfaceOrientations() -> UIInterfaceOrientationMask {
         return .All
+    }
+    
+    override func shouldAutorotate() -> Bool {
+        
+        return true
     }
     
     /*
