@@ -7,7 +7,9 @@
 //
 
 /**
- *  视频播放底部工具条
+ *  @brief  视频播放底部工具条
+ *
+ *  @by     黯丶野火
  **/
 
 import UIKit
@@ -128,6 +130,10 @@ class XRVideoToolBottomView: UIView {
     
     func setPlayButtonState(isPlaying: Bool) -> Void {
         playButton.selected = isPlaying
+    }
+    
+    func setRotateButtonStatus(isFull: Bool) -> Void {
+        rotateButton.selected = isFull
     }
     
     func seccondConvertTime(seccond: Double) -> String {

@@ -6,10 +6,13 @@
 //  Copyright © 2016年 黯丶野火. All rights reserved.
 //
 
+/**
+ *  处理当控制器的容器是导航控制器时的屏幕旋转控制
+ */
+
 import Foundation
 import UIKit
 
-// 当viewController在UINavigationController里时，应该返回viewController的旋转控制属性
 extension UINavigationController {
     
     public override func shouldAutorotate() -> Bool {
@@ -35,3 +38,4 @@ extension UINavigationController {
         return .Portrait
     }
 }
+

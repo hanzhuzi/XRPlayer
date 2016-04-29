@@ -6,6 +6,12 @@
 //  Copyright © 2016年 黯丶野火. All rights reserved.
 //
 
+/**
+ *  @brief  视频加载activityIndicator
+ *
+ *  @by     黯丶野火
+ */
+
 import UIKit
 
 class XRActivityInditor: UIView {

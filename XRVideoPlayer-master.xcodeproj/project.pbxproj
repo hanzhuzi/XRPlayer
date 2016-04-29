@@ -27,6 +27,8 @@
 		01C2A9891CCE166E001342D4 /* player_loadin_4@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 01C2A9841CCE166E001342D4 /* player_loadin_4@2x.png */; };
 		01C2A98A1CCE166E001342D4 /* player_loadin_5@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 01C2A9851CCE166E001342D4 /* player_loadin_5@2x.png */; };
 		01CDA4281CD1F97200A2449C /* UIColor+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01CDA4271CD1F97200A2449C /* UIColor+Extension.swift */; };
+		01CDD4141CD3791E00E20405 /* XRVideoNavigationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01CDD4131CD3791E00E20405 /* XRVideoNavigationView.swift */; };
+		01CDD4321CD3805200E20405 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 01CDD4311CD3805200E20405 /* Assets.xcassets */; };
 		01DD69861CD1BFCB006B8607 /* Alamofire+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01DD69841CD1BFCB006B8607 /* Alamofire+Extension.swift */; };
 		01DD69871CD1BFCB006B8607 /* XRRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01DD69851CD1BFCB006B8607 /* XRRequest.swift */; };
 		01DD698C1CD1C081006B8607 /* XRActivityInditor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01DD69891CD1C081006B8607 /* XRActivityInditor.swift */; };
@@ -35,7 +37,6 @@
 		01E254DC1CCA288A004D7FA2 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01E254DB1CCA288A004D7FA2 /* AppDelegate.swift */; };
 		01E254DE1CCA288A004D7FA2 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01E254DD1CCA288A004D7FA2 /* ViewController.swift */; };
 		01E254E11CCA288A004D7FA2 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 01E254DF1CCA288A004D7FA2 /* Main.storyboard */; };
-		01E254E31CCA288A004D7FA2 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 01E254E21CCA288A004D7FA2 /* Assets.xcassets */; };
 		01E254E61CCA288A004D7FA2 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 01E254E41CCA288A004D7FA2 /* LaunchScreen.storyboard */; };
 		01E254F11CCA288B004D7FA2 /* XRVideoPlayer_masterTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01E254F01CCA288B004D7FA2 /* XRVideoPlayer_masterTests.swift */; };
 		01E254FC1CCA288B004D7FA2 /* XRVideoPlayer_masterUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01E254FB1CCA288B004D7FA2 /* XRVideoPlayer_masterUITests.swift */; };
@@ -369,6 +370,8 @@
 		01C2A9841CCE166E001342D4 /* player_loadin_4@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "player_loadin_4@2x.png"; sourceTree = "<group>"; };
 		01C2A9851CCE166E001342D4 /* player_loadin_5@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "player_loadin_5@2x.png"; sourceTree = "<group>"; };
 		01CDA4271CD1F97200A2449C /* UIColor+Extension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIColor+Extension.swift"; sourceTree = "<group>"; };
+		01CDD4131CD3791E00E20405 /* XRVideoNavigationView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = XRVideoNavigationView.swift; sourceTree = "<group>"; };
+		01CDD4311CD3805200E20405 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		01DD69841CD1BFCB006B8607 /* Alamofire+Extension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Alamofire+Extension.swift"; sourceTree = "<group>"; };
 		01DD69851CD1BFCB006B8607 /* XRRequest.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = XRRequest.swift; sourceTree = "<group>"; };
 		01DD69891CD1C081006B8607 /* XRActivityInditor.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = XRActivityInditor.swift; sourceTree = "<group>"; };
@@ -378,7 +381,6 @@
 		01E254DB1CCA288A004D7FA2 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		01E254DD1CCA288A004D7FA2 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		01E254E01CCA288A004D7FA2 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
-		01E254E21CCA288A004D7FA2 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		01E254E51CCA288A004D7FA2 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		01E254E71CCA288A004D7FA2 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		01E254EC1CCA288B004D7FA2 /* XRVideoPlayer-masterTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "XRVideoPlayer-masterTests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -492,6 +494,7 @@
 				01DD698B1CD1C081006B8607 /* XRVideoToolBottomView.swift */,
 				015867721CD1EB04007DDFFB /* UINavigationController+Extension.swift */,
 				01CDA4271CD1F97200A2449C /* UIColor+Extension.swift */,
+				01CDD4131CD3791E00E20405 /* XRVideoNavigationView.swift */,
 			);
 			path = XRVideoPlayer;
 			sourceTree = "<group>";
@@ -527,9 +530,9 @@
 				01E255091CCA28BB004D7FA2 /* Classes */,
 				01E254DB1CCA288A004D7FA2 /* AppDelegate.swift */,
 				01E254DD1CCA288A004D7FA2 /* ViewController.swift */,
+				01CDD4311CD3805200E20405 /* Assets.xcassets */,
 				01F8185E1CCF631E0007B4EE /* XRVideoPlayer-precompile.h */,
 				01E254DF1CCA288A004D7FA2 /* Main.storyboard */,
-				01E254E21CCA288A004D7FA2 /* Assets.xcassets */,
 				01E254E41CCA288A004D7FA2 /* LaunchScreen.storyboard */,
 				01E254E71CCA288A004D7FA2 /* Info.plist */,
 				01BD7AFF1CCF3EDD00BE6587 /* XRVideoPlayer-master-Bridging-Header.h */,
@@ -1028,9 +1031,9 @@
 			files = (
 				01C2A9881CCE166E001342D4 /* player_loadin_3@2x.png in Resources */,
 				01E254E61CCA288A004D7FA2 /* LaunchScreen.storyboard in Resources */,
-				01E254E31CCA288A004D7FA2 /* Assets.xcassets in Resources */,
 				01C2A97F1CCE165E001342D4 /* player-progress-point-h@2x.png in Resources */,
 				01C2A98A1CCE166E001342D4 /* player_loadin_5@2x.png in Resources */,
+				01CDD4321CD3805200E20405 /* Assets.xcassets in Resources */,
 				01C2A9871CCE166E001342D4 /* player_loadin_2@2x.png in Resources */,
 				01C2A9891CCE166E001342D4 /* player_loadin_4@2x.png in Resources */,
 				01E254E11CCA288A004D7FA2 /* Main.storyboard in Resources */,
@@ -1060,6 +1063,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				01CDD4141CD3791E00E20405 /* XRVideoNavigationView.swift in Sources */,
 				01E255141CCA404B004D7FA2 /* VideoPlayViewController.swift in Sources */,
 				01DD698C1CD1C081006B8607 /* XRActivityInditor.swift in Sources */,
 				01C23B3D1CD05FED00AF2B91 /* VideoListModel.swift in Sources */,

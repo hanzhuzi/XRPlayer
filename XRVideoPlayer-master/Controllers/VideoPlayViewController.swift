@@ -28,7 +28,7 @@ class VideoPlayViewController: UIViewController {
     
     func setupPlayerView(videoURL: String) {
         
-        playerView = XRVideoPlayer(frame: CGRectMake(0, 0, self.view.frame.width, 240.0), videoURL: videoURL)
+        playerView = XRVideoPlayer(frame: CGRectMake(0, 0, self.view.bounds.width, 250), videoURL: videoURL, isLocalResource: false)
         playerView?.backgroundColor = UIColor.blackColor().colorWithAlphaComponent(0.9)
         self.view.addSubview(playerView!)
         playerView?.playVideo()
@@ -45,7 +45,7 @@ class VideoPlayViewController: UIViewController {
     func setupUI() {
         
         self.view.backgroundColor = UIColor.RGBColor(255, g: 255, b: 255, a: 1.0)
-        
+//        videoURL = "http://zyvideo1.oss-cn-qingdao.aliyuncs.com/zyvd/7c/de/04ec95f4fd42d9d01f63b9683ad0"
         if let url = videoURL {
             setupPlayerView(url)
         }
@@ -65,21 +65,24 @@ class VideoPlayViewController: UIViewController {
                 self.view.addSubview(descripTextView!)
             }
         }
-    }
     
-    func backAction() -> Void {
-        
-        if isFull {
-            // 退出全屏
-            playerView?.orientationPortraintScreen()
-        }else {
-            self.navigationController?.popViewControllerAnimated(true)
+        // back more action.
+        if let playView = playerView {
+            playView.navigationBar.backButtonClosure = { [weak self]() -> Void in
+                if let weakSelf = self {
+                    if weakSelf.isFull {
+                        // 退出全屏
+                        playView.orientationPortraintScreen()
+                    }else {
+                        weakSelf.navigationController?.popViewControllerAnimated(true)
+                    }
+                }
+            }
+            
+            playView.navigationBar.moreButtonClosure = { () -> Void in
+                
+            }
         }
-    }
-    
-    func moreAction() -> Void {
-        
-        
     }
     
     override func viewDidLoad() {
@@ -125,13 +128,14 @@ class VideoPlayViewController: UIViewController {
         return false
     }
     
+    // 在App前后台切换时不允许旋转到其他方向，即保持屏幕方向不变.
     override func supportedInterfaceOrientations() -> UIInterfaceOrientationMask {
-        return .All
+        return .LandscapeRight
     }
     
+    // 强制旋转屏幕
     override func shouldAutorotate() -> Bool {
-        
-        return true
+        return false
     }
     
     /*
