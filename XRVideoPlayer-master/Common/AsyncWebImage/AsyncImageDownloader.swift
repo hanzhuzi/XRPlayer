@@ -72,6 +72,7 @@ class AsyncImageDownloader: NSObject {
                     if let weakSelf = self {
                         
                         let request = NSURLRequest(URL: NSURL(string: urlStr)!, cachePolicy: NSURLRequestCachePolicy.ReloadIgnoringLocalAndRemoteCacheData, timeoutInterval: 15.0)
+                        
                         let dataTask = weakSelf.URLSession.dataTaskWithRequest(request, completionHandler: { (data, response, error) in
                             
                             if let imageData = data {

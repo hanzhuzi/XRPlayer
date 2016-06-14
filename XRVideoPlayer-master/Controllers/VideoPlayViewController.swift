@@ -15,6 +15,7 @@ class VideoPlayViewController: UIViewController {
     var isFull: Bool = false
     var videoURL: String?
     var videoDescription: String?
+    var video: VideoModel?
     
     let backBtn: UIButton = {
         
@@ -60,6 +61,7 @@ class VideoPlayViewController: UIViewController {
             descripTextView?.selectable = false
             descripTextView?.text = descrip
             if let playView = playerView {
+                playView.navigationBar.titleLabel.text = video?.title
                 self.view.insertSubview(descripTextView!, belowSubview: playView)
             }else {
                 self.view.addSubview(descripTextView!)
@@ -89,6 +91,8 @@ class VideoPlayViewController: UIViewController {
         super.viewDidLoad()
         
         self.setupUI()
+        
+        XRVideoDownloader().downloadVideo(videoURL!)
     }
     
     override func viewWillAppear(animated: Bool) {

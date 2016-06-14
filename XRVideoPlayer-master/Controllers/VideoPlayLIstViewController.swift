@@ -123,6 +123,7 @@ class VideoPlayLIstViewController: UIViewController, UITableViewDelegate, UITabl
             let videoDetailVc = VideoPlayViewController()
             videoDetailVc.videoURL = video.m3u8_url
             videoDetailVc.videoDescription = video.description
+            videoDetailVc.video = video
             self.navigationController?.pushViewController(videoDetailVc, animated: true)
         }
     }
