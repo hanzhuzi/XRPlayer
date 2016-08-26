@@ -138,10 +138,11 @@ class XRVideoToolBottomView: UIView {
     
     func seccondConvertTime(seccond: Double) -> String {
         
+        guard !seccond.isNaN else { return "" }
+        
         let secconds = Int(seccond) % 60
         let minutes  = Int(seccond) / 60
         let hours    = Int(seccond) / 3600
-        
         let timeString = NSString.localizedStringWithFormat("%02d:%02d:%02d", hours, minutes, secconds)
         return timeString as String
     }

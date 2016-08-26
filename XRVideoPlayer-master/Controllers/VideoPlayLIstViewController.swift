@@ -121,6 +121,7 @@ class VideoPlayLIstViewController: UIViewController, UITableViewDelegate, UITabl
         if let model = videoList where model.videoList != nil {
             let video = model.videoList![indexPath.row]
             let videoDetailVc = VideoPlayViewController()
+            video.m3u8_url = "http://ivi.bupt.edu.cn/hls/cctv6hd.m3u8"
             videoDetailVc.videoURL = video.m3u8_url
             videoDetailVc.videoDescription = video.description
             videoDetailVc.video = video

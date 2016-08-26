@@ -138,7 +138,9 @@ class XRVideoPlayer: UIView {
             if let weakSelf = self {
                 if let item = weakSelf.playerItem {
                     let secconds = CMTimeGetSeconds(item.duration) * Float64(value)
-                    weakSelf.seekTimeToPlay(Int64(secconds), toPlay: true)
+                    if !secconds.isNaN {
+                        weakSelf.seekTimeToPlay(Int64(secconds), toPlay: true)
+                    }
                 }
             }
         }
