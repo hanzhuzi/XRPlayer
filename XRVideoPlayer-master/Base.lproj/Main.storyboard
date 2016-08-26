@@ -23,7 +23,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1354" y="97"/>
+            <point key="canvasLocation" x="854" y="29"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="07G-qg-khV">
@@ -37,12 +37,12 @@
                     </navigationBar>
                     <nil name="viewControllers"/>
                     <connections>
-                        <segue destination="u1R-A8-SRF" kind="relationship" relationship="rootViewController" id="XIr-5J-YDg"/>
+                        <segue destination="hhV-69-tYJ" kind="relationship" relationship="rootViewController" id="a5C-WY-vDP"/>
                     </connections>
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="e5n-0M-YHX" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="479" y="97"/>
+            <point key="canvasLocation" x="472" y="617"/>
         </scene>
         <!--视频列表-->
         <scene sceneID="Awa-Hn-iZU">
@@ -62,7 +62,46 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="LVs-3U-DXn" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="893" y="97"/>
+            <point key="canvasLocation" x="477" y="29"/>
+        </scene>
+        <!--网络电视-->
+        <scene sceneID="uoP-pt-ddN">
+            <objects>
+                <viewController id="hhV-69-tYJ" customClass="HttpStreamPlayViewController" customModule="XRVideoPlayer_master" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="Sxr-Tj-1LQ"/>
+                        <viewControllerLayoutGuide type="bottom" id="gq2-rl-Y1c"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="4A3-f9-DDJ">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="480"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="7zb-2s-dv3">
+                                <rect key="frame" x="0.0" y="0.0" width="320" height="480"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <connections>
+                                    <outlet property="dataSource" destination="hhV-69-tYJ" id="Wj4-BO-xLi"/>
+                                    <outlet property="delegate" destination="hhV-69-tYJ" id="Us5-rD-eTj"/>
+                                </connections>
+                            </tableView>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="7zb-2s-dv3" firstAttribute="leading" secondItem="4A3-f9-DDJ" secondAttribute="leading" id="M5j-kE-2ls"/>
+                            <constraint firstAttribute="bottom" secondItem="7zb-2s-dv3" secondAttribute="bottom" id="b3E-HZ-Xtg"/>
+                            <constraint firstAttribute="trailing" secondItem="7zb-2s-dv3" secondAttribute="trailing" id="dYw-n1-rRz"/>
+                            <constraint firstItem="7zb-2s-dv3" firstAttribute="top" secondItem="4A3-f9-DDJ" secondAttribute="top" id="wdP-sc-Znz"/>
+                        </constraints>
+                    </view>
+                    <navigationItem key="navigationItem" title="网络电视" id="t8W-bd-s5v"/>
+                    <simulatedScreenMetrics key="simulatedDestinationMetrics"/>
+                    <connections>
+                        <outlet property="myTableView" destination="7zb-2s-dv3" id="cfV-dJ-xb6"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="a0X-4c-x5J" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="891" y="617"/>
         </scene>
     </scenes>
 </document>

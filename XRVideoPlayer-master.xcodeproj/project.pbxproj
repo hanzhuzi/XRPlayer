@@ -42,6 +42,7 @@
 		01E254F11CCA288B004D7FA2 /* XRVideoPlayer_masterTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01E254F01CCA288B004D7FA2 /* XRVideoPlayer_masterTests.swift */; };
 		01E254FC1CCA288B004D7FA2 /* XRVideoPlayer_masterUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01E254FB1CCA288B004D7FA2 /* XRVideoPlayer_masterUITests.swift */; };
 		01E255141CCA404B004D7FA2 /* VideoPlayViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01E255131CCA404B004D7FA2 /* VideoPlayViewController.swift */; };
+		01E900501D702D24008C0091 /* HttpStreamPlayViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01E9004F1D702D24008C0091 /* HttpStreamPlayViewController.swift */; };
 		01F818BF1CCF87FD0007B4EE /* SwiftyJSON.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 01F818B21CCF87C70007B4EE /* SwiftyJSON.framework */; };
 		01F818C01CCF87FD0007B4EE /* SwiftyJSON.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 01F818B21CCF87C70007B4EE /* SwiftyJSON.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		01F818C31CCF88020007B4EE /* Alamofire.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 01F8189A1CCF87A00007B4EE /* Alamofire.framework */; };
@@ -393,6 +394,7 @@
 		01E254FD1CCA288B004D7FA2 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		01E255101CCA297B004D7FA2 /* ProConfig.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ProConfig.h; sourceTree = "<group>"; };
 		01E255131CCA404B004D7FA2 /* VideoPlayViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = VideoPlayViewController.swift; sourceTree = "<group>"; };
+		01E9004F1D702D24008C0091 /* HttpStreamPlayViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HttpStreamPlayViewController.swift; sourceTree = "<group>"; };
 		01F8185E1CCF631E0007B4EE /* XRVideoPlayer-precompile.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "XRVideoPlayer-precompile.h"; sourceTree = "<group>"; };
 		01F8188F1CCF87A00007B4EE /* Alamofire.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = Alamofire.xcodeproj; path = Alamofire/Alamofire.xcodeproj; sourceTree = "<group>"; };
 		01F818A71CCF87C70007B4EE /* SwiftyJSON.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = SwiftyJSON.xcodeproj; path = SwiftyJSON/SwiftyJSON.xcodeproj; sourceTree = "<group>"; };
@@ -595,6 +597,7 @@
 			children = (
 				01E255131CCA404B004D7FA2 /* VideoPlayViewController.swift */,
 				01BD7AFD1CCF3E1600BE6587 /* VideoPlayLIstViewController.swift */,
+				01E9004F1D702D24008C0091 /* HttpStreamPlayViewController.swift */,
 			);
 			path = Controllers;
 			sourceTree = "<group>";
@@ -1072,6 +1075,7 @@
 				01DD698C1CD1C081006B8607 /* XRActivityInditor.swift in Sources */,
 				01C23B3D1CD05FED00AF2B91 /* VideoListModel.swift in Sources */,
 				01DD698E1CD1C081006B8607 /* XRVideoToolBottomView.swift in Sources */,
+				01E900501D702D24008C0091 /* HttpStreamPlayViewController.swift in Sources */,
 				01CDA4281CD1F97200A2449C /* UIColor+Extension.swift in Sources */,
 				013E535D1CD0B0AC009CA523 /* AsyncImageCache.swift in Sources */,
 				01DD69861CD1BFCB006B8607 /* Alamofire+Extension.swift in Sources */,
@@ -1252,16 +1256,17 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
-				CODE_SIGN_IDENTITY = "iPhone Developer: Yuening Wu (Z5NZY5E4ZS)";
+				CODE_SIGN_IDENTITY = "iPhone Developer";
 				EMBEDDED_CONTENT_CONTAINS_SWIFT = YES;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "$(SRCROOT)/XRVideoPlayer-master/XRVideoPlayer-precompile.h";
 				INFOPLIST_FILE = "XRVideoPlayer-master/Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				ONLY_ACTIVE_ARCH = NO;
 				PRODUCT_BUNDLE_IDENTIFIER = "com.kkguan.XRVideoPlayer-master";
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "d4e8cab2-8ef8-46c4-9ac1-152b8bac95df";
+				PROVISIONING_PROFILE = "65eda7f7-e11a-42d2-a992-a3f20529418f";
 				SWIFT_OBJC_BRIDGING_HEADER = "XRVideoPlayer-master/XRVideoPlayer-master-Bridging-Header.h";
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 			};
@@ -1272,16 +1277,17 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
-				CODE_SIGN_IDENTITY = "iPhone Developer: Yuening Wu (Z5NZY5E4ZS)";
+				CODE_SIGN_IDENTITY = "iPhone Developer";
 				EMBEDDED_CONTENT_CONTAINS_SWIFT = YES;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "$(SRCROOT)/XRVideoPlayer-master/XRVideoPlayer-precompile.h";
 				INFOPLIST_FILE = "XRVideoPlayer-master/Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				ONLY_ACTIVE_ARCH = NO;
 				PRODUCT_BUNDLE_IDENTIFIER = "com.kkguan.XRVideoPlayer-master";
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "d4e8cab2-8ef8-46c4-9ac1-152b8bac95df";
+				PROVISIONING_PROFILE = "65eda7f7-e11a-42d2-a992-a3f20529418f";
 				SWIFT_OBJC_BRIDGING_HEADER = "XRVideoPlayer-master/XRVideoPlayer-master-Bridging-Header.h";
 			};
 			name = Release;

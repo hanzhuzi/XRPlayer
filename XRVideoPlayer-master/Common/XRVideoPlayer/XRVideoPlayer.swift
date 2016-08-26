@@ -203,6 +203,10 @@ class XRVideoPlayer: UIView {
                 }, completion: { [weak self](_) in
                     if let weakSelf = self {
                         weakSelf.hiddenOrShow = false
+                        let time = dispatch_time(DISPATCH_TIME_NOW, 3 * Int64(NSEC_PER_SEC))
+                        dispatch_after(time, dispatch_get_main_queue(), {
+                            self?.hiddenOrShowWithAnimated()
+                        })
                     }
             })
         }
@@ -238,8 +242,7 @@ class XRVideoPlayer: UIView {
     
     func videoPlayToEnd() -> Void {
         
-        print("播放完成")
-        seekTimeToPlay(0, toPlay: false)
+        self.player?.seekToTime(kCMTimeZero)
         bottomView.setPlayButtonState(false)
     }
     
@@ -285,7 +288,7 @@ class XRVideoPlayer: UIView {
         }
         
         if let vURL =  self.videoURL where !vURL.isEmpty {
-            if vURL.hasPrefix("http://") || vURL.hasPrefix("https://") || vURL.hasPrefix("rtsp://") {
+            if vURL.hasPrefix("http://") || vURL.hasPrefix("https://") || vURL.hasPrefix("rtsp://") || vURL.hasPrefix("mms://") {
                 let httpURL = NSURL(string: vURL)
                 playerItem = AVPlayerItem(URL: httpURL!)
             }else {
@@ -296,7 +299,6 @@ class XRVideoPlayer: UIView {
         }
         
         player?.replaceCurrentItemWithPlayerItem(playerItem)
-        playVideo()
         
         self.observePlayerItemPlayStatus(playerItem!)
     }
@@ -448,6 +450,7 @@ class XRVideoPlayer: UIView {
                                 isPlaying = false
                             }
                             bottomView.playButton.enabled = true
+                            self.playVideo()
                         case .Failed:
                             print("error: \(player?.error?.localizedDescription)")
                             bottomView.setPlayButtonState(false)
@@ -475,13 +478,34 @@ class XRVideoPlayer: UIView {
                         let precent = totalRange / CMTimeGetSeconds(item.duration)
                         print("precent: \(precent) total: \(totalRange) duration: \(CMTimeGetSeconds(item.duration))")
                         bottomView.setProgress(Float(precent))
+                        
+                        print("status: \(item.status.rawValue) rate: \(player?.rate)")
+                        
                         // 加载时的播放处理
                         if let videoPlayer = player {
                             print("rate: \(videoPlayer.rate)")
+                            if item.status == .Unknown {
+                                if !loadingView!.isAnimating {
+                                    loadingView?.startAnimation()
+                                }else {
+                                    videoPlayer.prerollAtRate(1.0, completionHandler: { (finish) in
+                                        if finish {
+                                            dispatch_async(dispatch_get_main_queue(), {
+                                                self.loadingView?.stopAnimation()
+                                            })
+                                        }
+                                    })
+                                }
+                                self.playVideo()
+                            }
                             if videoPlayer.rate == 0.0 {
-                                videoPlayer.pause() // 暂停播放
                                 bottomView.setPlayButtonState(false)
                                 isPlaying = false
+                                // 三秒后尝试播放
+                                dispatch_after(dispatch_time(DISPATCH_TIME_NOW, 3 * Int64(NSEC_PER_SEC)), dispatch_get_main_queue(), { 
+                                    self.playVideo()
+                                })
+                                
                                 if !loadingView!.isAnimating {
                                     loadingView?.startAnimation()
                                 }else {

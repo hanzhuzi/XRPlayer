@@ -122,6 +122,8 @@ class VideoPlayLIstViewController: UIViewController, UITableViewDelegate, UITabl
             let video = model.videoList![indexPath.row]
             let videoDetailVc = VideoPlayViewController()
             video.m3u8_url = "http://ivi.bupt.edu.cn/hls/cctv6hd.m3u8"
+            video.description = "CCTV-6 电影频道"
+            video.title = "CCTV-6 电影频道"
             videoDetailVc.videoURL = video.m3u8_url
             videoDetailVc.videoDescription = video.description
             videoDetailVc.video = video

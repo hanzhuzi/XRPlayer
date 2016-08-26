@@ -23,6 +23,10 @@ class VideoModel: Mappable {
         
     }
     
+    init() {
+        
+    }
+    
     func mapping(map: Map) {
         
         cover <- map["cover"]
