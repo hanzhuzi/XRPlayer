@@ -19,25 +19,25 @@ import UIKit
 extension UIImageView {
     
     // set image to UIImageView.
-    public func async_setImageWithURL(URLString: String?, placeHoldImage: UIImage?) {
+    public func async_setImageWithURL(_ URLString: String?, placeHoldImage: UIImage?) {
         
         if let placeImage = placeHoldImage {
             self.image = placeImage
         }
         
         if URLString != nil && !URLString!.isEmpty {
-            AsyncImageDownloader.sharedImageDownloader().downloadImageWithURL(URLString) { (image) in
-                
-                if let img = image {
-                    self.image = img
-                }
-            }
-        }else {
-            if let placeImage = placeHoldImage {
-                self.image = placeImage
-            }else {
-                self.image = nil
-            }
+//            AsyncImageDownloader.sharedImageDownloader().downloadImageWithURL(URLString) { (image) in
+//                
+//                if let img = image {
+//                    self.image = img
+//                }
+//            }
+//        }else {
+//            if let placeImage = placeHoldImage {
+//                self.image = placeImage
+//            }else {
+//                self.image = nil
+//            }
         }
     }
     

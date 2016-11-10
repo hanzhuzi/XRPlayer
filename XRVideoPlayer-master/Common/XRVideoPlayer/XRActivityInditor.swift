@@ -16,17 +16,17 @@ import UIKit
 
 class XRActivityInditor: UIView {
 
-    private lazy var activityInditor: UIActivityIndicatorView = UIActivityIndicatorView(activityIndicatorStyle: .WhiteLarge)
+    fileprivate lazy var activityInditor: UIActivityIndicatorView = UIActivityIndicatorView(activityIndicatorStyle: .whiteLarge)
     var isAnimating: Bool = false
     
     override init(frame: CGRect) {
         super.init(frame: frame)
         
-        self.userInteractionEnabled = false
+        self.isUserInteractionEnabled = false
         self.layer.cornerRadius = 10.0
-        self.backgroundColor = UIColor.blackColor().colorWithAlphaComponent(0.6)
-        activityInditor.center = CGPointMake(self.frame.width * 0.5, self.frame.height * 0.5)
-        isAnimating = activityInditor.isAnimating()
+        self.backgroundColor = UIColor.black.withAlphaComponent(0.6)
+        activityInditor.center = CGPoint(x: self.frame.width * 0.5, y: self.frame.height * 0.5)
+        isAnimating = activityInditor.isAnimating
         self.addSubview(activityInditor)
     }
     
@@ -37,22 +37,22 @@ class XRActivityInditor: UIView {
     override func layoutSubviews() {
         super.layoutSubviews()
         
-        activityInditor.center = CGPointMake(self.frame.width * 0.5, self.frame.height * 0.5)
+        activityInditor.center = CGPoint(x: self.frame.width * 0.5, y: self.frame.height * 0.5)
     }
     
     func startAnimation() -> Void {
-        if !activityInditor.isAnimating() {
+        if !activityInditor.isAnimating {
             activityInditor.startAnimating()
-            self.hidden = false
-            isAnimating = activityInditor.isAnimating()
+            self.isHidden = false
+            isAnimating = activityInditor.isAnimating
         }
     }
     
     func stopAnimation() -> Void {
-        if activityInditor.isAnimating() {
+        if activityInditor.isAnimating {
             activityInditor.stopAnimating()
-            self.hidden = true
-            isAnimating = activityInditor.isAnimating()
+            self.isHidden = true
+            isAnimating = activityInditor.isAnimating
         }
     }
 }

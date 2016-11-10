@@ -7,9 +7,8 @@
 //
 
 import UIKit
-import SnapKit
 
-public let screenSize = UIScreen.mainScreen().bounds.size
+public let screenSize = UIScreen.main.bounds.size
 
 class VideoListCell: UITableViewCell {
     
@@ -22,9 +21,9 @@ class VideoListCell: UITableViewCell {
     override init(style: UITableViewCellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
         
-        titleLabel.font = UIFont.systemFontOfSize(15.0)
-        titleLabel.textColor = UIColor.blackColor()
-        titleLabel.textAlignment = .Left
+        titleLabel.font = UIFont.systemFont(ofSize: 15.0)
+        titleLabel.textColor = UIColor.black
+        titleLabel.textAlignment = .left
         self.contentView.addSubview(titleLabel)
         titleLabel.snp_makeConstraints { (make) in
             make.top.equalTo(self.contentView.snp_top).offset(15.0)
@@ -33,8 +32,8 @@ class VideoListCell: UITableViewCell {
             make.height.equalTo(30.0)
         }
         
-        coverImageView.userInteractionEnabled = true
-        coverImageView.backgroundColor = UIColor.lightGrayColor()
+        coverImageView.isUserInteractionEnabled = true
+        coverImageView.backgroundColor = UIColor.lightGray
         self.contentView.addSubview(coverImageView)
         let coverHeight = 270.0 * (screenSize.width - 30.0) / 480.0
         coverImageView.snp_makeConstraints { (make) in
@@ -44,7 +43,7 @@ class VideoListCell: UITableViewCell {
             make.height.equalTo(coverHeight)
         }
         
-        playBackgroundView.backgroundColor = UIColor.grayColor().colorWithAlphaComponent(0.2)
+        playBackgroundView.backgroundColor = UIColor.gray.withAlphaComponent(0.2)
         self.contentView.addSubview(playBackgroundView)
         playBackgroundView.snp_makeConstraints { (make) in
             make.width.equalTo(self.coverImageView.snp_width)
@@ -53,7 +52,7 @@ class VideoListCell: UITableViewCell {
             make.left.equalTo(self.coverImageView.snp_left)
         }
         
-        playButton.setImage(UIImage(named: "black_play"), forState: .Normal)
+        playButton.setImage(UIImage(named: "black_play"), for: UIControlState())
         playBackgroundView.addSubview(playButton)
         playButton.snp_makeConstraints { (make) in
             make.width.equalTo(40.0)
@@ -71,7 +70,7 @@ class VideoListCell: UITableViewCell {
         
     }
     
-    func configVideoCellWithModel(model: VideoModel?) -> Void {
+    func configVideoCellWithModel(_ model: VideoModel?) -> Void {
         
         if let video = model {
             titleLabel.text = video.title

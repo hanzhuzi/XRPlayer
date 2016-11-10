@@ -19,18 +19,18 @@ class VideoPlayViewController: UIViewController {
     
     let backBtn: UIButton = {
         
-        return UIButton(type: .Custom)
+        return UIButton(type: .custom)
     }()
     
     let moreBtn: UIButton = {
         
-        return UIButton(type: .Custom)
+        return UIButton(type: .custom)
     }()
     
-    func setupPlayerView(videoURL: String) {
+    func setupPlayerView(_ videoURL: String) {
         
-        playerView = XRVideoPlayer(frame: CGRectMake(0, 0, self.view.bounds.width, 250), videoURL: videoURL, isLocalResource: false)
-        playerView?.backgroundColor = UIColor.blackColor().colorWithAlphaComponent(0.9)
+        playerView = XRVideoPlayer(frame: CGRect(x: 0, y: 0, width: self.view.bounds.width, height: 250), videoURL: videoURL, isLocalResource: false)
+        playerView?.backgroundColor = UIColor.black.withAlphaComponent(0.9)
         self.view.addSubview(playerView!)
         playerView?.playVideo()
         
@@ -52,13 +52,13 @@ class VideoPlayViewController: UIViewController {
         }
         
         if let descrip = videoDescription {
-            descripTextView = UITextView(frame: CGRectMake(10.0, CGRectGetMaxY(playerView!.frame) + 10.0, self.view.frame.width - 20.0, 100.0), textContainer: nil)
-            descripTextView?.backgroundColor = UIColor.whiteColor()
-            descripTextView?.textColor = UIColor.blackColor()
-            descripTextView?.font = UIFont.systemFontOfSize(15.0)
-            descripTextView?.textAlignment = .Left
-            descripTextView?.editable = false
-            descripTextView?.selectable = false
+            descripTextView = UITextView(frame: CGRect(x: 10.0, y: playerView!.frame.maxY + 10.0, width: self.view.frame.width - 20.0, height: 100.0), textContainer: nil)
+            descripTextView?.backgroundColor = UIColor.white
+            descripTextView?.textColor = UIColor.black
+            descripTextView?.font = UIFont.systemFont(ofSize: 15.0)
+            descripTextView?.textAlignment = .left
+            descripTextView?.isEditable = false
+            descripTextView?.isSelectable = false
             descripTextView?.text = descrip
             if let playView = playerView {
                 playView.navigationBar.titleLabel.text = video?.title
@@ -76,7 +76,7 @@ class VideoPlayViewController: UIViewController {
                         // 退出全屏
                         playView.orientationPortraintScreen()
                     }else {
-                        weakSelf.navigationController?.popViewControllerAnimated(true)
+                        weakSelf.navigationController?.popViewController(animated: true)
                     }
                 }
             }
@@ -95,24 +95,24 @@ class VideoPlayViewController: UIViewController {
         XRVideoDownloader().downloadVideo(videoURL!)
     }
     
-    override func viewWillAppear(animated: Bool) {
+    override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         
         self.navigationController?.setNavigationBarHidden(true, animated: true)
     }
     
-    override func viewWillDisappear(animated: Bool) {
+    override func viewWillDisappear(_ animated: Bool) {
         super.viewWillAppear(animated)
         
         self.navigationController?.setNavigationBarHidden(false, animated: true)
     }
     
-    override func viewDidAppear(animated: Bool) {
+    override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
     
     }
     
-    override func viewDidDisappear(animated: Bool) {
+    override func viewDidDisappear(_ animated: Bool) {
         super.viewDidDisappear(animated)
         
         // 释放播放器对象
@@ -124,21 +124,21 @@ class VideoPlayViewController: UIViewController {
         // Dispose of any resources that can be recreated.
     }
     
-    override func preferredStatusBarStyle() -> UIStatusBarStyle {
-        return .LightContent
+    override var preferredStatusBarStyle : UIStatusBarStyle {
+        return .lightContent
     }
     
-    override func prefersStatusBarHidden() -> Bool {
+    override var prefersStatusBarHidden : Bool {
         return false
     }
     
     // 在App前后台切换时不允许旋转到其他方向，即保持屏幕方向不变.
-    override func supportedInterfaceOrientations() -> UIInterfaceOrientationMask {
-        return .LandscapeRight
+    override var supportedInterfaceOrientations : UIInterfaceOrientationMask {
+        return .landscapeRight
     }
     
     // 强制旋转屏幕
-    override func shouldAutorotate() -> Bool {
+    override var shouldAutorotate : Bool {
         return false
     }
     

@@ -16,7 +16,7 @@ import UIKit
 
 class XRVideoToolBottomView: UIView {
     
-    lazy var playButton: UIButton = UIButton(type: .Custom)
+    lazy var playButton: UIButton = UIButton(type: .custom)
     lazy var startTimeLbl: UILabel = UILabel()
     lazy var endTimeLbl: UILabel = UILabel()
     lazy var progressBar: UIProgressView = UIProgressView()
@@ -25,54 +25,54 @@ class XRVideoToolBottomView: UIView {
         return UISlider()
     }()
     lazy var controlSlider: UISlider = UISlider()
-    lazy var rotateButton: UIButton = UIButton(type: .Custom)
+    lazy var rotateButton: UIButton = UIButton(type: .custom)
     var playButtonClickClosure: (() -> ())?
     var rotationOrientationClosure: (() -> ())?
-    var sliderValueChangedClosure: ((value: Float) -> ())?
+    var sliderValueChangedClosure: ((_ value: Float) -> ())?
     
     override init(frame: CGRect) {
         super.init(frame: frame)
         
-        playButton.frame = CGRectMake(15, (self.frame.height - 30.0) * 0.5, 30, 30)
-        playButton.setImage(UIImage(named: "play"), forState: .Normal)
-        playButton.setImage(UIImage(named: "pause"), forState: .Selected)
-        playButton.addTarget(self, action: #selector(self.playButtonClick), forControlEvents: .TouchUpInside)
+        playButton.frame = CGRect(x: 15, y: (self.frame.height - 30.0) * 0.5, width: 30, height: 30)
+        playButton.setImage(UIImage(named: "play"), for: UIControlState())
+        playButton.setImage(UIImage(named: "pause"), for: .selected)
+        playButton.addTarget(self, action: #selector(self.playButtonClick), for: .touchUpInside)
         self.addSubview(playButton)
         
-        startTimeLbl.frame = CGRectMake(CGRectGetMaxX(playButton.frame) + 5.0, 0.0, 50.0, self.frame.height)
-        startTimeLbl.textColor = UIColor.whiteColor()
-        startTimeLbl.textAlignment = .Right
-        startTimeLbl.font = UIFont.systemFontOfSize(11.0)
+        startTimeLbl.frame = CGRect(x: playButton.frame.maxX + 5.0, y: 0.0, width: 50.0, height: self.frame.height)
+        startTimeLbl.textColor = UIColor.white
+        startTimeLbl.textAlignment = .right
+        startTimeLbl.font = UIFont.systemFont(ofSize: 11.0)
         startTimeLbl.text = "00:00:00"
         self.addSubview(startTimeLbl)
         
-        rotateButton.frame = CGRectMake(CGRectGetMaxX(self.frame) - 10.0 - 30.0, (self.frame.height - 30.0) * 0.5, 30, 30)
-        rotateButton.setImage(UIImage(named: "tofull"), forState: .Normal)
-        rotateButton.setImage(UIImage(named: "closefull"), forState: .Selected)
-        rotateButton.addTarget(self, action: #selector(self.rotateOrientation), forControlEvents: .TouchUpInside)
+        rotateButton.frame = CGRect(x: self.frame.maxX - 10.0 - 30.0, y: (self.frame.height - 30.0) * 0.5, width: 30, height: 30)
+        rotateButton.setImage(UIImage(named: "tofull"), for: UIControlState())
+        rotateButton.setImage(UIImage(named: "closefull"), for: .selected)
+        rotateButton.addTarget(self, action: #selector(self.rotateOrientation), for: .touchUpInside)
         self.addSubview(rotateButton)
         
-        endTimeLbl.frame = CGRectMake(CGRectGetMinX(rotateButton.frame) - 50.0, 0.0, 50.0, self.frame.height)
-        endTimeLbl.textColor = UIColor.whiteColor()
-        endTimeLbl.textAlignment = .Left
-        endTimeLbl.font = UIFont.systemFontOfSize(11.0)
+        endTimeLbl.frame = CGRect(x: rotateButton.frame.minX - 50.0, y: 0.0, width: 50.0, height: self.frame.height)
+        endTimeLbl.textColor = UIColor.white
+        endTimeLbl.textAlignment = .left
+        endTimeLbl.font = UIFont.systemFont(ofSize: 11.0)
         endTimeLbl.text = "00:00:00"
         self.addSubview(endTimeLbl)
         
-        progressBar.frame = CGRectMake(CGRectGetMaxX(startTimeLbl.frame) + 8.0, bounds.height * 0.5 - 1.0, CGRectGetMinX(endTimeLbl.frame) - 10.0 - CGRectGetMaxX(startTimeLbl.frame) - 8.0, 2.0)
-        progressBar.progressViewStyle = .Default
-        progressBar.progressTintColor = UIColor.darkGrayColor()
-        progressBar.trackTintColor = UIColor.lightGrayColor()
+        progressBar.frame = CGRect(x: startTimeLbl.frame.maxX + 8.0, y: bounds.height * 0.5 - 1.0, width: endTimeLbl.frame.minX - 10.0 - startTimeLbl.frame.maxX - 8.0, height: 2.0)
+        progressBar.progressViewStyle = .default
+        progressBar.progressTintColor = UIColor.darkGray
+        progressBar.trackTintColor = UIColor.lightGray
         self.addSubview(progressBar)
         
-        slider.frame = CGRectMake(CGRectGetMaxX(startTimeLbl.frame) + 5.0, (bounds.height - 25.0) * 0.5, CGRectGetMinX(endTimeLbl.frame) - 10.0 - CGRectGetMaxX(startTimeLbl.frame) - 5.0, 25.0)
-        slider.backgroundColor = UIColor.clearColor()
-        slider.maximumTrackTintColor = UIColor.clearColor()
-        slider.setThumbImage(UIImage(named: "player-progress-point-h"), forState: .Normal)
-        slider.minimumTrackTintColor = UIColor.redColor()
+        slider.frame = CGRect(x: startTimeLbl.frame.maxX + 5.0, y: (bounds.height - 25.0) * 0.5, width: endTimeLbl.frame.minX - 10.0 - startTimeLbl.frame.maxX - 5.0, height: 25.0)
+        slider.backgroundColor = UIColor.clear
+        slider.maximumTrackTintColor = UIColor.clear
+        slider.setThumbImage(UIImage(named: "player-progress-point-h"), for: UIControlState())
+        slider.minimumTrackTintColor = UIColor.red
         slider.minimumValue = 0.0
         slider.maximumValue = 1.0
-        slider.addTarget(self, action: #selector(self.sliderValueChanged(_:)), forControlEvents: .ValueChanged)
+        slider.addTarget(self, action: #selector(self.sliderValueChanged(_:)), for: .valueChanged)
         self.addSubview(slider)
     }
     
@@ -83,22 +83,22 @@ class XRVideoToolBottomView: UIView {
     override func layoutSubviews() {
         super.layoutSubviews()
         
-        playButton.frame = CGRectMake(15, (self.frame.height - 30.0) * 0.5, 30, 30)
+        playButton.frame = CGRect(x: 15, y: (self.frame.height - 30.0) * 0.5, width: 30, height: 30)
         
-        startTimeLbl.frame = CGRectMake(CGRectGetMaxX(playButton.frame) + 5.0, 0.0, 50.0, self.frame.height)
+        startTimeLbl.frame = CGRect(x: playButton.frame.maxX + 5.0, y: 0.0, width: 50.0, height: self.frame.height)
         
-        rotateButton.frame = CGRectMake(CGRectGetMaxX(self.frame) - 10.0 - 30.0, (self.frame.height - 30.0) * 0.5, 30, 30)
+        rotateButton.frame = CGRect(x: self.frame.maxX - 10.0 - 30.0, y: (self.frame.height - 30.0) * 0.5, width: 30, height: 30)
         
-        endTimeLbl.frame = CGRectMake(CGRectGetMinX(rotateButton.frame) - 50.0, 0.0, 50.0, self.frame.height)
+        endTimeLbl.frame = CGRect(x: rotateButton.frame.minX - 50.0, y: 0.0, width: 50.0, height: self.frame.height)
         
-        progressBar.frame = CGRectMake(CGRectGetMaxX(startTimeLbl.frame) + 8.0, bounds.height * 0.5 - 1.0, CGRectGetMinX(endTimeLbl.frame) - 10.0 - CGRectGetMaxX(startTimeLbl.frame) - 8.0, 2.0)
-        slider.frame = CGRectMake(CGRectGetMaxX(startTimeLbl.frame) + 5.0, (bounds.height - 25.0) * 0.5, CGRectGetMinX(endTimeLbl.frame) - 10.0 - CGRectGetMaxX(startTimeLbl.frame) - 5.0, 25.0)
+        progressBar.frame = CGRect(x: startTimeLbl.frame.maxX + 8.0, y: bounds.height * 0.5 - 1.0, width: endTimeLbl.frame.minX - 10.0 - startTimeLbl.frame.maxX - 8.0, height: 2.0)
+        slider.frame = CGRect(x: startTimeLbl.frame.maxX + 5.0, y: (bounds.height - 25.0) * 0.5, width: endTimeLbl.frame.minX - 10.0 - startTimeLbl.frame.maxX - 5.0, height: 25.0)
     }
     
-    func sliderValueChanged(slider: UISlider) -> Void {
+    func sliderValueChanged(_ slider: UISlider) -> Void {
         
         if let closure = sliderValueChangedClosure {
-            closure(value: slider.value)
+            closure(slider.value)
         }
     }
     
@@ -116,7 +116,7 @@ class XRVideoToolBottomView: UIView {
         }
     }
     
-    func setSliderProgress(progress: Double) -> Void {
+    func setSliderProgress(_ progress: Double) -> Void {
         
         var precent = progress
         if precent > 1.0 {
@@ -128,15 +128,15 @@ class XRVideoToolBottomView: UIView {
         slider.setValue(Float(progress), animated: true)
     }
     
-    func setPlayButtonState(isPlaying: Bool) -> Void {
-        playButton.selected = isPlaying
+    func setPlayButtonState(_ isPlaying: Bool) -> Void {
+        playButton.isSelected = isPlaying
     }
     
-    func setRotateButtonStatus(isFull: Bool) -> Void {
-        rotateButton.selected = isFull
+    func setRotateButtonStatus(_ isFull: Bool) -> Void {
+        rotateButton.isSelected = isFull
     }
     
-    func seccondConvertTime(seccond: Double) -> String {
+    func seccondConvertTime(_ seccond: Double) -> String {
         
         guard !seccond.isNaN else { return "" }
         
@@ -147,19 +147,19 @@ class XRVideoToolBottomView: UIView {
         return timeString as String
     }
     
-    func setStartTimeWithSecconds(seccond: Double) -> Void {
+    func setStartTimeWithSecconds(_ seccond: Double) -> Void {
         
         let timeStr = seccondConvertTime(seccond)
         startTimeLbl.text = timeStr
     }
     
-    func setEndTimeWithSecconds(seccond: Double) -> Void {
+    func setEndTimeWithSecconds(_ seccond: Double) -> Void {
         
         let timeStr = seccondConvertTime(seccond)
         endTimeLbl.text = timeStr
     }
     
-    func setProgress(progress: Float) -> Void {
+    func setProgress(_ progress: Float) -> Void {
         
         progressBar.setProgress(progress, animated: true)
     }

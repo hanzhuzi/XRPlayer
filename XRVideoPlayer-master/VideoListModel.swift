@@ -7,7 +7,6 @@
 //
 
 import Foundation
-import ObjectMapper
 
 class VideoModel: Mappable {
     
@@ -19,7 +18,7 @@ class VideoModel: Mappable {
     var alias: String?
     var tname: String?
     
-    required init?(_ map: Map) {
+    required init?(map: Map) {
         
     }
     
@@ -43,7 +42,7 @@ class VideoListModel: Mappable {
 
     var videoList: [VideoModel]?
     
-    required init?(_ map: Map) {
+    required init?(map: Map) {
         
     }
     

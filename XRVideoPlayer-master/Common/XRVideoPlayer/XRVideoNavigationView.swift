@@ -20,30 +20,30 @@ private let itemToLeft: CGFloat = 10.0
 
 class XRVideoNavigationView: UIView {
 
-    lazy var backButton: UIButton = UIButton(type: .Custom)
+    lazy var backButton: UIButton = UIButton(type: .custom)
     lazy var titleLabel: UILabel = UILabel()
-    lazy var moreButton: UIButton = UIButton(type: .Custom)
+    lazy var moreButton: UIButton = UIButton(type: .custom)
     var backButtonClosure: (() -> ())?
     var moreButtonClosure: (() -> ())?
     
     override init(frame: CGRect) {
         super.init(frame: frame)
         
-        backButton.frame = CGRectMake(itemToLeft, statusBarHeight + (self.frame.height - statusBarHeight - navigationItemButtonWH) * 0.5, navigationItemButtonWH, navigationItemButtonWH)
-        backButton.setImage(UIImage(named: "back"), forState: .Normal)
-        backButton.addTarget(self, action: #selector(self.backButtonAction), forControlEvents: .TouchUpInside)
+        backButton.frame = CGRect(x: itemToLeft, y: statusBarHeight + (self.frame.height - statusBarHeight - navigationItemButtonWH) * 0.5, width: navigationItemButtonWH, height: navigationItemButtonWH)
+        backButton.setImage(UIImage(named: "back"), for: UIControlState())
+        backButton.addTarget(self, action: #selector(self.backButtonAction), for: .touchUpInside)
         self.addSubview(backButton)
         
-        titleLabel.frame = CGRectMake(CGRectGetMaxX(backButton.frame) + itemToLeft, statusBarHeight + (frame.height  - statusBarHeight - navigationItemButtonWH) * 0.5, frame.width - (CGRectGetMaxX(backButton.frame) + itemToLeft) * 2.0, navigationItemButtonWH)
-        titleLabel.font = UIFont.systemFontOfSize(15.0)
-        titleLabel.textColor = UIColor.whiteColor()
-        titleLabel.textAlignment = .Center
+        titleLabel.frame = CGRect(x: backButton.frame.maxX + itemToLeft, y: statusBarHeight + (frame.height  - statusBarHeight - navigationItemButtonWH) * 0.5, width: frame.width - (backButton.frame.maxX + itemToLeft) * 2.0, height: navigationItemButtonWH)
+        titleLabel.font = UIFont.systemFont(ofSize: 15.0)
+        titleLabel.textColor = UIColor.white
+        titleLabel.textAlignment = .center
         titleLabel.text = "电视剧《隋唐演义》第一集"
         self.addSubview(titleLabel)
         
-        moreButton.frame = CGRectMake(CGRectGetMaxX(frame) - navigationItemButtonWH - itemToLeft, statusBarHeight + (frame.height  - statusBarHeight - navigationItemButtonWH) * 0.5, navigationItemButtonWH, navigationItemButtonWH)
-        moreButton.setImage(UIImage(named: "more"), forState: .Normal)
-        moreButton.addTarget(self, action: #selector(self.moreButtonAction), forControlEvents: .TouchUpInside)
+        moreButton.frame = CGRect(x: frame.maxX - navigationItemButtonWH - itemToLeft, y: statusBarHeight + (frame.height  - statusBarHeight - navigationItemButtonWH) * 0.5, width: navigationItemButtonWH, height: navigationItemButtonWH)
+        moreButton.setImage(UIImage(named: "more"), for: UIControlState())
+        moreButton.addTarget(self, action: #selector(self.moreButtonAction), for: .touchUpInside)
         self.addSubview(moreButton)
     }
     
@@ -54,9 +54,9 @@ class XRVideoNavigationView: UIView {
     override func layoutSubviews() {
         super.layoutSubviews()
         
-        backButton.frame = CGRectMake(8.0, 20.0 + (self.frame.height - 20.0 - navigationItemButtonWH) * 0.5, navigationItemButtonWH, navigationItemButtonWH)
-        titleLabel.frame = CGRectMake(CGRectGetMaxX(backButton.frame) + 10.0, 20.0 + (frame.height  - 20.0 - navigationItemButtonWH) * 0.5, frame.width - (CGRectGetMaxX(backButton.frame) + 10.0) * 2.0, navigationItemButtonWH)
-        moreButton.frame = CGRectMake(CGRectGetMaxX(frame) - navigationItemButtonWH - 8.0, 20.0 + (frame.height  - 20.0 - navigationItemButtonWH) * 0.5, navigationItemButtonWH, navigationItemButtonWH)
+        backButton.frame = CGRect(x: 8.0, y: 20.0 + (self.frame.height - 20.0 - navigationItemButtonWH) * 0.5, width: navigationItemButtonWH, height: navigationItemButtonWH)
+        titleLabel.frame = CGRect(x: backButton.frame.maxX + 10.0, y: 20.0 + (frame.height  - 20.0 - navigationItemButtonWH) * 0.5, width: frame.width - (backButton.frame.maxX + 10.0) * 2.0, height: navigationItemButtonWH)
+        moreButton.frame = CGRect(x: frame.maxX - navigationItemButtonWH - 8.0, y: 20.0 + (frame.height  - 20.0 - navigationItemButtonWH) * 0.5, width: navigationItemButtonWH, height: navigationItemButtonWH)
     }
     
     func backButtonAction() {

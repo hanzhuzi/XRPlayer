@@ -16,42 +16,44 @@ import UIKit
 
 class RegulationBrightness: NSObject {
     
-    var preBrightness: CGFloat = UIScreen.mainScreen().brightness
+    fileprivate static var __once: () = {
+            if Inner.regulationBright == nil {
+                Inner.regulationBright = RegulationBrightness()
+            }
+        }()
+    
+    var preBrightness: CGFloat = UIScreen.main.brightness
     var systemBrightness: CGFloat = 0
     var jumpBrightness: CGFloat = 0.8
-    var timer: NSTimer?
+    var timer: Timer?
     var isToHeigh = false
     
-    private override init() {
+    fileprivate override init() {
         super.init()
     }
     
-    private struct Inner {
+    fileprivate struct Inner {
         static var regulationBright: RegulationBrightness?
-        static var onceToken: dispatch_once_t = 0
+        static var onceToken: Int = 0
     }
     
     static func sharedBrightness() -> RegulationBrightness {
         
-        dispatch_once(&Inner.onceToken) {
-            if Inner.regulationBright == nil {
-                Inner.regulationBright = RegulationBrightness()
-            }
-        }
+        _ = RegulationBrightness.__once
         
         return Inner.regulationBright!
     }
     
-    func startBrightTimer(isToHeigh: Bool) {
+    func startBrightTimer(_ isToHeigh: Bool) {
     
         if isToHeigh {
-            systemBrightness = UIScreen.mainScreen().brightness
+            systemBrightness = UIScreen.main.brightness
         }
         
         self.isToHeigh = isToHeigh
         if timer == nil {
-            timer = NSTimer.scheduledTimerWithTimeInterval(0.01, target: self, selector: #selector(RegulationBrightness.regulationBrightnessToHeigh(_:)), userInfo: nil, repeats: true)
-            NSRunLoop.currentRunLoop().addTimer(timer!, forMode: NSRunLoopCommonModes)
+            timer = Timer.scheduledTimer(timeInterval: 0.01, target: self, selector: #selector(RegulationBrightness.regulationBrightnessToHeigh(_:)), userInfo: nil, repeats: true)
+            RunLoop.current.add(timer!, forMode: RunLoopMode.commonModes)
         }
     }
     
@@ -61,7 +63,7 @@ class RegulationBrightness: NSObject {
         timer = nil
     }
     
-    func regulationBrightnessToHeigh(timer: NSTimer) {
+    func regulationBrightnessToHeigh(_ timer: Timer) {
         
         print("\(preBrightness), \(systemBrightness)")
         if isToHeigh {
@@ -80,7 +82,7 @@ class RegulationBrightness: NSObject {
             }
         }
         
-        UIScreen.mainScreen().brightness = preBrightness
+        UIScreen.main.brightness = preBrightness
     }
     
 }

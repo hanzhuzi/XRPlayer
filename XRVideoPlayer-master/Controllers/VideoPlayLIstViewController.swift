@@ -7,37 +7,36 @@
 //
 
 import UIKit
-import ObjectMapper
 
 private let videoCellIdentifier = "videoCellIdentifier"
 
 class VideoPlayLIstViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
     
     var videoList: VideoListModel?
-    private let activityIndicator = {
-        return UIActivityIndicatorView(activityIndicatorStyle: .Gray)
+    fileprivate let activityIndicator = {
+        return UIActivityIndicatorView(activityIndicatorStyle: .gray)
     }()
-    private lazy var myTableView: UITableView = {
+    fileprivate lazy var myTableView: UITableView = {
        
-        return UITableView(frame: CGRectMake(0, 0, self.view.frame.width, self.view.frame.height), style: UITableViewStyle.Plain)
+        return UITableView(frame: CGRect(x: 0, y: 0, width: self.view.frame.width, height: self.view.frame.height), style: UITableViewStyle.plain)
     }()
     
     
     func setupUI() {
         
-        self.view.backgroundColor = UIColor.whiteColor()
+        self.view.backgroundColor = UIColor.white
         
         myTableView.delegate = self
         myTableView.dataSource = self
-        myTableView.backgroundColor = UIColor.whiteColor()
+        myTableView.backgroundColor = UIColor.white
         myTableView.showsVerticalScrollIndicator = false
         myTableView.showsHorizontalScrollIndicator = false
-        myTableView.separatorColor = UIColor.grayColor()
-        myTableView.registerClass(VideoListCell.self, forCellReuseIdentifier: videoCellIdentifier)
+        myTableView.separatorColor = UIColor.gray
+        myTableView.register(VideoListCell.self, forCellReuseIdentifier: videoCellIdentifier)
         myTableView.tableFooterView = UIView()
         
         self.view.addSubview(myTableView)
-        self.activityIndicator.frame = CGRectMake(0, 0, 60, 60)
+        self.activityIndicator.frame = CGRect(x: 0, y: 0, width: 60, height: 60)
         self.activityIndicator.center = self.view.center
         self.view.addSubview(activityIndicator)
         activityIndicator.hidesWhenStopped = true
@@ -46,23 +45,23 @@ class VideoPlayLIstViewController: UIViewController, UITableViewDelegate, UITabl
     
     func requestDataFromURL() -> Void {
         
-        XRRequest.getWithCodeString(CODE_VIDEOLIST) { [weak self](dict, error) in
-            
-            if let weakSelf = self {
-                weakSelf.activityIndicator.stopAnimating()
-                if error == nil {
-                    
-                    if let retDict = dict {
-                        weakSelf.videoList = Mapper<VideoListModel>().map(retDict)
-                        weakSelf.myTableView.reloadData()
-                    }else {
-                        print("数据为空!")
-                    }
-                }else {
-                    print(error?.localizedDescription)
-                }
-            }
-        }
+//        XRRequest.getWithCodeString(CODE_VIDEOLIST) { [weak self](dict, error) in
+//            
+//            if let weakSelf = self {
+//                weakSelf.activityIndicator.stopAnimating()
+//                if error == nil {
+//                    
+//                    if let retDict = dict {
+//                        weakSelf.videoList = Mapper<VideoListModel>().map(JSONObject: retDict)
+//                        weakSelf.myTableView.reloadData()
+//                    }else {
+//                        print("数据为空!")
+//                    }
+//                }else {
+//                    print(error?.localizedDescription)
+//                }
+//            }
+//        }
     }
     
     override func viewDidLoad() {
@@ -81,45 +80,45 @@ class VideoPlayLIstViewController: UIViewController, UITableViewDelegate, UITabl
     
     
     // MARK: UITableViewDelegate
-    func numberOfSectionsInTableView(tableView: UITableView) -> Int {
+    func numberOfSections(in tableView: UITableView) -> Int {
         return 1
     }
     
-    func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         
-        if let model = videoList where model.videoList != nil {
+        if let model = videoList , model.videoList != nil {
             return model.videoList!.count
         }
         
         return 0
     }
     
-    func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
-        var cell = tableView.dequeueReusableCellWithIdentifier(videoCellIdentifier) as? VideoListCell
+        var cell = tableView.dequeueReusableCell(withIdentifier: videoCellIdentifier) as? VideoListCell
         
         if  cell == nil {
-            cell = VideoListCell(style: .Default, reuseIdentifier: videoCellIdentifier)
+            cell = VideoListCell(style: .default, reuseIdentifier: videoCellIdentifier)
         }
         
-        cell?.selectionStyle = .None
-        if let model = videoList where model.videoList != nil {
-            let video = model.videoList![indexPath.row]
+        cell?.selectionStyle = .none
+        if let model = videoList , model.videoList != nil {
+            let video = model.videoList![(indexPath as NSIndexPath).row]
             cell!.configVideoCellWithModel(video)
         }
         
         return cell!
     }
     
-    func tableView(tableView: UITableView, heightForRowAtIndexPath indexPath: NSIndexPath) -> CGFloat {
+    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         
         return VideoListCell.cellHeight()
     }
 
-    func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         
-        if let model = videoList where model.videoList != nil {
-            let video = model.videoList![indexPath.row]
+        if let model = videoList , model.videoList != nil {
+            let video = model.videoList![(indexPath as NSIndexPath).row]
             let videoDetailVc = VideoPlayViewController()
             video.m3u8_url = "http://ivi.bupt.edu.cn/hls/cctv6hd.m3u8"
             video.description = "CCTV-6 电影频道"

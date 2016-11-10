@@ -15,27 +15,27 @@ import UIKit
 
 extension UINavigationController {
     
-    public override func shouldAutorotate() -> Bool {
+    open override var shouldAutorotate : Bool {
         if let lastVc = self.viewControllers.last {
-            lastVc.shouldAutorotate()
+            lastVc.shouldAutorotate
         }
         return false
     }
     
-    public override func supportedInterfaceOrientations() -> UIInterfaceOrientationMask {
+    open override var supportedInterfaceOrientations : UIInterfaceOrientationMask {
         if let lastVc = self.viewControllers.last {
-            return lastVc.supportedInterfaceOrientations()
+            return lastVc.supportedInterfaceOrientations
         }
         
-        return .All
+        return .all
     }
     
-    public override func preferredInterfaceOrientationForPresentation() -> UIInterfaceOrientation {
+    open override var preferredInterfaceOrientationForPresentation : UIInterfaceOrientation {
         if let lastVc = self.viewControllers.last {
-            return lastVc.preferredInterfaceOrientationForPresentation()
+            return lastVc.preferredInterfaceOrientationForPresentation
         }
         
-        return .Portrait
+        return .portrait
     }
 }
 

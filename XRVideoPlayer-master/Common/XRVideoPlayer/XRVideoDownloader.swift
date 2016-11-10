@@ -10,14 +10,14 @@ import UIKit
 
 class XRVideoDownloader: NSObject {
     
-    lazy private var session: NSURLSession = NSURLSession(configuration: NSURLSessionConfiguration.defaultSessionConfiguration())
+    open var session: URLSession = URLSession(configuration: URLSessionConfiguration.default)
     
-    func downloadVideo(url: String) -> Void {
+    func downloadVideo(_ url: String) -> Void {
         
-        let videoURL = NSURL(string: url)
-        let request = NSURLRequest(URL: videoURL!, cachePolicy: .ReloadIgnoringLocalCacheData, timeoutInterval: 30.0)
-        session.dataTaskWithRequest(request) { (data, response, error) in
+        let videoURL = URL(string: url)
+        let request = URLRequest(url: videoURL!, cachePolicy: .reloadIgnoringLocalCacheData, timeoutInterval: 30.0)
+        session.dataTask(with: request, completionHandler: { (data, response, error) in
             
-        }
+        }) 
     }
 }
