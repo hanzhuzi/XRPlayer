@@ -15,19 +15,18 @@
 import UIKit
 
 class XRActivityInditor: UIView {
-
-    fileprivate lazy var activityInditor: UIActivityIndicatorView = UIActivityIndicatorView(activityIndicatorStyle: .whiteLarge)
+    
+    var dgActivityView: DGActivityIndicatorView!
     var isAnimating: Bool = false
     
     override init(frame: CGRect) {
         super.init(frame: frame)
         
         self.isUserInteractionEnabled = false
-        self.layer.cornerRadius = 10.0
-        self.backgroundColor = UIColor.black.withAlphaComponent(0.6)
-        activityInditor.center = CGPoint(x: self.frame.width * 0.5, y: self.frame.height * 0.5)
-        isAnimating = activityInditor.isAnimating
-        self.addSubview(activityInditor)
+        dgActivityView = DGActivityIndicatorView(type: .ballSpinFadeLoader, tintColor: UIColor.white, size: self.frame.width)
+        dgActivityView.frame = CGRect(x: 0, y: 0, width: self.frame.width, height: self.frame.height)
+        self.addSubview(dgActivityView)
+        dgActivityView.startAnimating()
     }
     
     required init?(coder aDecoder: NSCoder) {
@@ -37,22 +36,22 @@ class XRActivityInditor: UIView {
     override func layoutSubviews() {
         super.layoutSubviews()
         
-        activityInditor.center = CGPoint(x: self.frame.width * 0.5, y: self.frame.height * 0.5)
+        dgActivityView.frame = CGRect(x: 0, y: 0, width: self.frame.width, height: self.frame.height)
     }
     
     func startAnimation() -> Void {
-        if !activityInditor.isAnimating {
-            activityInditor.startAnimating()
+        if !dgActivityView.animating {
+            dgActivityView.startAnimating()
             self.isHidden = false
-            isAnimating = activityInditor.isAnimating
+            isAnimating = dgActivityView.animating
         }
     }
     
     func stopAnimation() -> Void {
-        if activityInditor.isAnimating {
-            activityInditor.stopAnimating()
+        if dgActivityView.animating {
+            dgActivityView.stopAnimating()
             self.isHidden = true
-            isAnimating = activityInditor.isAnimating
+            isAnimating = dgActivityView.animating
         }
     }
 }

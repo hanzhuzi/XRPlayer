@@ -3,3 +3,4 @@
 //
 
 #import "ProConfig.h"
+#import "DGActivityIndicatorView.h"

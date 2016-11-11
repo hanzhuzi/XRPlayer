@@ -27,6 +27,12 @@ class VideoPlayViewController: UIViewController {
         return UIButton(type: .custom)
     }()
     
+    deinit {
+        self.playerView?.releaseVideoPlayer()
+        self.playerView = nil
+        debugPrint("VideoPlayViewController is dealloc")
+    }
+    
     func setupPlayerView(_ videoURL: String) {
         
         playerView = XRVideoPlayer(frame: CGRect(x: 0, y: 0, width: self.view.bounds.width, height: 250), videoURL: videoURL, isLocalResource: false)
@@ -61,7 +67,7 @@ class VideoPlayViewController: UIViewController {
             descripTextView?.isSelectable = false
             descripTextView?.text = descrip
             if let playView = playerView {
-                playView.navigationBar.titleLabel.text = video?.title
+                playView.navigationBar?.titleLabel.text = video?.title
                 self.view.insertSubview(descripTextView!, belowSubview: playView)
             }else {
                 self.view.addSubview(descripTextView!)
@@ -70,18 +76,18 @@ class VideoPlayViewController: UIViewController {
     
         // back more action.
         if let playView = playerView {
-            playView.navigationBar.backButtonClosure = { [weak self]() -> Void in
+            playView.navigationBar?.backButtonClosure = { [weak self]() -> Void in
                 if let weakSelf = self {
                     if weakSelf.isFull {
                         // 退出全屏
-                        playView.orientationPortraintScreen()
+                        weakSelf.playerView?.orientationPortraintScreen()
                     }else {
                         weakSelf.navigationController?.popViewController(animated: true)
                     }
                 }
             }
             
-            playView.navigationBar.moreButtonClosure = { () -> Void in
+            playView.navigationBar?.moreButtonClosure = { () -> Void in
                 
             }
         }
@@ -92,7 +98,7 @@ class VideoPlayViewController: UIViewController {
         
         self.setupUI()
         
-        XRVideoDownloader().downloadVideo(videoURL!)
+//        XRVideoDownloader().downloadVideo(videoURL!)
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -110,13 +116,6 @@ class VideoPlayViewController: UIViewController {
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
     
-    }
-    
-    override func viewDidDisappear(_ animated: Bool) {
-        super.viewDidDisappear(animated)
-        
-        // 释放播放器对象
-        playerView?.releaseVideoPlayer()
     }
     
     override func didReceiveMemoryWarning() {

@@ -38,7 +38,6 @@ class XRVideoNavigationView: UIView {
         titleLabel.font = UIFont.systemFont(ofSize: 15.0)
         titleLabel.textColor = UIColor.white
         titleLabel.textAlignment = .center
-        titleLabel.text = "电视剧《隋唐演义》第一集"
         self.addSubview(titleLabel)
         
         moreButton.frame = CGRect(x: frame.maxX - navigationItemButtonWH - itemToLeft, y: statusBarHeight + (frame.height  - statusBarHeight - navigationItemButtonWH) * 0.5, width: navigationItemButtonWH, height: navigationItemButtonWH)

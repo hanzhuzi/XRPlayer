@@ -12,7 +12,7 @@ class HttpStreamPlayViewController: UIViewController, UITableViewDelegate, UITab
     
     @IBOutlet weak var myTableView: UITableView!
     
-    lazy var tvArray: [[String: String]] = [
+    fileprivate lazy var tvArray: [[String: String]] = [
         ["title" : "CCTV-6 电影频道", "url" : "http://ivi.bupt.edu.cn/hls/cctv6hd.m3u8"],
         ["title" : "Capital TV", "url" : "http://ooyalahd2-f.akamaihd.net/i/globalradio01_delivery@156521/master.m3u8"],
         ["title" : "Heart tv", "url" : "http://ooyalahd2-f.akamaihd.net/i/globalradio02_delivery@156522/master.m3u8"],
@@ -42,11 +42,11 @@ class HttpStreamPlayViewController: UIViewController, UITableViewDelegate, UITab
 
         // Do any additional setup after loading the view.
         
+        self.navigationItem.title = "视频播放列表"
         let rightBarItem = UIBarButtonItem(barButtonSystemItem: .add, target: self, action: #selector(self.addTVUrl))
         self.navigationItem.rightBarButtonItems = [rightBarItem]
         
         myTableView.tableFooterView = UIView()
-        
     }
     
     // 动态添加直播地址

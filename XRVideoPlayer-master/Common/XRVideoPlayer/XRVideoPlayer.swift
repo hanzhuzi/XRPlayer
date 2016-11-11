@@ -7,10 +7,10 @@
 //
 
 /**
- *  @brief AVPlayer封装视频播放器
- *  
- *  @by    黯丶野火
- **/
+ * @brief AVPlayer封装视频播放器
+ *
+ * @by    黯丶野火
+ */
 
 import UIKit
 import Foundation
@@ -31,15 +31,36 @@ enum XRVideoPlayerPlayStatus: Int {
 
 class XRVideoPlayer: UIView {
     
-    fileprivate var player: AVPlayer?
-    fileprivate var playerLayer: AVPlayerLayer?
-    fileprivate var playerItem: AVPlayerItem?
-    fileprivate var bottomView: XRVideoToolBottomView!
-    var navigationBar: XRVideoNavigationView!
+    open var player: AVPlayer?
+    open var playerLayer: AVPlayerLayer?
+    open var playerItem: AVPlayerItem?
+    open var bottomView: XRVideoToolBottomView?
+    var navigationBar: XRVideoNavigationView?
     fileprivate var pauseByUser: Bool = false
-    fileprivate var playStatus: XRVideoPlayerPlayStatus = .playing
+    fileprivate var playStatus: XRVideoPlayerPlayStatus = .buffring {
+        
+        didSet {
+            switch playStatus {
+            case .playing:
+                bottomView?.setPlayButtonState(true)
+                loadingView?.stopAnimation()
+            case .buffring:
+                bottomView?.setPlayButtonState(false)
+                loadingView?.startAnimation()
+            case .pause:
+                bottomView?.setPlayButtonState(false)
+                loadingView?.stopAnimation()
+            case .stop:
+                bottomView?.setPlayButtonState(false)
+                loadingView?.stopAnimation()
+            case .faild:
+                bottomView?.setPlayButtonState(false)
+                loadingView?.stopAnimation()
+            }
+        }
+    }
     var isLocalResource: Bool = false // 是否是本地资源
-    fileprivate var loadingView: XRActivityInditor?
+    open var loadingView: XRActivityInditor?
     fileprivate var portraintFrame: CGRect?
     fileprivate var hiddenOrShow: Bool = false
     var changedOrientationClosure: ((_ isFull: Bool) -> ())?
@@ -52,19 +73,26 @@ class XRVideoPlayer: UIView {
     fileprivate var isFull: Bool = false
     
     deinit {
-        self.player?.removeTimeObserver(self)
-        self.removePlayerItemObserve(playerItem!)
-        print("player is destory!")
+        if playerItem != nil {
+            self.removePlayerItemObserve(playerItem!)
+        }
+        print("XRVideoPlayer is dealloc!")
     }
     
     fileprivate override init(frame: CGRect) {
         super.init(frame: frame)
+        
+        NotificationCenter.default.addObserver(self, selector: #selector(self.applicationActiveStatusChanged(_:)), name: NSNotification.Name(rawValue: "ApplicationActiveStatusChanged"), object: nil)
+    }
+    
+    required init?(coder aDecoder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
     }
     
     init(frame: CGRect, videoURL: String, isLocalResource: Bool) {
+        
         super.init(frame: frame)
         
-        NotificationCenter.default.addObserver(self, selector: #selector(self.applicationActiveStatusChanged(_:)), name: NSNotification.Name(rawValue: "ApplicationActiveStatusChanged"), object: nil)
         self.videoURL = videoURL
         self.isLocalResource = isLocalResource
         
@@ -87,39 +115,36 @@ class XRVideoPlayer: UIView {
             self.layer.addSublayer(playerLayer!)
             
             self.observePlayerPlayTime()
-            NotificationCenter.default.addObserver(self, selector: #selector(self.videoPlayToEnd), name: NSNotification.Name.AVPlayerItemDidPlayToEndTime, object: nil)
             self.observePlayerItemPlayStatus(playerItem!)
             
             loadingView = XRActivityInditor(frame: CGRect(x: 0, y: 0, width: 60, height: 60))
             loadingView?.center = CGPoint(x: self.bounds.width * 0.5, y: self.bounds.height * 0.5)
             self.addSubview(loadingView!)
             loadingView?.startAnimation()
+            
+            NotificationCenter.default.addObserver(self, selector: #selector(self.videoPlayToEnd), name: NSNotification.Name.AVPlayerItemDidPlayToEndTime, object: nil)
         }
         
         navigationBar = XRVideoNavigationView(frame: CGRect(x: 0, y: 0, width: self.frame.width, height: navigationBarHeight))
-        navigationBar.backgroundColor = UIColor.RGBColor(20, g: 20, b: 20, a: 0.3)
-        self.addSubview(navigationBar)
+        navigationBar?.backgroundColor = UIColor.RGBColor(10, g: 10, b: 10, a: 0.2)
+        self.addSubview(navigationBar!)
         
         bottomView = XRVideoToolBottomView(frame: CGRect(x: 0, y: self.bounds.maxY - bottomViewHeight, width: self.frame.width, height: bottomViewHeight))
-        bottomView.backgroundColor = UIColor.black.withAlphaComponent(0.5)
-        self.addSubview(bottomView)
-        bottomView.playButtonClickClosure = { [weak self]() -> Void in
+        bottomView?.backgroundColor = UIColor.black.withAlphaComponent(0.5)
+        self.addSubview(bottomView!)
+        bottomView?.playButtonClickClosure = { [weak self]() -> Void in
             if let weakSelf = self {
-                if let videoPlayer = weakSelf.player {
+                if let _ = weakSelf.player {
                     if weakSelf.playStatus != .playing {
-                        videoPlayer.play()
-                        weakSelf.bottomView.setPlayButtonState(true)
-                        weakSelf.playStatus = .playing
+                        weakSelf.playVideo()
                     }else {
-                        videoPlayer.pause()
-                        weakSelf.bottomView.setPlayButtonState(false)
-                        weakSelf.playStatus = .pause
+                        weakSelf.pauseVideoPlay()
                     }
                 }
             }
         }
         
-        bottomView.rotationOrientationClosure = {[weak self]() -> () in
+        bottomView?.rotationOrientationClosure = {[weak self]() -> () in
             if let weakSelf = self {
                 if weakSelf.isFull {
                     weakSelf.orientationPortraintScreen()
@@ -129,7 +154,7 @@ class XRVideoPlayer: UIView {
             }
         }
         
-        bottomView.sliderValueChangedClosure = { [weak self](value) -> () in
+        bottomView?.sliderValueChangedClosure = { [weak self](value) -> () in
             if let weakSelf = self {
                 if let item = weakSelf.playerItem {
                     let secconds = CMTimeGetSeconds(item.duration) * Float64(value)
@@ -147,8 +172,28 @@ class XRVideoPlayer: UIView {
         self.addGestureRecognizer(tap)
     }
     
-    required init?(coder aDecoder: NSCoder) {
-        fatalError("init(coder:) has not been implemented")
+    // destory player
+    func releaseVideoPlayer() -> Void {
+        
+        self.pauseVideoPlay()
+        self.bottomView?.removeFromSuperview()
+        self.navigationBar?.removeFromSuperview()
+        self.loadingView?.removeFromSuperview()
+        self.removeFromSuperview()
+        if playerItem != nil {
+            self.removePlayerItemObserve(playerItem!)
+        }
+        NotificationCenter.default.removeObserver(self)
+        self.playerLayer?.removeFromSuperlayer()
+        self.player?.replaceCurrentItem(with: nil)
+        self.player?.currentItem?.cancelPendingSeeks()
+        self.player?.currentItem?.asset.cancelLoading()
+        self.player = nil
+        self.playerLayer = nil
+        self.playerItem = nil
+        self.bottomView = nil
+        self.navigationBar = nil
+        self.loadingView = nil
     }
     
     // layout subViews.
@@ -157,19 +202,19 @@ class XRVideoPlayer: UIView {
         
         if isFull {
             playerLayer?.frame = self.bounds
-            bottomView.frame = CGRect(x: 0, y: self.bounds.maxY - bottomViewHeight, width: self.bounds.width, height: bottomViewHeight)
-            bottomView.layoutIfNeeded()
-            navigationBar.frame = CGRect(x: 0, y: 0, width: self.bounds.width, height: navigationBarHeight)
-            navigationBar.layoutIfNeeded()
+            bottomView?.frame = CGRect(x: 0, y: self.bounds.maxY - bottomViewHeight, width: self.bounds.width, height: bottomViewHeight)
+            bottomView?.layoutIfNeeded()
+            navigationBar?.frame = CGRect(x: 0, y: 0, width: self.bounds.width, height: navigationBarHeight)
+            navigationBar?.layoutIfNeeded()
             loadingView?.center = CGPoint(x: self.bounds.width * 0.5, y: self.bounds.height * 0.5)
             loadingView?.layoutIfNeeded()
             
         }else {
             playerLayer?.frame = self.bounds
-            bottomView.frame = CGRect(x: 0, y: self.bounds.maxY - bottomViewHeight, width: self.frame.width, height: bottomViewHeight)
-            bottomView.layoutIfNeeded()
-            navigationBar.frame = CGRect(x: 0, y: 0, width: self.frame.width, height: navigationBarHeight)
-            navigationBar.layoutIfNeeded()
+            bottomView?.frame = CGRect(x: 0, y: self.bounds.maxY - bottomViewHeight, width: self.frame.width, height: bottomViewHeight)
+            bottomView?.layoutIfNeeded()
+            navigationBar?.frame = CGRect(x: 0, y: 0, width: self.frame.width, height: navigationBarHeight)
+            navigationBar?.layoutIfNeeded()
             loadingView?.center = CGPoint(x: self.bounds.width * 0.5, y: self.bounds.height * 0.5)
             loadingView?.layoutIfNeeded()
         }
@@ -179,40 +224,32 @@ class XRVideoPlayer: UIView {
     func hiddenOrShowWithAnimated() {
         
         if !self.hiddenOrShow {
-            UIView.animate(withDuration: 0.3, animations: { [weak self]() -> () in
+            UIView.animate(withDuration: 0.5, animations: { [weak self]() -> () in
                 if let weakSelf = self {
-                    weakSelf.navigationBar.alpha = 0.0
-                    weakSelf.bottomView.alpha = 0.0
+                    weakSelf.navigationBar?.alpha = 0.0
+                    weakSelf.bottomView?.alpha = 0.0
                 }
                 }, completion: { [weak self](_) in
                     if let weakSelf = self {
                         weakSelf.hiddenOrShow = true
                     }
-            })
+                })
         }else {
-            UIView.animate(withDuration: 0.3, animations: { [weak self]() -> () in
+            UIView.animate(withDuration: 0.5, animations: { [weak self]() -> () in
                 if let weakSelf = self {
-                    weakSelf.navigationBar.alpha = 1.0
-                    weakSelf.bottomView.alpha = 1.0
+                    weakSelf.navigationBar?.alpha = 1.0
+                    weakSelf.bottomView?.alpha = 1.0
                 }
                 }, completion: { [weak self](_) in
                     if let weakSelf = self {
                         weakSelf.hiddenOrShow = false
-                        let time = DispatchTime.now() + Double(3 * Int64(NSEC_PER_SEC)) / Double(NSEC_PER_SEC)
+                        let time = DispatchTime.now() + 3.0
                         DispatchQueue.main.asyncAfter(deadline: time, execute: {
-                            self?.hiddenOrShowWithAnimated()
+                            weakSelf.hiddenOrShowWithAnimated()
                         })
                     }
-            })
+                })
         }
-    }
-    
-    // destory player
-    func releaseVideoPlayer() -> Void {
-        
-        self.pauseVideoPlay()
-        self.player = nil
-        self.removeFromSuperview()
     }
     
     func applicationActiveStatusChanged(_ notif: Notification?) -> Void {
@@ -239,20 +276,20 @@ class XRVideoPlayer: UIView {
         
         self.playStatus = .stop
         self.player?.seek(to: kCMTimeZero)
-        bottomView.setPlayButtonState(false)
+        bottomView?.setPlayButtonState(false)
     }
     
     // seek to time to play...
     func seekTimeToPlay(_ value: Int64, toPlay: Bool = true) -> Void {
         
-        if let videoPlayer = player {
-            videoPlayer.seek(to: CMTimeMake(value, 1), completionHandler: { (finished) in
-                if finished {
-                    if toPlay && self.playStatus == .playing {
-                        self.playVideo()
-                        DispatchQueue.main.async(execute: { 
-                            self.bottomView.setPlayButtonState(true)
-                        })
+        if let videoPlayer = player, let curItem = playerItem {
+            
+            videoPlayer.seek(to: CMTimeMakeWithSeconds(Float64(value), curItem.currentTime().timescale), toleranceBefore: kCMTimeZero, toleranceAfter: kCMTimeZero, completionHandler: { [weak self](finished) in
+                if let weakSelf = self {
+                    if finished {
+                        if toPlay && weakSelf.playStatus == .playing {
+                            weakSelf.playVideo()
+                        }
                     }
                 }
             })
@@ -261,23 +298,16 @@ class XRVideoPlayer: UIView {
     
     func pauseVideoPlay() -> Void {
         if let videoPlayer = player {
-            if self.playStatus == .playing {
-                self.playStatus = .pause
-            }
             videoPlayer.pause()
-            self.bottomView.setPlayButtonState(false)
+            self.playStatus = .pause
         }
     }
     
     func playVideo() -> Void {
         
         if let videoPlayer = player {
-            if self.playStatus == .pause {
-                self.playStatus = .playing
-            }
             videoPlayer.play()
-            loadingView?.stopAnimation()
-            self.bottomView.setPlayButtonState(true)
+            self.playStatus = .playing
         }
     }
     
@@ -309,18 +339,20 @@ class XRVideoPlayer: UIView {
     func bufferingSomeSecconds() {
         
         self.playStatus = .buffring
-        loadingView?.startAnimation()
+        
         var isBuffering: Bool = false
         if isBuffering { return }
         
         isBuffering = true
         self.pauseVideoPlay()
-        DispatchQueue.main.asyncAfter(deadline: DispatchTime.now() + 1.0) {
-            self.playVideo()
-            isBuffering = false
-            // 若缓冲还不够，则再缓冲一段时间
-            if let item = self.playerItem , !item.isPlaybackLikelyToKeepUp {
-                self.bufferingSomeSecconds()
+        DispatchQueue.main.asyncAfter(deadline: DispatchTime.now() + 1.0) {[weak self] in
+            if let weakSelf = self {
+                weakSelf.playVideo()
+                isBuffering = false
+                // 若缓冲还不够，则再缓冲一段时间
+                if let item = weakSelf.playerItem , !item.isPlaybackLikelyToKeepUp {
+                    weakSelf.bufferingSomeSecconds()
+                }
             }
         }
     }
@@ -355,26 +387,24 @@ class XRVideoPlayer: UIView {
         if !isFull {
             portraintFrame = self.frame
         }
-
+        
         // 最好使用旋转单个View配合旋转状态栏的方法进行屏幕旋转，比较容易控制，体验比较好，且大部分的视频播放软件都是采用的这种方式.
         /* UIDevice.currentDevice().setValue(UIInterfaceOrientation.LandscapeRight.rawValue, forKey: "orientation")
-           这个方法虽然可以，但是在程序前后台切换时会导致横竖屏的混乱.
-        */
+         这个方法虽然可以，但是在程序前后台切换时会导致横竖屏的混乱.
+         */
         UIApplication.shared.setStatusBarOrientation(.landscapeRight, animated: true)
         isFull = true
-        bottomView.setRotateButtonStatus(isFull)
-        UIView.animate(withDuration: 1.0, delay: 0.0, usingSpringWithDamping: 1.0, initialSpringVelocity: 0.2, options: UIViewAnimationOptions(), animations: { [weak self]() in
-            
+        bottomView?.setRotateButtonStatus(isFull)
+        UIView.animate(withDuration: 0.3, delay: 0.0, options: UIViewAnimationOptions.curveLinear, animations: { [weak self] in
             if let weakSelf = self {
                 weakSelf.transform = CGAffineTransform(rotationAngle: weakSelf.angleToRadian(90))
                 weakSelf.frame = weakSelf.keyWindow.bounds
-                weakSelf.bottomView.frame = CGRect(x: 0, y: weakSelf.bounds.maxY - bottomViewHeight, width: weakSelf.bounds.width, height: bottomViewHeight)
+                weakSelf.bottomView?.frame = CGRect(x: 0, y: weakSelf.bounds.maxY - bottomViewHeight, width: weakSelf.bounds.width, height: bottomViewHeight)
                 weakSelf.loadingView?.center = CGPoint(x: weakSelf.bounds.size.width * 0.5, y: weakSelf.bounds.size.height * 0.5)
                 if let closure = weakSelf.changedOrientationClosure {
                     closure(weakSelf.isFull)
                 }
             }
-            
             }) { [weak self](_) in
                 if let weakSelf = self {
                     weakSelf.isFull = true
@@ -388,8 +418,8 @@ class XRVideoPlayer: UIView {
         
         UIApplication.shared.setStatusBarOrientation(.portrait, animated: true)
         isFull = false
-        bottomView.setRotateButtonStatus(isFull)
-        UIView.animate(withDuration: 1.0, delay: 0.0, usingSpringWithDamping: 1.0, initialSpringVelocity: 0.2, options: UIViewAnimationOptions(), animations: { [weak self]() in
+        bottomView?.setRotateButtonStatus(isFull)
+        UIView.animate(withDuration: 0.5, delay: 0.0, options: UIViewAnimationOptions.curveLinear, animations: { [weak self]() in
             
             if let weakSelf = self {
                 weakSelf.transform = CGAffineTransform.identity
@@ -398,7 +428,6 @@ class XRVideoPlayer: UIView {
                     closure(weakSelf.isFull)
                 }
             }
-            
             }) { [weak self](_) in
                 if let weakSelf = self {
                     weakSelf.layoutIfNeeded()
@@ -421,9 +450,11 @@ class XRVideoPlayer: UIView {
                             let currentTime = CMTimeGetSeconds(item.currentTime())
                             let totalTime = CGFloat(item.duration.value) / CGFloat(item.duration.timescale)
                             let rate = CGFloat(currentTime) / totalTime
-                            weakSelf.bottomView.setStartTimeWithSecconds(Double(currentTime))
-                            weakSelf.bottomView.setEndTimeWithSecconds(Double(totalTime))
-                            weakSelf.bottomView.setSliderProgress(Double(rate))
+                            DispatchQueue.main.async(execute: {
+                                weakSelf.bottomView?.setStartTimeWithSecconds(Double(currentTime))
+                                weakSelf.bottomView?.setEndTimeWithSecconds(Double(totalTime))
+                                weakSelf.bottomView?.setSliderProgress(Double(rate))
+                            })
                         }
                     }
                     })
@@ -467,18 +498,13 @@ class XRVideoPlayer: UIView {
                         switch status {
                         case .readyToPlay:
                             if let item = playerItem {
-                                bottomView.setEndTimeWithSecconds(CMTimeGetSeconds(item.duration))
+                                bottomView?.setEndTimeWithSecconds(CMTimeGetSeconds(item.duration))
                             }
                             self.playStatus = .playing
-                            bottomView.playButton.isEnabled = true
                             self.playVideo()
-                            loadingView?.stopAnimation()
                         case .failed:
                             print("error: \(player?.error?.localizedDescription)")
-                            bottomView.setPlayButtonState(false)
                             self.playStatus = .faild
-                            bottomView.playButton.isEnabled = false
-                            loadingView?.stopAnimation()
                         case .unknown:
                             break
                         }
@@ -493,13 +519,13 @@ class XRVideoPlayer: UIView {
                         let startRange = CMTimeGetSeconds(tRange.start)
                         let durationRange = CMTimeGetSeconds(tRange.duration)
                         if startRange == Float64.nan || durationRange == Float64.nan {
-                        
+                            
                         }
                         else {
                             let totalRange = startRange + durationRange
                             let precent = totalRange / CMTimeGetSeconds(item.duration)
                             print("precent: \(precent) total: \(totalRange) duration: \(CMTimeGetSeconds(item.duration))")
-                            bottomView.setProgress(Float(precent))
+                            bottomView?.setProgress(Float(precent))
                         }
                     }
                 }
@@ -509,7 +535,6 @@ class XRVideoPlayer: UIView {
                 if let item = playerItem, item.isPlaybackBufferEmpty {
                     self.pauseVideoPlay()
                     self.playStatus = .buffring
-                
                     // 缓冲一段时间
                     self.bufferingSomeSecconds()
                 }
