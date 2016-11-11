@@ -37,7 +37,7 @@ class XRVideoPlayer: UIView {
     fileprivate var bottomView: XRVideoToolBottomView!
     var navigationBar: XRVideoNavigationView!
     fileprivate var pauseByUser: Bool = false
-    fileprivate var playStatus: XRVideoPlayerPlayStatus = .stop
+    fileprivate var playStatus: XRVideoPlayerPlayStatus = .playing
     var isLocalResource: Bool = false // 是否是本地资源
     fileprivate var loadingView: XRActivityInditor?
     fileprivate var portraintFrame: CGRect?
@@ -108,11 +108,11 @@ class XRVideoPlayer: UIView {
                 if let videoPlayer = weakSelf.player {
                     if weakSelf.playStatus != .playing {
                         videoPlayer.play()
-                        weakSelf.bottomView.setPlayButtonState(false)
+                        weakSelf.bottomView.setPlayButtonState(true)
                         weakSelf.playStatus = .playing
                     }else {
                         videoPlayer.pause()
-                        weakSelf.bottomView.setPlayButtonState(true)
+                        weakSelf.bottomView.setPlayButtonState(false)
                         weakSelf.playStatus = .pause
                     }
                 }
@@ -237,6 +237,7 @@ class XRVideoPlayer: UIView {
     
     func videoPlayToEnd() -> Void {
         
+        self.playStatus = .stop
         self.player?.seek(to: kCMTimeZero)
         bottomView.setPlayButtonState(false)
     }
@@ -264,6 +265,7 @@ class XRVideoPlayer: UIView {
                 self.playStatus = .pause
             }
             videoPlayer.pause()
+            self.bottomView.setPlayButtonState(false)
         }
     }
     
@@ -275,6 +277,7 @@ class XRVideoPlayer: UIView {
             }
             videoPlayer.play()
             loadingView?.stopAnimation()
+            self.bottomView.setPlayButtonState(true)
         }
     }
     
