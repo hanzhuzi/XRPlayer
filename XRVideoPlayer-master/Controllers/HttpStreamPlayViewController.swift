@@ -9,7 +9,7 @@
 import UIKit
 
 class HttpStreamPlayViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
-
+    
     @IBOutlet weak var myTableView: UITableView!
     
     lazy var tvArray: [[String: String]] = [
@@ -18,7 +18,23 @@ class HttpStreamPlayViewController: UIViewController, UITableViewDelegate, UITab
         ["title" : "Heart tv", "url" : "http://ooyalahd2-f.akamaihd.net/i/globalradio02_delivery@156522/master.m3u8"],
         ["title" : "TVB-J2", "url" : "http://live1.ms.tvb.com/tvb/tv/j2/04/prog_index.m3u8"],
         ["title" : "TVB新闻", "url" : "http://live1.ms.tvb.com/tvb/tv/inews/044.m3u8"],
-        ["title" : "TVB高清", "url" : "http://live1.ms.tvb.com/tvb/tv/jade/044.m3u8"]
+        ["title" : "TVB高清", "url" : "http://live1.ms.tvb.com/tvb/tv/jade/044.m3u8"],
+        ["title" : "网络视频01", "url" : "http://wsmp32.bbc.co.uk"],
+        ["title" : "网络视频02", "url" : "http://baobab.wdjcdn.com/1456117847747a_x264.mp4"],
+        ["title" : "网络视频03", "url" : "http://baobab.wdjcdn.com/14525705791193.mp4"],
+        ["title" : "网络视频04", "url" : "http://baobab.wdjcdn.com/1456459181808howtoloseweight_x264.mp4"],
+        ["title" : "网络视频05", "url" : "http://baobab.wdjcdn.com/1455968234865481297704.mp4"],
+        ["title" : "网络视频06", "url" : "http://baobab.wdjcdn.com/1455782903700jy.mp4"],
+        ["title" : "网络视频07", "url" : "http://baobab.wdjcdn.com/14564977406580.mp4"],
+        ["title" : "网络视频08", "url" : "http://baobab.wdjcdn.com/1456316686552The.mp4"],
+        ["title" : "网络视频09", "url" : "http://baobab.wdjcdn.com/1456480115661mtl.mp4"],
+        ["title" : "网络视频10", "url" : "http://baobab.wdjcdn.com/1456665467509qingshu.mp4"],
+        ["title" : "网络视频11", "url" : "http://baobab.wdjcdn.com/1455614108256t(2).mp4"],
+        ["title" : "网络视频12", "url" : "http://baobab.wdjcdn.com/1456317490140jiyiyuetai_x264.mp4"],
+        ["title" : "网络视频13", "url" : "http://baobab.wdjcdn.com/1455888619273255747085_x264.mp4"],
+        ["title" : "网络视频14", "url" : "http://baobab.wdjcdn.com/1456734464766B(13).mp4"],
+        ["title" : "网络视频15", "url" : "http://baobab.wdjcdn.com/1456653443902B.mp4"],
+        ["title" : "网络视频16", "url" : "http://baobab.wdjcdn.com/1456231710844S(24).mp4"]
     ]
     
     override func viewDidLoad() {

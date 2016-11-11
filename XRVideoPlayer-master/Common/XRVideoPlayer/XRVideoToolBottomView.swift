@@ -161,7 +161,9 @@ class XRVideoToolBottomView: UIView {
     
     func setProgress(_ progress: Float) -> Void {
         
-        progressBar.setProgress(progress, animated: true)
+        if progress != Float.nan {
+            progressBar.setProgress(progress, animated: true)
+        }
     }
     
 }
