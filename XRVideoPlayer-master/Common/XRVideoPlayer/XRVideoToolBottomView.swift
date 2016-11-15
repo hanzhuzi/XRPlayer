@@ -14,21 +14,33 @@
 
 import UIKit
 
+class XRSlider: UISlider {
+    
+    open var sliderLineWidth: CGFloat = 1.0
+    
+    override func trackRect(forBounds bounds: CGRect) -> CGRect {
+        var rect = super.trackRect(forBounds: bounds)
+        rect.size.height = sliderLineWidth
+        rect.origin.y = (frame.height - rect.height) * 0.5
+        return rect
+    }
+    
+}
+
 class XRVideoToolBottomView: UIView {
     
     lazy var playButton: UIButton = UIButton(type: .custom)
     lazy var startTimeLbl: UILabel = UILabel()
     lazy var endTimeLbl: UILabel = UILabel()
-    lazy var progressBar: UIProgressView = UIProgressView()
-    lazy var slider: UISlider = {
+    lazy var progressBar: XRProgressView = XRProgressView(frame: CGRect.zero, progress: 0.0)
+    lazy var slider: XRSlider = {
         
-        return UISlider()
+        return XRSlider()
     }()
-    lazy var controlSlider: UISlider = UISlider()
     lazy var rotateButton: UIButton = UIButton(type: .custom)
     var playButtonClickClosure: (() -> ())?
     var rotationOrientationClosure: (() -> ())?
-    var sliderValueChangedClosure: ((_ value: Float) -> ())?
+    var sliderValueChangedClosure: ((_ value: Float, _ events: UIControlEvents) -> ())?
     
     override init(frame: CGRect) {
         super.init(frame: frame)
@@ -47,7 +59,7 @@ class XRVideoToolBottomView: UIView {
         self.addSubview(startTimeLbl)
         
         rotateButton.frame = CGRect(x: self.frame.maxX - 10.0 - 30.0, y: (self.frame.height - 30.0) * 0.5, width: 30, height: 30)
-        rotateButton.setImage(UIImage(named: "tofull"), for: UIControlState())
+        rotateButton.setImage(UIImage(named: "tofull"), for: UIControlState.normal)
         rotateButton.setImage(UIImage(named: "closefull"), for: .selected)
         rotateButton.addTarget(self, action: #selector(self.rotateOrientation), for: .touchUpInside)
         self.addSubview(rotateButton)
@@ -59,20 +71,23 @@ class XRVideoToolBottomView: UIView {
         endTimeLbl.text = "00:00:00"
         self.addSubview(endTimeLbl)
         
-        progressBar.frame = CGRect(x: startTimeLbl.frame.maxX + 8.0, y: bounds.height * 0.5 - 1.0, width: endTimeLbl.frame.minX - 10.0 - startTimeLbl.frame.maxX - 8.0, height: 2.0)
-        progressBar.progressViewStyle = .default
-        progressBar.progressTintColor = UIColor.darkGray
-        progressBar.trackTintColor = UIColor.lightGray
+        progressBar.frame = CGRect(x: startTimeLbl.frame.maxX + 8.0, y: (bounds.height - 2.0) * 0.5, width: endTimeLbl.frame.minX - 10.0 - startTimeLbl.frame.maxX - 8.0, height: 2.0)
+        progressBar.backgroundColor = UIColor.white
         self.addSubview(progressBar)
         
-        slider.frame = CGRect(x: startTimeLbl.frame.maxX + 5.0, y: (bounds.height - 25.0) * 0.5, width: endTimeLbl.frame.minX - 10.0 - startTimeLbl.frame.maxX - 5.0, height: 25.0)
+        slider.frame = CGRect(x: startTimeLbl.frame.maxX + 5.0, y: 0.0, width: endTimeLbl.frame.minX - 10.0 - startTimeLbl.frame.maxX - 2.0, height: bounds.height)
         slider.backgroundColor = UIColor.clear
         slider.maximumTrackTintColor = UIColor.clear
-        slider.setThumbImage(UIImage(named: "player-progress-point-h"), for: UIControlState())
         slider.minimumTrackTintColor = UIColor.red
         slider.minimumValue = 0.0
         slider.maximumValue = 1.0
+        slider.value = 0.0
+        slider.sliderLineWidth = 2.0
+        slider.isContinuous = false
+        slider.setThumbImage(UIImage(named: "player-progress-point-h"), for: UIControlState.normal)
         slider.addTarget(self, action: #selector(self.sliderValueChanged(_:)), for: .valueChanged)
+        slider.addTarget(self, action: #selector(self.sliderTouchDown(_:)), for: .touchDown)
+        slider.addTarget(self, action: #selector(self.sliderTouchUp(_:)), for: .touchUpInside)
         self.addSubview(slider)
     }
     
@@ -97,8 +112,25 @@ class XRVideoToolBottomView: UIView {
     
     func sliderValueChanged(_ slider: UISlider) -> Void {
         
+        debugPrint("slider value changed...")
         if let closure = sliderValueChangedClosure {
-            closure(slider.value)
+            closure(slider.value, .valueChanged)
+        }
+    }
+    
+    func sliderTouchDown(_ slider: UISlider) {
+        
+        debugPrint("slider touch down.")
+        if let closure = sliderValueChangedClosure {
+            closure(slider.value, .touchDown)
+        }
+    }
+    
+    func sliderTouchUp(_ slider: UISlider) {
+        
+        debugPrint("slider touch up.")
+        if let closure = sliderValueChangedClosure {
+            closure(slider.value, .touchUpInside)
         }
     }
     
@@ -149,20 +181,20 @@ class XRVideoToolBottomView: UIView {
     
     func setStartTimeWithSecconds(_ seccond: Double) -> Void {
         
-        let timeStr = seccondConvertTime(seccond)
+        let timeStr = seccondConvertTime(seccond.isNaN ? 0 : seccond)
         startTimeLbl.text = timeStr
     }
     
     func setEndTimeWithSecconds(_ seccond: Double) -> Void {
         
-        let timeStr = seccondConvertTime(seccond)
+        let timeStr = seccondConvertTime(seccond.isNaN ? 0 : seccond)
         endTimeLbl.text = timeStr
     }
     
     func setProgress(_ progress: Float) -> Void {
         
         if progress != Float.nan {
-            progressBar.setProgress(progress, animated: true)
+            progressBar.progress = CGFloat(progress)
         }
     }
     

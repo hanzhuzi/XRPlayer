@@ -58,6 +58,7 @@
 		013E535D1CD0B0AC009CA523 /* AsyncImageCache.swift in Sources */ = {isa = PBXBuildFile; fileRef = 013E535A1CD0B0AC009CA523 /* AsyncImageCache.swift */; };
 		013E535E1CD0B0AC009CA523 /* AsyncImageDownloader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 013E535B1CD0B0AC009CA523 /* AsyncImageDownloader.swift */; };
 		013E535F1CD0B0AC009CA523 /* UIImageView+AsyncImageCache.swift in Sources */ = {isa = PBXBuildFile; fileRef = 013E535C1CD0B0AC009CA523 /* UIImageView+AsyncImageCache.swift */; };
+		014FD22C1DD9E22E007CB9F3 /* XRProgressView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 014FD22B1DD9E22E007CB9F3 /* XRProgressView.swift */; };
 		015867731CD1EB04007DDFFB /* UINavigationController+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 015867721CD1EB04007DDFFB /* UINavigationController+Extension.swift */; };
 		01BD7AFE1CCF3E1600BE6587 /* VideoPlayLIstViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01BD7AFD1CCF3E1600BE6587 /* VideoPlayLIstViewController.swift */; };
 		01C23B3D1CD05FED00AF2B91 /* VideoListModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01C23B3C1CD05FED00AF2B91 /* VideoListModel.swift */; };
@@ -276,6 +277,7 @@
 		013E535A1CD0B0AC009CA523 /* AsyncImageCache.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AsyncImageCache.swift; sourceTree = "<group>"; };
 		013E535B1CD0B0AC009CA523 /* AsyncImageDownloader.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AsyncImageDownloader.swift; sourceTree = "<group>"; };
 		013E535C1CD0B0AC009CA523 /* UIImageView+AsyncImageCache.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIImageView+AsyncImageCache.swift"; sourceTree = "<group>"; };
+		014FD22B1DD9E22E007CB9F3 /* XRProgressView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = XRProgressView.swift; sourceTree = "<group>"; };
 		015867721CD1EB04007DDFFB /* UINavigationController+Extension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UINavigationController+Extension.swift"; sourceTree = "<group>"; };
 		01BD7AFD1CCF3E1600BE6587 /* VideoPlayLIstViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = VideoPlayLIstViewController.swift; sourceTree = "<group>"; };
 		01BD7AFF1CCF3EDD00BE6587 /* XRVideoPlayer-master-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "XRVideoPlayer-master-Bridging-Header.h"; sourceTree = "<group>"; };
@@ -553,6 +555,7 @@
 				01CDA4271CD1F97200A2449C /* UIColor+Extension.swift */,
 				01CDD4131CD3791E00E20405 /* XRVideoNavigationView.swift */,
 				011F0A6F1CDA1593004743F1 /* XRVideoDownloader.swift */,
+				014FD22B1DD9E22E007CB9F3 /* XRProgressView.swift */,
 			);
 			path = XRVideoPlayer;
 			sourceTree = "<group>";
@@ -953,6 +956,7 @@
 				01F693C21DD44BCC0062EA76 /* ConstraintInsets.swift in Sources */,
 				01F693AD1DD44BCC0062EA76 /* FromJSON.swift in Sources */,
 				01F693A81DD44BCC0062EA76 /* DateFormatterTransform.swift in Sources */,
+				014FD22C1DD9E22E007CB9F3 /* XRProgressView.swift in Sources */,
 				01F693DB1DD44BCC0062EA76 /* UILayoutSupport+Extensions.swift in Sources */,
 				01F693CC1DD44BCC0062EA76 /* ConstraintMakerExtendable.swift in Sources */,
 				01F693BE1DD44BCC0062EA76 /* ConstraintConfig.swift in Sources */,

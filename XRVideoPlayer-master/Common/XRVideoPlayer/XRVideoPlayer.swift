@@ -7,7 +7,9 @@
 //
 
 /**
- * @brief AVPlayer封装视频播放器
+ * @brief 基于AVPlayer视频播放器
+ * 
+ * @note  基于苹果原生框架AVPlayer封装的视频播放器，只支持Http live steaming
  *
  * @by    黯丶野火
  */
@@ -19,47 +21,26 @@ import AVFoundation
 private let bottomViewHeight: CGFloat = 40.0
 private let navigationBarHeight: CGFloat = 64.0
 
-// 播放器状态
-enum XRVideoPlayerPlayStatus: Int {
+fileprivate enum XRVideoPlayerPlayStatus {
     
-    case buffring
+    case ready
+    case buffering
     case playing
     case pause
     case faild
     case stop
 }
 
-class XRVideoPlayer: UIView {
+class XRVideoPlayer: UIView, UIGestureRecognizerDelegate {
     
     open var player: AVPlayer?
     open var playerLayer: AVPlayerLayer?
     open var playerItem: AVPlayerItem?
     open var bottomView: XRVideoToolBottomView?
-    var navigationBar: XRVideoNavigationView?
+    open var navigationBar: XRVideoNavigationView?
     fileprivate var pauseByUser: Bool = false
-    fileprivate var playStatus: XRVideoPlayerPlayStatus = .buffring {
-        
-        didSet {
-            switch playStatus {
-            case .playing:
-                bottomView?.setPlayButtonState(true)
-                loadingView?.stopAnimation()
-            case .buffring:
-                bottomView?.setPlayButtonState(false)
-                loadingView?.startAnimation()
-            case .pause:
-                bottomView?.setPlayButtonState(false)
-                loadingView?.stopAnimation()
-            case .stop:
-                bottomView?.setPlayButtonState(false)
-                loadingView?.stopAnimation()
-            case .faild:
-                bottomView?.setPlayButtonState(false)
-                loadingView?.stopAnimation()
-            }
-        }
-    }
-    var isLocalResource: Bool = false // 是否是本地资源
+    fileprivate var tapToolViewByUser: Bool = false
+    var isLocalResource: Bool = false
     open var loadingView: XRActivityInditor?
     fileprivate var portraintFrame: CGRect?
     fileprivate var hiddenOrShow: Bool = false
@@ -72,6 +53,31 @@ class XRVideoPlayer: UIView {
     var videoURL: String?
     fileprivate var isFull: Bool = false
     
+    fileprivate var playStatus: XRVideoPlayerPlayStatus = .buffering {
+        
+        didSet {
+            switch playStatus {
+            case .playing:
+                bottomView?.setPlayButtonState(true)
+                loadingView?.stopAnimation()
+            case .buffering:
+                bottomView?.setPlayButtonState(false)
+                loadingView?.startAnimation()
+            case .pause:
+                bottomView?.setPlayButtonState(false)
+                loadingView?.stopAnimation()
+            case .stop:
+                bottomView?.setPlayButtonState(false)
+                loadingView?.stopAnimation()
+            case .faild:
+                bottomView?.setPlayButtonState(false)
+                loadingView?.stopAnimation()
+            case .ready:
+                break
+            }
+        }
+    }
+    
     deinit {
         if playerItem != nil {
             self.removePlayerItemObserve(playerItem!)
@@ -81,17 +87,15 @@ class XRVideoPlayer: UIView {
     
     fileprivate override init(frame: CGRect) {
         super.init(frame: frame)
-        
-        NotificationCenter.default.addObserver(self, selector: #selector(self.applicationActiveStatusChanged(_:)), name: NSNotification.Name(rawValue: "ApplicationActiveStatusChanged"), object: nil)
     }
     
     required init?(coder aDecoder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
     
-    init(frame: CGRect, videoURL: String, isLocalResource: Bool) {
+    convenience init(frame: CGRect, videoURL: String, isLocalResource: Bool) {
         
-        super.init(frame: frame)
+        self.init(frame: frame)
         
         self.videoURL = videoURL
         self.isLocalResource = isLocalResource
@@ -123,21 +127,24 @@ class XRVideoPlayer: UIView {
             loadingView?.startAnimation()
             
             NotificationCenter.default.addObserver(self, selector: #selector(self.videoPlayToEnd), name: NSNotification.Name.AVPlayerItemDidPlayToEndTime, object: nil)
+            NotificationCenter.default.addObserver(self, selector: #selector(self.applicationActiveStatusChanged(_:)), name: NSNotification.Name(rawValue: "ApplicationActiveStatusChanged"), object: nil)
         }
         
         navigationBar = XRVideoNavigationView(frame: CGRect(x: 0, y: 0, width: self.frame.width, height: navigationBarHeight))
-        navigationBar?.backgroundColor = UIColor.RGBColor(10, g: 10, b: 10, a: 0.2)
+        navigationBar?.backgroundColor = UIColor.orange.withAlphaComponent(0.5)
         self.addSubview(navigationBar!)
         
         bottomView = XRVideoToolBottomView(frame: CGRect(x: 0, y: self.bounds.maxY - bottomViewHeight, width: self.frame.width, height: bottomViewHeight))
-        bottomView?.backgroundColor = UIColor.black.withAlphaComponent(0.5)
+        bottomView?.backgroundColor = UIColor.orange.withAlphaComponent(0.5)
         self.addSubview(bottomView!)
         bottomView?.playButtonClickClosure = { [weak self]() -> Void in
             if let weakSelf = self {
                 if let _ = weakSelf.player {
                     if weakSelf.playStatus != .playing {
+                        weakSelf.pauseByUser = false
                         weakSelf.playVideo()
                     }else {
+                        weakSelf.pauseByUser = true
                         weakSelf.pauseVideoPlay()
                     }
                 }
@@ -154,12 +161,19 @@ class XRVideoPlayer: UIView {
             }
         }
         
-        bottomView?.sliderValueChangedClosure = { [weak self](value) -> () in
+        bottomView?.sliderValueChangedClosure = { [weak self](value, events) -> () in
             if let weakSelf = self {
-                if let item = weakSelf.playerItem {
-                    let secconds = CMTimeGetSeconds(item.duration) * Float64(value)
-                    if !secconds.isNaN {
-                        weakSelf.seekTimeToPlay(Int64(secconds), toPlay: true)
+                if events == .touchDown {
+                    if weakSelf.playStatus == .playing {
+                        weakSelf.pauseVideoPlay() // 先暂停播放，等待用户操作进度完成再播放.
+                    }
+                }
+                else if events == .touchUpInside {
+                    if let item = weakSelf.playerItem {
+                        let secconds = CMTimeGetSeconds(item.duration) * Float64(value)
+                        if !secconds.isNaN {
+                            weakSelf.seekTimeToPlay(Int64(secconds), toPlay: true)
+                        }
                     }
                 }
             }
@@ -168,6 +182,7 @@ class XRVideoPlayer: UIView {
         // tap Gesture
         self.isUserInteractionEnabled = true
         let tap: UITapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(self.hiddenOrShowWithAnimated))
+        tap.delegate = self
         tap.numberOfTapsRequired = 1 // one tap
         self.addGestureRecognizer(tap)
     }
@@ -245,7 +260,9 @@ class XRVideoPlayer: UIView {
                         weakSelf.hiddenOrShow = false
                         let time = DispatchTime.now() + 3.0
                         DispatchQueue.main.asyncAfter(deadline: time, execute: {
-                            weakSelf.hiddenOrShowWithAnimated()
+                            if !weakSelf.tapToolViewByUser {
+                                weakSelf.hiddenOrShowWithAnimated()
+                            }
                         })
                     }
                 })
@@ -274,20 +291,23 @@ class XRVideoPlayer: UIView {
     
     func videoPlayToEnd() -> Void {
         
-        self.playStatus = .stop
-        self.player?.seek(to: kCMTimeZero)
-        bottomView?.setPlayButtonState(false)
+        DispatchQueue.main.asyncAfter(deadline: DispatchTime.now() + 1.0) { [weak self] in
+            if let weakSelf = self {
+                weakSelf.playStatus = .stop
+                weakSelf.player?.seek(to: kCMTimeZero)
+                weakSelf.bottomView?.setPlayButtonState(false)
+            }
+        }
     }
     
     // seek to time to play...
     func seekTimeToPlay(_ value: Int64, toPlay: Bool = true) -> Void {
         
         if let videoPlayer = player, let curItem = playerItem {
-            
             videoPlayer.seek(to: CMTimeMakeWithSeconds(Float64(value), curItem.currentTime().timescale), toleranceBefore: kCMTimeZero, toleranceAfter: kCMTimeZero, completionHandler: { [weak self](finished) in
                 if let weakSelf = self {
                     if finished {
-                        if toPlay && weakSelf.playStatus == .playing {
+                        if toPlay && weakSelf.playStatus == .pause {
                             weakSelf.playVideo()
                         }
                     }
@@ -335,17 +355,20 @@ class XRVideoPlayer: UIView {
         self.observePlayerItemPlayStatus(playerItem!)
     }
     
-    // 缓冲
+    // buffering...
     func bufferingSomeSecconds() {
         
-        self.playStatus = .buffring
+        if self.playStatus != .pause {
+            self.pauseVideoPlay()
+        }
+        self.playStatus = .buffering
         
         var isBuffering: Bool = false
         if isBuffering { return }
         
         isBuffering = true
-        self.pauseVideoPlay()
-        DispatchQueue.main.asyncAfter(deadline: DispatchTime.now() + 1.0) {[weak self] in
+        
+        DispatchQueue.main.asyncAfter(deadline: DispatchTime.now() + 3.0) {[weak self] in
             if let weakSelf = self {
                 weakSelf.playVideo()
                 isBuffering = false
@@ -500,7 +523,7 @@ class XRVideoPlayer: UIView {
                             if let item = playerItem {
                                 bottomView?.setEndTimeWithSecconds(CMTimeGetSeconds(item.duration))
                             }
-                            self.playStatus = .playing
+                            self.playStatus = .ready
                             self.playVideo()
                         case .failed:
                             print("error: \(player?.error?.localizedDescription)")
@@ -518,7 +541,7 @@ class XRVideoPlayer: UIView {
                     if let tRange = timeRange {
                         let startRange = CMTimeGetSeconds(tRange.start)
                         let durationRange = CMTimeGetSeconds(tRange.duration)
-                        if startRange == Float64.nan || durationRange == Float64.nan {
+                        if startRange.isNaN || durationRange.isNaN {
                             
                         }
                         else {
@@ -528,13 +551,22 @@ class XRVideoPlayer: UIView {
                             bottomView?.setProgress(Float(precent))
                         }
                     }
+                    if item.isPlaybackLikelyToKeepUp {
+                        self.playStatus = self.pauseByUser ? .pause : .playing
+                    }
+                    else {
+                        self.pauseVideoPlay()
+                        self.playStatus = .buffering
+                        // 缓冲一段时间
+                        self.bufferingSomeSecconds()
+                    }
                 }
             }
             else if path == "playbackBufferEmpty" {
                 // 缓冲空了
                 if let item = playerItem, item.isPlaybackBufferEmpty {
                     self.pauseVideoPlay()
-                    self.playStatus = .buffring
+                    self.playStatus = .buffering
                     // 缓冲一段时间
                     self.bufferingSomeSecconds()
                 }
@@ -542,11 +574,26 @@ class XRVideoPlayer: UIView {
             else if path == "playbackLikelyToKeepUp" {
                 // 缓冲够了
                 if let item = playerItem, item.isPlaybackLikelyToKeepUp {
-                    self.playStatus = .playing
+                    self.playStatus = self.pauseByUser ? .pause : .playing
                 }
             }
         }
     }
+    
+    // MARK: - UIGestureRecognizerDelegate
+    override func gestureRecognizerShouldBegin(_ gestureRecognizer: UIGestureRecognizer) -> Bool {
+        
+        let local = gestureRecognizer.location(in: gestureRecognizer.view)
+        if bottomView!.frame.contains(local) {
+            tapToolViewByUser = true
+            return false
+        }
+        else {
+            tapToolViewByUser = false
+            return true
+        }
+    }
+    
     
     
 }

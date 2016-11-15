@@ -41,18 +41,33 @@ class XRActivityInditor: UIView {
     
     func startAnimation() -> Void {
         if !dgActivityView.animating {
-            dgActivityView.startAnimating()
-            self.isHidden = false
-            isAnimating = dgActivityView.animating
+            UIView.animate(withDuration: 0.3, animations: { [weak self] in
+                if let weakSelf = self {
+                    weakSelf.alpha = 1.0
+                }
+                }, completion: { [weak self](_) in
+                    if let weakSelf = self {
+                        weakSelf.dgActivityView.startAnimating()
+                        weakSelf.isAnimating = weakSelf.dgActivityView.animating
+                    }
+                })
         }
     }
     
     func stopAnimation() -> Void {
         if dgActivityView.animating {
-            dgActivityView.stopAnimating()
-            self.isHidden = true
-            isAnimating = dgActivityView.animating
+            UIView.animate(withDuration: 0.3, animations: { [weak self] in
+                if let weakSelf = self {
+                    weakSelf.alpha = 0.0
+                }
+                }, completion: { [weak self](_) in
+                    if let weakSelf = self {
+                        weakSelf.dgActivityView.stopAnimating()
+                        weakSelf.isAnimating = weakSelf.dgActivityView.animating
+                    }
+                })
         }
     }
+    
 }
 

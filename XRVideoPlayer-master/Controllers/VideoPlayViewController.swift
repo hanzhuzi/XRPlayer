@@ -38,13 +38,11 @@ class VideoPlayViewController: UIViewController {
         playerView = XRVideoPlayer(frame: CGRect(x: 0, y: 0, width: self.view.bounds.width, height: 250), videoURL: videoURL, isLocalResource: false)
         playerView?.backgroundColor = UIColor.black.withAlphaComponent(0.9)
         self.view.addSubview(playerView!)
-        playerView?.playVideo()
-        
         playerView?.changedOrientationClosure = {[weak self](isFull) -> () in
             // 旋转屏幕执行动画改变子控件的frame
             if let weakSelf = self {
                 weakSelf.isFull = isFull
-                
+                weakSelf.descripTextView?.isHidden = weakSelf.isFull
             }
         }
     }
@@ -82,7 +80,7 @@ class VideoPlayViewController: UIViewController {
                         // 退出全屏
                         weakSelf.playerView?.orientationPortraintScreen()
                     }else {
-                        weakSelf.navigationController?.popViewController(animated: true)
+                        let _ = weakSelf.navigationController?.popViewController(animated: true)
                     }
                 }
             }
