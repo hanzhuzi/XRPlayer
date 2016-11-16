@@ -4,11 +4,24 @@
 
 # Reveal
 
-
+![](https://github.com/hanzhuzi/XRVideoPlayer-master/blob/master/XRVideoPlayer-master/snaps/snap1.png)
+![](https://github.com/hanzhuzi/XRVideoPlayer-master/blob/master/XRVideoPlayer-master/snaps/snap2.png)
+![](https://github.com/hanzhuzi/XRVideoPlayer-master/blob/master/XRVideoPlayer-master/snaps/snap3.png)
+![](https://github.com/hanzhuzi/XRVideoPlayer-master/blob/master/XRVideoPlayer-master/snaps/snap4.png)
 
 # Requirements
 * iOS 8.0+
 * Xcode 8.0+
+
+# Language
+* Swift 3.0
+
+# Component
+* Request: [Alamofire](https://github.com/Alamofire/Alamofire)
+* Layout : [SnapKit](https://github.com/SnapKit)
+* JSON   : [SwiftyJSON](https://github.com/SwiftyJSON/SwiftyJSON)
+* Mapping: [ObjectMapper](https://github.com/Hearst-DD/ObjectMapper)
+* Loading: [DGActivityIndicatorView](https://github.com/gontovnik/DGActivityIndicatorView)
 
 # Usage
 
