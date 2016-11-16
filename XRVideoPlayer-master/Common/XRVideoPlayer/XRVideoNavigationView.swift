@@ -14,9 +14,9 @@
 
 import UIKit
 
-private let navigationItemButtonWH: CGFloat = 32.0
+private let navigationItemButtonWH: CGFloat = 44.0
 private let statusBarHeight: CGFloat = 20.0
-private let itemToLeft: CGFloat = 10.0
+private let itemToLeft: CGFloat = 12.0
 
 class XRVideoNavigationView: UIView {
 
@@ -35,7 +35,7 @@ class XRVideoNavigationView: UIView {
         self.addSubview(backButton)
         
         titleLabel.frame = CGRect(x: backButton.frame.maxX + itemToLeft, y: statusBarHeight + (frame.height  - statusBarHeight - navigationItemButtonWH) * 0.5, width: frame.width - (backButton.frame.maxX + itemToLeft) * 2.0, height: navigationItemButtonWH)
-        titleLabel.font = UIFont.systemFont(ofSize: 15.0)
+        titleLabel.font = UIFont.systemFont(ofSize: 16.0)
         titleLabel.textColor = UIColor.white
         titleLabel.textAlignment = .center
         self.addSubview(titleLabel)

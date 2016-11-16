@@ -18,8 +18,9 @@ import UIKit
 import Foundation
 import AVFoundation
 
-private let bottomViewHeight: CGFloat = 40.0
+private let bottomViewHeight: CGFloat = 45.0
 private let navigationBarHeight: CGFloat = 64.0
+private let loadingViewHeight: CGFloat = 60.0
 
 fileprivate enum XRVideoPlayerPlayStatus {
     
@@ -60,18 +61,23 @@ class XRVideoPlayer: UIView, UIGestureRecognizerDelegate {
             case .playing:
                 bottomView?.setPlayButtonState(true)
                 loadingView?.stopAnimation()
+                bottomView?.slider.isAllowDraging = true
             case .buffering:
                 bottomView?.setPlayButtonState(false)
                 loadingView?.startAnimation()
+                bottomView?.slider.isAllowDraging = true
             case .pause:
                 bottomView?.setPlayButtonState(false)
                 loadingView?.stopAnimation()
+                bottomView?.slider.isAllowDraging = true
             case .stop:
                 bottomView?.setPlayButtonState(false)
                 loadingView?.stopAnimation()
+                bottomView?.slider.isAllowDraging = false
             case .faild:
                 bottomView?.setPlayButtonState(false)
                 loadingView?.stopAnimation()
+                bottomView?.slider.isAllowDraging = false
             case .ready:
                 break
             }
@@ -121,22 +127,23 @@ class XRVideoPlayer: UIView, UIGestureRecognizerDelegate {
             self.observePlayerPlayTime()
             self.observePlayerItemPlayStatus(playerItem!)
             
-            loadingView = XRActivityInditor(frame: CGRect(x: 0, y: 0, width: 60, height: 60))
-            loadingView?.center = CGPoint(x: self.bounds.width * 0.5, y: self.bounds.height * 0.5)
-            self.addSubview(loadingView!)
-            loadingView?.startAnimation()
-            
             NotificationCenter.default.addObserver(self, selector: #selector(self.videoPlayToEnd), name: NSNotification.Name.AVPlayerItemDidPlayToEndTime, object: nil)
             NotificationCenter.default.addObserver(self, selector: #selector(self.applicationActiveStatusChanged(_:)), name: NSNotification.Name(rawValue: "ApplicationActiveStatusChanged"), object: nil)
         }
         
         navigationBar = XRVideoNavigationView(frame: CGRect(x: 0, y: 0, width: self.frame.width, height: navigationBarHeight))
-        navigationBar?.backgroundColor = UIColor.orange.withAlphaComponent(0.5)
+        navigationBar?.backgroundColor = UIColor.rgbColor(100, g: 100, b: 100, a: 0.5)
         self.addSubview(navigationBar!)
         
         bottomView = XRVideoToolBottomView(frame: CGRect(x: 0, y: self.bounds.maxY - bottomViewHeight, width: self.frame.width, height: bottomViewHeight))
-        bottomView?.backgroundColor = UIColor.orange.withAlphaComponent(0.5)
+        bottomView?.backgroundColor = UIColor.rgbColor(100, g: 100, b: 100, a: 0.5)
         self.addSubview(bottomView!)
+        
+        loadingView = XRActivityInditor(frame: CGRect(x: 0, y: 0, width: loadingViewHeight, height: loadingViewHeight))
+        loadingView?.center = CGPoint(x: self.frame.width * 0.5, y: self.frame.height * 0.5 + (navigationBar!.frame.height - bottomView!.frame.height) * 0.5)
+        self.addSubview(loadingView!)
+        loadingView?.startAnimation()
+        
         bottomView?.playButtonClickClosure = { [weak self]() -> Void in
             if let weakSelf = self {
                 if let _ = weakSelf.player {
@@ -221,16 +228,15 @@ class XRVideoPlayer: UIView, UIGestureRecognizerDelegate {
             bottomView?.layoutIfNeeded()
             navigationBar?.frame = CGRect(x: 0, y: 0, width: self.bounds.width, height: navigationBarHeight)
             navigationBar?.layoutIfNeeded()
-            loadingView?.center = CGPoint(x: self.bounds.width * 0.5, y: self.bounds.height * 0.5)
+            loadingView?.center = CGPoint(x: self.frame.height * 0.5, y: self.frame.width * 0.5 + (navigationBar!.frame.height - bottomView!.frame.height) * 0.5)
             loadingView?.layoutIfNeeded()
-            
         }else {
             playerLayer?.frame = self.bounds
             bottomView?.frame = CGRect(x: 0, y: self.bounds.maxY - bottomViewHeight, width: self.frame.width, height: bottomViewHeight)
             bottomView?.layoutIfNeeded()
             navigationBar?.frame = CGRect(x: 0, y: 0, width: self.frame.width, height: navigationBarHeight)
             navigationBar?.layoutIfNeeded()
-            loadingView?.center = CGPoint(x: self.bounds.width * 0.5, y: self.bounds.height * 0.5)
+            loadingView?.center = CGPoint(x: self.frame.width * 0.5, y: self.frame.height * 0.5 + (navigationBar!.frame.height - bottomView!.frame.height) * 0.5)
             loadingView?.layoutIfNeeded()
         }
     }
@@ -317,17 +323,17 @@ class XRVideoPlayer: UIView, UIGestureRecognizerDelegate {
     }
     
     func pauseVideoPlay() -> Void {
-        if let videoPlayer = player {
+        if let videoPlayer = player , self.playStatus != .pause {
             videoPlayer.pause()
-            self.playStatus = .pause
+            self.playStatus = videoPlayer.rate >= 1.0 ? .playing : .pause
         }
     }
     
     func playVideo() -> Void {
         
-        if let videoPlayer = player {
+        if let videoPlayer = player , self.playStatus != .playing {
             videoPlayer.play()
-            self.playStatus = .playing
+            self.playStatus = videoPlayer.rate >= 1.0 ? .playing : .pause
         }
     }
     
@@ -368,7 +374,7 @@ class XRVideoPlayer: UIView, UIGestureRecognizerDelegate {
         
         isBuffering = true
         
-        DispatchQueue.main.asyncAfter(deadline: DispatchTime.now() + 3.0) {[weak self] in
+        DispatchQueue.main.after(3.0) { [weak self] in
             if let weakSelf = self {
                 weakSelf.playVideo()
                 isBuffering = false
@@ -415,10 +421,12 @@ class XRVideoPlayer: UIView, UIGestureRecognizerDelegate {
         /* UIDevice.currentDevice().setValue(UIInterfaceOrientation.LandscapeRight.rawValue, forKey: "orientation")
          这个方法虽然可以，但是在程序前后台切换时会导致横竖屏的混乱.
          */
-        UIApplication.shared.setStatusBarOrientation(.landscapeRight, animated: true)
+        UIApplication.shared.statusBarOrientation = .landscapeRight
+        // deprecated in iOS 9.0 latter
+        // UIApplication.shared.setStatusBarOrientation(.landscapeRight, animated: true)
         isFull = true
         bottomView?.setRotateButtonStatus(isFull)
-        UIView.animate(withDuration: 0.3, delay: 0.0, options: UIViewAnimationOptions.curveLinear, animations: { [weak self] in
+        UIView.animate(withDuration: 0.3, delay: 0.0, options: UIViewAnimationOptions.curveEaseInOut, animations: { [weak self] in
             if let weakSelf = self {
                 weakSelf.transform = CGAffineTransform(rotationAngle: weakSelf.angleToRadian(90))
                 weakSelf.frame = weakSelf.keyWindow.bounds
@@ -439,10 +447,10 @@ class XRVideoPlayer: UIView, UIGestureRecognizerDelegate {
     // 竖屏模式
     func orientationPortraintScreen() -> Void {
         
-        UIApplication.shared.setStatusBarOrientation(.portrait, animated: true)
+        UIApplication.shared.statusBarOrientation = .portrait
         isFull = false
         bottomView?.setRotateButtonStatus(isFull)
-        UIView.animate(withDuration: 0.5, delay: 0.0, options: UIViewAnimationOptions.curveLinear, animations: { [weak self]() in
+        UIView.animate(withDuration: 0.5, delay: 0.0, options: UIViewAnimationOptions.curveEaseInOut, animations: { [weak self]() in
             
             if let weakSelf = self {
                 weakSelf.transform = CGAffineTransform.identity
@@ -466,7 +474,7 @@ class XRVideoPlayer: UIView, UIGestureRecognizerDelegate {
         if let videoPlayer = player {
             let playerItem = videoPlayer.currentItem
             if let item = playerItem {
-                videoPlayer.addPeriodicTimeObserver(forInterval: CMTimeMake(1, 1), queue: DispatchQueue.main, using: { [weak self](time) in
+                videoPlayer.addPeriodicTimeObserver(forInterval: CMTimeMake(1, 1), queue: DispatchQueue(label: "timer.observe"), using: { [weak self](time) in
                     if let weakSelf = self {
                         let loadedRanges = item.seekableTimeRanges
                         if loadedRanges.count > 0 && item.duration.timescale != 0 {
@@ -528,6 +536,7 @@ class XRVideoPlayer: UIView, UIGestureRecognizerDelegate {
                         case .failed:
                             print("error: \(player?.error?.localizedDescription)")
                             self.playStatus = .faild
+                            
                         case .unknown:
                             break
                         }
@@ -536,6 +545,9 @@ class XRVideoPlayer: UIView, UIGestureRecognizerDelegate {
             }else if path == "loadedTimeRanges" {
                 // 加载进度
                 if let item = playerItem {
+                    
+                    debugPrint("rate: \(player!.rate)")
+                    
                     let timeArray = item.loadedTimeRanges
                     let timeRange = timeArray.first?.timeRangeValue
                     if let tRange = timeRange {
@@ -552,11 +564,12 @@ class XRVideoPlayer: UIView, UIGestureRecognizerDelegate {
                         }
                     }
                     if item.isPlaybackLikelyToKeepUp {
-                        self.playStatus = self.pauseByUser ? .pause : .playing
+                        if let videoPlayer = self.player {
+                            self.playStatus = videoPlayer.rate >= 1.0 && !self.pauseByUser ? .playing : .pause
+                        }
                     }
                     else {
                         self.pauseVideoPlay()
-                        self.playStatus = .buffering
                         // 缓冲一段时间
                         self.bufferingSomeSecconds()
                     }
@@ -566,7 +579,6 @@ class XRVideoPlayer: UIView, UIGestureRecognizerDelegate {
                 // 缓冲空了
                 if let item = playerItem, item.isPlaybackBufferEmpty {
                     self.pauseVideoPlay()
-                    self.playStatus = .buffering
                     // 缓冲一段时间
                     self.bufferingSomeSecconds()
                 }
@@ -574,7 +586,9 @@ class XRVideoPlayer: UIView, UIGestureRecognizerDelegate {
             else if path == "playbackLikelyToKeepUp" {
                 // 缓冲够了
                 if let item = playerItem, item.isPlaybackLikelyToKeepUp {
-                    self.playStatus = self.pauseByUser ? .pause : .playing
+                    if let videoPlayer = self.player {
+                        self.playStatus = videoPlayer.rate >= 1.0 && !self.pauseByUser ? .playing : .pause
+                    }
                 }
             }
         }

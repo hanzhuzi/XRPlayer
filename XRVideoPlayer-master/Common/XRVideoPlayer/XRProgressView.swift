@@ -31,13 +31,9 @@ class XRProgressView: UIView {
     override init(frame: CGRect) {
         super.init(frame: frame)
         
-        self.layer.cornerRadius = frame.height * 0.5
-        self.layer.masksToBounds = true
         overlayLayer.frame = CGRect(x: 0, y: 0, width: 0, height: frame.height)
         overlayLayer.anchorPoint = CGPoint(x: 0, y: 0.5)
-        overlayLayer.cornerRadius = frame.height * 0.5
-        overlayLayer.masksToBounds = true
-        overlayLayer.backgroundColor = UIColor.darkGray.cgColor
+        overlayLayer.backgroundColor = UIColor.yellow.cgColor
         self.layer.addSublayer(overlayLayer)
     }
     

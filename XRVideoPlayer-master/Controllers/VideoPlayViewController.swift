@@ -49,7 +49,7 @@ class VideoPlayViewController: UIViewController {
     
     func setupUI() {
         
-        self.view.backgroundColor = UIColor.RGBColor(255, g: 255, b: 255, a: 1.0)
+        self.view.backgroundColor = UIColor.rgbColor(255, g: 255, b: 255, a: 1.0)
 //        videoURL = "http://zyvideo1.oss-cn-qingdao.aliyuncs.com/zyvd/7c/de/04ec95f4fd42d9d01f63b9683ad0"
         if let url = videoURL {
             setupPlayerView(url)

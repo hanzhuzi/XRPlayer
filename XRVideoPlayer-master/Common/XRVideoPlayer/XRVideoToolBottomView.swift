@@ -17,6 +17,14 @@ import UIKit
 class XRSlider: UISlider {
     
     open var sliderLineWidth: CGFloat = 1.0
+    open var isAllowDraging: Bool = true {
+        
+        didSet {
+            if isAllowDraging == false {
+                self.value = 0.0
+            }
+        }
+    }
     
     override func trackRect(forBounds bounds: CGRect) -> CGRect {
         var rect = super.trackRect(forBounds: bounds)
@@ -73,6 +81,8 @@ class XRVideoToolBottomView: UIView {
         
         progressBar.frame = CGRect(x: startTimeLbl.frame.maxX + 8.0, y: (bounds.height - 2.0) * 0.5, width: endTimeLbl.frame.minX - 10.0 - startTimeLbl.frame.maxX - 8.0, height: 2.0)
         progressBar.backgroundColor = UIColor.white
+        progressBar.layer.masksToBounds = true
+        progressBar.layer.cornerRadius = progressBar.frame.height * 0.5
         self.addSubview(progressBar)
         
         slider.frame = CGRect(x: startTimeLbl.frame.maxX + 5.0, y: 0.0, width: endTimeLbl.frame.minX - 10.0 - startTimeLbl.frame.maxX - 2.0, height: bounds.height)
@@ -110,25 +120,37 @@ class XRVideoToolBottomView: UIView {
         slider.frame = CGRect(x: startTimeLbl.frame.maxX + 5.0, y: (bounds.height - 25.0) * 0.5, width: endTimeLbl.frame.minX - 10.0 - startTimeLbl.frame.maxX - 5.0, height: 25.0)
     }
     
-    func sliderValueChanged(_ slider: UISlider) -> Void {
+    func sliderValueChanged(_ slider: XRSlider) -> Void {
         
         debugPrint("slider value changed...")
+        if !slider.isAllowDraging {
+            slider.value = 0.0
+            return
+        }
         if let closure = sliderValueChangedClosure {
             closure(slider.value, .valueChanged)
         }
     }
     
-    func sliderTouchDown(_ slider: UISlider) {
+    func sliderTouchDown(_ slider: XRSlider) {
         
         debugPrint("slider touch down.")
+        if !slider.isAllowDraging {
+            slider.value = 0.0
+            return
+        }
         if let closure = sliderValueChangedClosure {
             closure(slider.value, .touchDown)
         }
     }
     
-    func sliderTouchUp(_ slider: UISlider) {
+    func sliderTouchUp(_ slider: XRSlider) {
         
         debugPrint("slider touch up.")
+        if !slider.isAllowDraging {
+            slider.value = 0.0
+            return
+        }
         if let closure = sliderValueChangedClosure {
             closure(slider.value, .touchUpInside)
         }
