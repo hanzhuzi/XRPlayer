@@ -2,18 +2,9 @@
 
 基于AVPlayer封装的视频播放器，支持横竖屏切换，支持快进快退，支持Http协议视频流
 
-# Reveal
-
-![](https://github.com/hanzhuzi/XRVideoPlayer-master/blob/master/XRVideoPlayer-master/snaps/snap1.png)
-![](https://github.com/hanzhuzi/XRVideoPlayer-master/blob/master/XRVideoPlayer-master/snaps/snap2.png)
-![](https://github.com/hanzhuzi/XRVideoPlayer-master/blob/master/XRVideoPlayer-master/snaps/snap3.png)
-![](https://github.com/hanzhuzi/XRVideoPlayer-master/blob/master/XRVideoPlayer-master/snaps/snap4.png)
-
 # Requirements
 * iOS 8.0+
 * Xcode 8.0+
-
-# Language
 * Swift 3.0
 
 # Component
@@ -61,3 +52,12 @@
     self.navigationController?.pushViewController(videoDetailVc, animated: true)
 
 ```
+
+# Reveal
+
+![](https://github.com/hanzhuzi/XRVideoPlayer-master/blob/master/XRVideoPlayer-master/snaps/snap1.png)
+![](https://github.com/hanzhuzi/XRVideoPlayer-master/blob/master/XRVideoPlayer-master/snaps/snap2.png)
+![](https://github.com/hanzhuzi/XRVideoPlayer-master/blob/master/XRVideoPlayer-master/snaps/snap3.png)
+![](https://github.com/hanzhuzi/XRVideoPlayer-master/blob/master/XRVideoPlayer-master/snaps/snap4.png)
+
+# Future...
