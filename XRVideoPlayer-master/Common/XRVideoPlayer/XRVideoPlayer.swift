@@ -374,7 +374,7 @@ class XRVideoPlayer: UIView, UIGestureRecognizerDelegate {
         
         isBuffering = true
         
-        DispatchQueue.main.after(3.0) { [weak self] in
+        DispatchQueue.main.asyncAfter(deadline: DispatchTime.now() + 3.0) { [weak self] in
             if let weakSelf = self {
                 weakSelf.playVideo()
                 isBuffering = false
@@ -384,6 +384,7 @@ class XRVideoPlayer: UIView, UIGestureRecognizerDelegate {
                 }
             }
         }
+        
     }
     
     // MARK: 屏幕旋转控制
