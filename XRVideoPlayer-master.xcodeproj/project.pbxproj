@@ -8,7 +8,6 @@
 
 /* Begin PBXBuildFile section */
 		0105C2F21CCB680000F268E0 /* RegulationBrightness.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0105C2F11CCB680000F268E0 /* RegulationBrightness.swift */; };
-		011F0A701CDA1593004743F1 /* XRVideoDownloader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 011F0A6F1CDA1593004743F1 /* XRVideoDownloader.swift */; };
 		01260ECA1DD5A94E00E668E6 /* DGActivityIndicatorAnimation.m in Sources */ = {isa = PBXBuildFile; fileRef = 01260E841DD5A94E00E668E6 /* DGActivityIndicatorAnimation.m */; };
 		01260ECB1DD5A94E00E668E6 /* DGActivityIndicatorBallBeatAnimation.m in Sources */ = {isa = PBXBuildFile; fileRef = 01260E861DD5A94E00E668E6 /* DGActivityIndicatorBallBeatAnimation.m */; };
 		01260ECC1DD5A94E00E668E6 /* DGActivityIndicatorBallClipRotateAnimation.m in Sources */ = {isa = PBXBuildFile; fileRef = 01260E881DD5A94E00E668E6 /* DGActivityIndicatorBallClipRotateAnimation.m */; };
@@ -61,6 +60,15 @@
 		014FD22C1DD9E22E007CB9F3 /* XRProgressView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 014FD22B1DD9E22E007CB9F3 /* XRProgressView.swift */; };
 		015867731CD1EB04007DDFFB /* UINavigationController+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 015867721CD1EB04007DDFFB /* UINavigationController+Extension.swift */; };
 		01BD7AFE1CCF3E1600BE6587 /* VideoPlayLIstViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01BD7AFD1CCF3E1600BE6587 /* VideoPlayLIstViewController.swift */; };
+		01C128181DDDA89B00224132 /* XRFileDownloader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01C128171DDDA89B00224132 /* XRFileDownloader.swift */; };
+		01C1281D1DDDCB2000224132 /* SwiftyJSON.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 01C1281B1DDDCB0E00224132 /* SwiftyJSON.framework */; };
+		01C1281E1DDDCB2000224132 /* SwiftyJSON.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 01C1281B1DDDCB0E00224132 /* SwiftyJSON.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		01C1281F1DDDCB2000224132 /* Alamofire.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 01E037DB1DDD580A00013B69 /* Alamofire.framework */; };
+		01C128201DDDCB2000224132 /* Alamofire.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 01E037DB1DDD580A00013B69 /* Alamofire.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		01C128211DDDCB2000224132 /* ObjectMapper.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 01E037DC1DDD580A00013B69 /* ObjectMapper.framework */; };
+		01C128221DDDCB2000224132 /* ObjectMapper.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 01E037DC1DDD580A00013B69 /* ObjectMapper.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		01C128231DDDCB2000224132 /* SnapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 01E037DD1DDD580A00013B69 /* SnapKit.framework */; };
+		01C128241DDDCB2000224132 /* SnapKit.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 01E037DD1DDD580A00013B69 /* SnapKit.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		01C23B3D1CD05FED00AF2B91 /* VideoListModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01C23B3C1CD05FED00AF2B91 /* VideoListModel.swift */; };
 		01C2A97F1CCE165E001342D4 /* player-progress-point-h@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 01C2A97D1CCE165E001342D4 /* player-progress-point-h@2x.png */; };
 		01C2A9801CCE165E001342D4 /* player-progress-point-h@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 01C2A97E1CCE165E001342D4 /* player-progress-point-h@3x.png */; };
@@ -77,14 +85,6 @@
 		01DD698C1CD1C081006B8607 /* XRActivityInditor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01DD69891CD1C081006B8607 /* XRActivityInditor.swift */; };
 		01DD698D1CD1C081006B8607 /* XRVideoPlayer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01DD698A1CD1C081006B8607 /* XRVideoPlayer.swift */; };
 		01DD698E1CD1C081006B8607 /* XRVideoToolBottomView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01DD698B1CD1C081006B8607 /* XRVideoToolBottomView.swift */; };
-		01E037E31DDD581A00013B69 /* Alamofire.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 01E037DB1DDD580A00013B69 /* Alamofire.framework */; };
-		01E037E41DDD581A00013B69 /* Alamofire.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 01E037DB1DDD580A00013B69 /* Alamofire.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
-		01E037E51DDD581A00013B69 /* ObjectMapper.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 01E037DC1DDD580A00013B69 /* ObjectMapper.framework */; };
-		01E037E61DDD581A00013B69 /* ObjectMapper.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 01E037DC1DDD580A00013B69 /* ObjectMapper.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
-		01E037E71DDD581A00013B69 /* SnapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 01E037DD1DDD580A00013B69 /* SnapKit.framework */; };
-		01E037E81DDD581A00013B69 /* SnapKit.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 01E037DD1DDD580A00013B69 /* SnapKit.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
-		01E037E91DDD581A00013B69 /* SwiftyJSON.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 01E037DE1DDD580A00013B69 /* SwiftyJSON.framework */; };
-		01E037EA1DDD581A00013B69 /* SwiftyJSON.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 01E037DE1DDD580A00013B69 /* SwiftyJSON.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		01E254DC1CCA288A004D7FA2 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01E254DB1CCA288A004D7FA2 /* AppDelegate.swift */; };
 		01E254DE1CCA288A004D7FA2 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01E254DD1CCA288A004D7FA2 /* ViewController.swift */; };
 		01E254E11CCA288A004D7FA2 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 01E254DF1CCA288A004D7FA2 /* Main.storyboard */; };
@@ -113,16 +113,16 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXCopyFilesBuildPhase section */
-		01BD7B1F1CCF4DB200BE6587 /* Embed Frameworks */ = {
+		01C128251DDDCB2000224132 /* Embed Frameworks */ = {
 			isa = PBXCopyFilesBuildPhase;
 			buildActionMask = 2147483647;
 			dstPath = "";
 			dstSubfolderSpec = 10;
 			files = (
-				01E037EA1DDD581A00013B69 /* SwiftyJSON.framework in Embed Frameworks */,
-				01E037E81DDD581A00013B69 /* SnapKit.framework in Embed Frameworks */,
-				01E037E61DDD581A00013B69 /* ObjectMapper.framework in Embed Frameworks */,
-				01E037E41DDD581A00013B69 /* Alamofire.framework in Embed Frameworks */,
+				01C128221DDDCB2000224132 /* ObjectMapper.framework in Embed Frameworks */,
+				01C1281E1DDDCB2000224132 /* SwiftyJSON.framework in Embed Frameworks */,
+				01C128201DDDCB2000224132 /* Alamofire.framework in Embed Frameworks */,
+				01C128241DDDCB2000224132 /* SnapKit.framework in Embed Frameworks */,
 			);
 			name = "Embed Frameworks";
 			runOnlyForDeploymentPostprocessing = 0;
@@ -131,7 +131,6 @@
 
 /* Begin PBXFileReference section */
 		0105C2F11CCB680000F268E0 /* RegulationBrightness.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RegulationBrightness.swift; sourceTree = "<group>"; };
-		011F0A6F1CDA1593004743F1 /* XRVideoDownloader.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = XRVideoDownloader.swift; sourceTree = "<group>"; };
 		01260E831DD5A94E00E668E6 /* DGActivityIndicatorAnimation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DGActivityIndicatorAnimation.h; sourceTree = "<group>"; };
 		01260E841DD5A94E00E668E6 /* DGActivityIndicatorAnimation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DGActivityIndicatorAnimation.m; sourceTree = "<group>"; };
 		01260E851DD5A94E00E668E6 /* DGActivityIndicatorBallBeatAnimation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DGActivityIndicatorBallBeatAnimation.h; sourceTree = "<group>"; };
@@ -221,6 +220,8 @@
 		015867721CD1EB04007DDFFB /* UINavigationController+Extension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UINavigationController+Extension.swift"; sourceTree = "<group>"; };
 		01BD7AFD1CCF3E1600BE6587 /* VideoPlayLIstViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = VideoPlayLIstViewController.swift; sourceTree = "<group>"; };
 		01BD7AFF1CCF3EDD00BE6587 /* XRVideoPlayer-master-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "XRVideoPlayer-master-Bridging-Header.h"; sourceTree = "<group>"; };
+		01C128171DDDA89B00224132 /* XRFileDownloader.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = XRFileDownloader.swift; sourceTree = "<group>"; };
+		01C1281B1DDDCB0E00224132 /* SwiftyJSON.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = SwiftyJSON.framework; sourceTree = "<group>"; };
 		01C23B3C1CD05FED00AF2B91 /* VideoListModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = VideoListModel.swift; path = "XRVideoPlayer-master/VideoListModel.swift"; sourceTree = SOURCE_ROOT; };
 		01C2A97D1CCE165E001342D4 /* player-progress-point-h@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "player-progress-point-h@2x.png"; sourceTree = "<group>"; };
 		01C2A97E1CCE165E001342D4 /* player-progress-point-h@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "player-progress-point-h@3x.png"; sourceTree = "<group>"; };
@@ -240,7 +241,6 @@
 		01E037DB1DDD580A00013B69 /* Alamofire.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Alamofire.framework; sourceTree = "<group>"; };
 		01E037DC1DDD580A00013B69 /* ObjectMapper.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = ObjectMapper.framework; sourceTree = "<group>"; };
 		01E037DD1DDD580A00013B69 /* SnapKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = SnapKit.framework; sourceTree = "<group>"; };
-		01E037DE1DDD580A00013B69 /* SwiftyJSON.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = SwiftyJSON.framework; sourceTree = "<group>"; };
 		01E254D81CCA288A004D7FA2 /* XRVideoPlayer-master.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "XRVideoPlayer-master.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		01E254DB1CCA288A004D7FA2 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		01E254DD1CCA288A004D7FA2 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -264,10 +264,10 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				01E037E91DDD581A00013B69 /* SwiftyJSON.framework in Frameworks */,
-				01E037E71DDD581A00013B69 /* SnapKit.framework in Frameworks */,
-				01E037E51DDD581A00013B69 /* ObjectMapper.framework in Frameworks */,
-				01E037E31DDD581A00013B69 /* Alamofire.framework in Frameworks */,
+				01C128211DDDCB2000224132 /* ObjectMapper.framework in Frameworks */,
+				01C1281D1DDDCB2000224132 /* SwiftyJSON.framework in Frameworks */,
+				01C1281F1DDDCB2000224132 /* Alamofire.framework in Frameworks */,
+				01C128231DDDCB2000224132 /* SnapKit.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -408,6 +408,14 @@
 			path = AsyncWebImage;
 			sourceTree = "<group>";
 		};
+		01C128161DDDA85C00224132 /* Downlioader */ = {
+			isa = PBXGroup;
+			children = (
+				01C128171DDDA89B00224132 /* XRFileDownloader.swift */,
+			);
+			name = Downlioader;
+			sourceTree = "<group>";
+		};
 		01DD69671CD1BF89006B8607 /* XRRequest */ = {
 			isa = PBXGroup;
 			children = (
@@ -426,7 +434,6 @@
 				015867721CD1EB04007DDFFB /* UINavigationController+Extension.swift */,
 				01CDA4271CD1F97200A2449C /* UIColor+Extension.swift */,
 				01CDD4131CD3791E00E20405 /* XRVideoNavigationView.swift */,
-				011F0A6F1CDA1593004743F1 /* XRVideoDownloader.swift */,
 				014FD22B1DD9E22E007CB9F3 /* XRProgressView.swift */,
 			);
 			path = XRVideoPlayer;
@@ -435,10 +442,10 @@
 		01E037D91DDD56DF00013B69 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				01C1281B1DDDCB0E00224132 /* SwiftyJSON.framework */,
 				01E037DB1DDD580A00013B69 /* Alamofire.framework */,
 				01E037DC1DDD580A00013B69 /* ObjectMapper.framework */,
 				01E037DD1DDD580A00013B69 /* SnapKit.framework */,
-				01E037DE1DDD580A00013B69 /* SwiftyJSON.framework */,
 			);
 			path = Frameworks;
 			sourceTree = "<group>";
@@ -541,6 +548,7 @@
 		01E2550D1CCA28E9004D7FA2 /* Common */ = {
 			isa = PBXGroup;
 			children = (
+				01C128161DDDA85C00224132 /* Downlioader */,
 				01DD69881CD1C081006B8607 /* XRVideoPlayer */,
 				013E53591CD0B0AC009CA523 /* AsyncWebImage */,
 				0105C2F11CCB680000F268E0 /* RegulationBrightness.swift */,
@@ -575,7 +583,7 @@
 				01E254D41CCA288A004D7FA2 /* Sources */,
 				01E254D51CCA288A004D7FA2 /* Frameworks */,
 				01E254D61CCA288A004D7FA2 /* Resources */,
-				01BD7B1F1CCF4DB200BE6587 /* Embed Frameworks */,
+				01C128251DDDCB2000224132 /* Embed Frameworks */,
 			);
 			buildRules = (
 			);
@@ -725,7 +733,6 @@
 			files = (
 				01260EEC1DD5A94E00E668E6 /* DGActivityIndicatorView.m in Sources */,
 				014FD22C1DD9E22E007CB9F3 /* XRProgressView.swift in Sources */,
-				011F0A701CDA1593004743F1 /* XRVideoDownloader.swift in Sources */,
 				01CDD4141CD3791E00E20405 /* XRVideoNavigationView.swift in Sources */,
 				01260ECA1DD5A94E00E668E6 /* DGActivityIndicatorAnimation.m in Sources */,
 				01E255141CCA404B004D7FA2 /* VideoPlayViewController.swift in Sources */,
@@ -742,6 +749,7 @@
 				01260ED11DD5A94E00E668E6 /* DGActivityIndicatorBallPulseAnimation.m in Sources */,
 				013E535D1CD0B0AC009CA523 /* AsyncImageCache.swift in Sources */,
 				01260EE11DD5A94E00E668E6 /* DGActivityIndicatorLineScalePulseOutAnimation.m in Sources */,
+				01C128181DDDA89B00224132 /* XRFileDownloader.swift in Sources */,
 				01260ED81DD5A94E00E668E6 /* DGActivityIndicatorBallSpinFadeLoader.m in Sources */,
 				01DD69861CD1BFCB006B8607 /* Alamofire+Extension.swift in Sources */,
 				01260EDD1DD5A94E00E668E6 /* DGActivityIndicatorDoubleBounceAnimation.m in Sources */,
@@ -921,22 +929,26 @@
 		01E255011CCA288B004D7FA2 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
-				CODE_SIGN_IDENTITY = "iPhone Developer";
+				CODE_SIGN_IDENTITY = "iPhone Developer: Yuening Wu (Z5NZY5E4ZS)";
+				COPY_PHASE_STRIP = YES;
 				DEVELOPMENT_TEAM = AYCJR8SJVG;
 				EMBEDDED_CONTENT_CONTAINS_SWIFT = YES;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)/XRVideoPlayer-master/Frameworks",
 				);
+				GCC_ENABLE_CPP_EXCEPTIONS = YES;
+				GCC_ENABLE_CPP_RTTI = YES;
+				GCC_ENABLE_OBJC_EXCEPTIONS = YES;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "$(SRCROOT)/XRVideoPlayer-master/XRVideoPlayer-precompile.h";
 				INFOPLIST_FILE = "XRVideoPlayer-master/Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				ONLY_ACTIVE_ARCH = NO;
+				OTHER_CFLAGS = "";
 				PRODUCT_BUNDLE_IDENTIFIER = "com.kkguan.XRVideoPlayer-master";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "83287429-57f5-42b6-931e-b16edf61dd46";
@@ -950,22 +962,26 @@
 		01E255021CCA288B004D7FA2 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
-				CODE_SIGN_IDENTITY = "iPhone Developer";
+				CODE_SIGN_IDENTITY = "iPhone Developer: Yuening Wu (Z5NZY5E4ZS)";
+				COPY_PHASE_STRIP = YES;
 				DEVELOPMENT_TEAM = AYCJR8SJVG;
 				EMBEDDED_CONTENT_CONTAINS_SWIFT = YES;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)/XRVideoPlayer-master/Frameworks",
 				);
+				GCC_ENABLE_CPP_EXCEPTIONS = YES;
+				GCC_ENABLE_CPP_RTTI = YES;
+				GCC_ENABLE_OBJC_EXCEPTIONS = YES;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "$(SRCROOT)/XRVideoPlayer-master/XRVideoPlayer-precompile.h";
 				INFOPLIST_FILE = "XRVideoPlayer-master/Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				ONLY_ACTIVE_ARCH = NO;
+				OTHER_CFLAGS = "";
 				PRODUCT_BUNDLE_IDENTIFIER = "com.kkguan.XRVideoPlayer-master";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "83287429-57f5-42b6-931e-b16edf61dd46";

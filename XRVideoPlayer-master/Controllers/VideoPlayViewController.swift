@@ -96,7 +96,7 @@ class VideoPlayViewController: UIViewController {
         
         self.setupUI()
         
-//        XRVideoDownloader().downloadVideo(videoURL!)
+        XRFileDownloader.shared.downloadFile(videoURL)
     }
     
     override func viewWillAppear(_ animated: Bool) {
