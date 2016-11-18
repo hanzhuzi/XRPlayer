@@ -65,7 +65,7 @@ class XRFileDownloader: NSObject, URLSessionDownloadDelegate {
         let recived: Float = Float(totalBytesWritten) / 1024.0
         let total: Float = Float(totalBytesExpectedToWrite) / 1024.0
         
-        debugPrint("progress: \(recived / total)% - speed: \(speed)k/s")
+        debugPrint("progress: \(recived / total * 100.0)% - speed: \(speed)k/s")
     }
     
     func urlSession(_ session: URLSession, downloadTask: URLSessionDownloadTask, didResumeAtOffset fileOffset: Int64, expectedTotalBytes: Int64) {

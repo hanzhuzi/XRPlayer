@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import ObjectMapper
 
 private let videoCellIdentifier = "videoCellIdentifier"
 
@@ -40,28 +41,27 @@ class VideoPlayLIstViewController: UIViewController, UITableViewDelegate, UITabl
         self.activityIndicator.center = self.view.center
         self.view.addSubview(activityIndicator)
         activityIndicator.hidesWhenStopped = true
+        activityIndicator.isHidden = false
         activityIndicator.startAnimating()
     }
     
     func requestDataFromURL() -> Void {
         
-//        XRRequest.getWithCodeString(CODE_VIDEOLIST) { [weak self](dict, error) in
-//            
-//            if let weakSelf = self {
-//                weakSelf.activityIndicator.stopAnimating()
-//                if error == nil {
-//                    
-//                    if let retDict = dict {
-//                        weakSelf.videoList = Mapper<VideoListModel>().map(JSONObject: retDict)
-//                        weakSelf.myTableView.reloadData()
-//                    }else {
-//                        print("数据为空!")
-//                    }
-//                }else {
-//                    print(error?.localizedDescription)
-//                }
-//            }
-//        }
+        XRRequest.getDataFromURL(codeString: CODE_VIDEOLIST, params: nil) { [weak self](anyObj, error) in
+            if let weakSelf = self {
+                weakSelf.activityIndicator.isHidden = false
+                weakSelf.activityIndicator.stopAnimating()
+                if error == nil {
+                    if let obj = anyObj {
+                        weakSelf.videoList = Mapper<VideoListModel>().map(JSONObject: obj)
+                        weakSelf.myTableView.reloadData()
+                    }
+                }
+                else {
+                    debugPrint("数据加载失败 error: \(error)")
+                }
+            }
+        }
     }
     
     override func viewDidLoad() {
@@ -120,9 +120,7 @@ class VideoPlayLIstViewController: UIViewController, UITableViewDelegate, UITabl
         if let model = videoList , model.videoList != nil {
             let video = model.videoList![(indexPath as NSIndexPath).row]
             let videoDetailVc = VideoPlayViewController()
-            video.m3u8_url = "http://ivi.bupt.edu.cn/hls/cctv6hd.m3u8"
-            video.description = "CCTV-6 电影频道"
-            video.title = "CCTV-6 电影频道"
+            video.title = video.title ?? ""
             videoDetailVc.videoURL = video.m3u8_url
             videoDetailVc.videoDescription = video.description
             videoDetailVc.video = video

@@ -26,18 +26,18 @@ extension UIImageView {
         }
         
         if URLString != nil && !URLString!.isEmpty {
-//            AsyncImageDownloader.sharedImageDownloader().downloadImageWithURL(URLString) { (image) in
-//                
-//                if let img = image {
-//                    self.image = img
-//                }
-//            }
-//        }else {
-//            if let placeImage = placeHoldImage {
-//                self.image = placeImage
-//            }else {
-//                self.image = nil
-//            }
+            AsyncImageDownloader.sharedImageDownloader().downloadImageWithURL(URLString) { (image) in
+                
+                if let img = image {
+                    self.image = img
+                }
+            }
+        }else {
+            if let placeImage = placeHoldImage {
+                self.image = placeImage
+            }else {
+                self.image = nil
+            }
         }
     }
     

@@ -14,7 +14,7 @@
 #define RequestBaseURL  @"http://c.3g.163.com"
 
 // 网络视频URL
-#define CODE_VIDEOLIST  @"http://c.3g.163.com/nc/video/list/VAP4BFR16/y/0-10.html"
+#define CODE_VIDEOLIST  @"/nc/video/list/VAP4BFR16/y/0-10.html"
 
 #define CustomErrorDomain  @"CustomErrorDomain"
 

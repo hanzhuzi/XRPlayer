@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="10116" systemVersion="15A284" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="LQ6-Rc-RLN">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="11201" systemVersion="15G31" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="Hdd-W1-dOv">
     <dependencies>
-        <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="10085"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11161"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
         <!--Video Play View Controller-->
@@ -16,21 +16,20 @@
                     <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="480"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                        <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                     </view>
                     <navigationItem key="navigationItem" id="481-Qf-d5X"/>
-                    <simulatedScreenMetrics key="simulatedDestinationMetrics"/>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="854" y="29"/>
+            <point key="canvasLocation" x="1253" y="-721"/>
         </scene>
-        <!--Navigation Controller-->
+        <!--Item-->
         <scene sceneID="07G-qg-khV">
             <objects>
-                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="LQ6-Rc-RLN" sceneMemberID="viewController">
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="LQ6-Rc-RLN" customClass="BaseNavigationController" customModule="XRVideoPlayer_master" customModuleProvider="target" sceneMemberID="viewController">
+                    <tabBarItem key="tabBarItem" title="Item" id="gdX-ld-mm6"/>
                     <toolbarItems/>
-                    <simulatedScreenMetrics key="simulatedDestinationMetrics"/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="dEL-mW-to4">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
@@ -42,9 +41,9 @@
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="e5n-0M-YHX" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="472" y="617"/>
+            <point key="canvasLocation" x="-92" y="158"/>
         </scene>
-        <!--视频列表-->
+        <!--网络视频列表-->
         <scene sceneID="Awa-Hn-iZU">
             <objects>
                 <viewController id="u1R-A8-SRF" customClass="VideoPlayLIstViewController" customModule="XRVideoPlayer_master" customModuleProvider="target" sceneMemberID="viewController">
@@ -55,16 +54,15 @@
                     <view key="view" contentMode="scaleToFill" id="BLm-ye-RTB">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="480"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                     </view>
-                    <navigationItem key="navigationItem" title="视频列表" id="NIn-bp-Orw"/>
-                    <simulatedScreenMetrics key="simulatedDestinationMetrics"/>
+                    <navigationItem key="navigationItem" title="网络视频列表" id="NIn-bp-Orw"/>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="LVs-3U-DXn" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="477" y="29"/>
+            <point key="canvasLocation" x="2329" y="143"/>
         </scene>
-        <!--网络电视-->
+        <!--视频播放列表-->
         <scene sceneID="uoP-pt-ddN">
             <objects>
                 <viewController id="hhV-69-tYJ" customClass="HttpStreamPlayViewController" customModule="XRVideoPlayer_master" customModuleProvider="target" sceneMemberID="viewController">
@@ -77,15 +75,14 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="7zb-2s-dv3">
-                                <rect key="frame" x="0.0" y="0.0" width="320" height="480"/>
-                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <connections>
                                     <outlet property="dataSource" destination="hhV-69-tYJ" id="Wj4-BO-xLi"/>
                                     <outlet property="delegate" destination="hhV-69-tYJ" id="Us5-rD-eTj"/>
                                 </connections>
                             </tableView>
                         </subviews>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
                             <constraint firstItem="7zb-2s-dv3" firstAttribute="leading" secondItem="4A3-f9-DDJ" secondAttribute="leading" id="M5j-kE-2ls"/>
                             <constraint firstAttribute="bottom" secondItem="7zb-2s-dv3" secondAttribute="bottom" id="b3E-HZ-Xtg"/>
@@ -93,15 +90,51 @@
                             <constraint firstItem="7zb-2s-dv3" firstAttribute="top" secondItem="4A3-f9-DDJ" secondAttribute="top" id="wdP-sc-Znz"/>
                         </constraints>
                     </view>
-                    <navigationItem key="navigationItem" title="网络电视" id="t8W-bd-s5v"/>
-                    <simulatedScreenMetrics key="simulatedDestinationMetrics"/>
+                    <navigationItem key="navigationItem" title="视频播放列表" id="t8W-bd-s5v"/>
                     <connections>
                         <outlet property="myTableView" destination="7zb-2s-dv3" id="cfV-dJ-xb6"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="a0X-4c-x5J" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="891" y="617"/>
+            <point key="canvasLocation" x="683" y="158"/>
+        </scene>
+        <!--Base Tab Bar Controller-->
+        <scene sceneID="oUC-mz-qLG">
+            <objects>
+                <tabBarController id="Hdd-W1-dOv" customClass="BaseTabBarController" customModule="XRVideoPlayer_master" customModuleProvider="target" sceneMemberID="viewController">
+                    <tabBar key="tabBar" contentMode="scaleToFill" id="IYl-d8-pxC">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="49"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                    </tabBar>
+                    <connections>
+                        <segue destination="LQ6-Rc-RLN" kind="relationship" relationship="viewControllers" id="jWI-GY-AfR"/>
+                        <segue destination="vc9-e0-VxS" kind="relationship" relationship="viewControllers" id="1eP-C4-ebV"/>
+                    </connections>
+                </tabBarController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="kLo-Ds-ebM" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="518" y="-721"/>
+        </scene>
+        <!--Item-->
+        <scene sceneID="RmO-8V-vRE">
+            <objects>
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="vc9-e0-VxS" customClass="BaseNavigationController" customModule="XRVideoPlayer_master" customModuleProvider="target" sceneMemberID="viewController">
+                    <tabBarItem key="tabBarItem" title="Item" id="1n6-W5-X46"/>
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="b3v-Or-ZI7">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="u1R-A8-SRF" kind="relationship" relationship="rootViewController" id="jrJ-LZ-wKU"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="O5S-tp-5DL" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1494" y="130"/>
         </scene>
     </scenes>
 </document>
