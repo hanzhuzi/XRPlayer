@@ -10,6 +10,7 @@ import UIKit
 
 class XRProgressView: UIView {
     
+    open var trackColor: UIColor = UIColor.purple
     open var progress: CGFloat = 0.0 {
         
         didSet {
@@ -33,7 +34,7 @@ class XRProgressView: UIView {
         
         overlayLayer.frame = CGRect(x: 0, y: 0, width: 0, height: frame.height)
         overlayLayer.anchorPoint = CGPoint(x: 0, y: 0.5)
-        overlayLayer.backgroundColor = UIColor.yellow.cgColor
+        overlayLayer.backgroundColor = trackColor.cgColor
         self.layer.addSublayer(overlayLayer)
     }
     

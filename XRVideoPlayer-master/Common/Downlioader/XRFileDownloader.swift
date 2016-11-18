@@ -51,7 +51,7 @@ class XRFileDownloader: NSObject, URLSessionDownloadDelegate {
             return
         }
         
-        urlSession = URLSession(configuration: URLSessionConfiguration.background(withIdentifier: self.backgroundIdentifier), delegate: self, delegateQueue: OperationQueue.main)
+        urlSession = URLSession(configuration: URLSessionConfiguration.background(withIdentifier: self.backgroundIdentifier), delegate: self, delegateQueue: OperationQueue())
         let urlRequest = URLRequest(url: resourceURL)
         let downloadTask = urlSession.downloadTask(with: urlRequest)
         downloadTask.resume()

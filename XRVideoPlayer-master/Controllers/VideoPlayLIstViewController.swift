@@ -47,7 +47,7 @@ class VideoPlayLIstViewController: UIViewController, UITableViewDelegate, UITabl
     
     func requestDataFromURL() -> Void {
         
-        XRRequest.getDataFromURL(codeString: CODE_VIDEOLIST, params: nil) { [weak self](anyObj, error) in
+        XRRequest.shared.getDataWithCode(codeString: CODE_VIDEOLIST, params: nil) { [weak self](anyObj, error) in
             if let weakSelf = self {
                 weakSelf.activityIndicator.isHidden = false
                 weakSelf.activityIndicator.stopAnimating()

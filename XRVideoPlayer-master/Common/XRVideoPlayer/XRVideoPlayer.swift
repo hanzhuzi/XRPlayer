@@ -132,11 +132,11 @@ class XRVideoPlayer: UIView, UIGestureRecognizerDelegate {
         }
         
         navigationBar = XRVideoNavigationView(frame: CGRect(x: 0, y: 0, width: self.frame.width, height: navigationBarHeight))
-        navigationBar?.backgroundColor = UIColor.rgbColor(100, g: 100, b: 100, a: 0.5)
+        navigationBar?.backgroundColor = UIColor.rgbColor(120, g: 120, b: 120, a: 0.5)
         self.addSubview(navigationBar!)
         
         bottomView = XRVideoToolBottomView(frame: CGRect(x: 0, y: self.bounds.maxY - bottomViewHeight, width: self.frame.width, height: bottomViewHeight))
-        bottomView?.backgroundColor = UIColor.rgbColor(100, g: 100, b: 100, a: 0.5)
+        bottomView?.backgroundColor = UIColor.rgbColor(120, g: 120, b: 120, a: 0.5)
         self.addSubview(bottomView!)
         
         loadingView = XRActivityInditor(frame: CGRect(x: 0, y: 0, width: loadingViewHeight, height: loadingViewHeight))
