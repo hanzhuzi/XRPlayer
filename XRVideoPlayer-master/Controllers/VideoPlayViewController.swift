@@ -95,7 +95,6 @@ class VideoPlayViewController: UIViewController {
         super.viewDidLoad()
         
         self.setupUI()
-        
         XRFileDownloader.shared.downloadFile(videoURL)
     }
     
@@ -103,12 +102,14 @@ class VideoPlayViewController: UIViewController {
         super.viewWillAppear(animated)
         
         self.navigationController?.setNavigationBarHidden(true, animated: true)
+        self.tabBarController?.tabBar.isHidden = true
     }
     
     override func viewWillDisappear(_ animated: Bool) {
         super.viewWillAppear(animated)
         
         self.navigationController?.setNavigationBarHidden(false, animated: true)
+        self.tabBarController?.tabBar.isHidden = false
     }
     
     override func viewDidAppear(_ animated: Bool) {
