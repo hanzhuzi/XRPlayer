@@ -22,13 +22,53 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1253" y="-721"/>
+            <point key="canvasLocation" x="1009" y="-1443"/>
         </scene>
-        <!--Item-->
+        <!--下载-->
+        <scene sceneID="96E-YD-ycC">
+            <objects>
+                <viewController id="LJH-x6-Nio" customClass="DownloadViewController" customModule="XRVideoPlayer_master" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="Ofx-an-Y30"/>
+                        <viewControllerLayoutGuide type="bottom" id="nPR-yd-W4N"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="8jd-El-ioO">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="480"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <webView contentMode="scaleAspectFill" scalesPageToFit="YES" translatesAutoresizingMaskIntoConstraints="NO" id="4qa-zc-vl4">
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                            </webView>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="4R2-hk-uKR">
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                            </tableView>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="4R2-hk-uKR" firstAttribute="top" secondItem="8jd-El-ioO" secondAttribute="top" constant="64" id="9sa-wK-hXE"/>
+                            <constraint firstAttribute="trailing" secondItem="4qa-zc-vl4" secondAttribute="trailing" id="9xb-Yj-wdP"/>
+                            <constraint firstItem="4R2-hk-uKR" firstAttribute="leading" secondItem="8jd-El-ioO" secondAttribute="leading" id="PkS-b1-3dy"/>
+                            <constraint firstItem="4qa-zc-vl4" firstAttribute="leading" secondItem="8jd-El-ioO" secondAttribute="leading" id="SiB-QA-eTd"/>
+                            <constraint firstAttribute="trailing" secondItem="4R2-hk-uKR" secondAttribute="trailing" id="WY0-pv-CjA"/>
+                            <constraint firstAttribute="bottom" secondItem="4qa-zc-vl4" secondAttribute="bottom" id="aIQ-wD-34F"/>
+                            <constraint firstAttribute="bottom" secondItem="4R2-hk-uKR" secondAttribute="bottom" constant="49" id="bcW-oA-tt1"/>
+                            <constraint firstItem="4qa-zc-vl4" firstAttribute="top" secondItem="8jd-El-ioO" secondAttribute="top" id="sKK-XX-ySx"/>
+                        </constraints>
+                    </view>
+                    <navigationItem key="navigationItem" title="下载" id="CGY-BV-957"/>
+                    <connections>
+                        <outlet property="myTableView" destination="4R2-hk-uKR" id="Hzh-BP-6Bu"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="VaL-6q-d05" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2042" y="-721"/>
+        </scene>
+        <!--Base Navigation Controller-->
         <scene sceneID="07G-qg-khV">
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="LQ6-Rc-RLN" customClass="BaseNavigationController" customModule="XRVideoPlayer_master" customModuleProvider="target" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="Item" id="gdX-ld-mm6"/>
+                    <tabBarItem key="tabBarItem" title="" systemItem="featured" id="gdX-ld-mm6"/>
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="dEL-mW-to4">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
@@ -111,17 +151,18 @@
                     <connections>
                         <segue destination="LQ6-Rc-RLN" kind="relationship" relationship="viewControllers" id="jWI-GY-AfR"/>
                         <segue destination="vc9-e0-VxS" kind="relationship" relationship="viewControllers" id="1eP-C4-ebV"/>
+                        <segue destination="1Sa-Tg-Ar8" kind="relationship" relationship="viewControllers" id="hR2-ci-X7q"/>
                     </connections>
                 </tabBarController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="kLo-Ds-ebM" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="518" y="-721"/>
         </scene>
-        <!--Item-->
+        <!--Base Navigation Controller-->
         <scene sceneID="RmO-8V-vRE">
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="vc9-e0-VxS" customClass="BaseNavigationController" customModule="XRVideoPlayer_master" customModuleProvider="target" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="Item" id="1n6-W5-X46"/>
+                    <tabBarItem key="tabBarItem" systemItem="mostViewed" id="1n6-W5-X46"/>
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="b3v-Or-ZI7">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
@@ -135,6 +176,25 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="O5S-tp-5DL" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="1494" y="130"/>
+        </scene>
+        <!--Base Navigation Controller-->
+        <scene sceneID="6Kf-8T-dQ9">
+            <objects>
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="1Sa-Tg-Ar8" customClass="BaseNavigationController" customModule="XRVideoPlayer_master" customModuleProvider="target" sceneMemberID="viewController">
+                    <tabBarItem key="tabBarItem" systemItem="downloads" id="khI-60-MAW"/>
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="B4c-gC-0YD">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="LJH-x6-Nio" kind="relationship" relationship="rootViewController" id="TzF-3w-BbF"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="iQf-Gk-StP" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1279" y="-721"/>
         </scene>
     </scenes>
 </document>

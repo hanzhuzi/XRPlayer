@@ -9,7 +9,7 @@
 /**
  * @brief 基于AVPlayer视频播放器
  * 
- * @note  基于苹果原生框架AVPlayer封装的视频播放器，只支持Http live steaming
+ * @note  基于苹果原生框架AVPlayer封装的视频播放器，只支持Http live streaming
  *
  * @by    黯丶野火
  */
@@ -88,7 +88,7 @@ class XRVideoPlayer: UIView, UIGestureRecognizerDelegate {
         if playerItem != nil {
             self.removePlayerItemObserve(playerItem!)
         }
-        print("XRVideoPlayer is dealloc!")
+        debugPrint("XRVideoPlayer is dealloc!")
     }
     
     fileprivate override init(frame: CGRect) {
@@ -535,7 +535,7 @@ class XRVideoPlayer: UIView, UIGestureRecognizerDelegate {
                             self.playStatus = .ready
                             self.playVideo()
                         case .failed:
-                            print("error: \(player?.error?.localizedDescription)")
+                            debugPrint("error: \(player?.error?.localizedDescription)")
                             self.playStatus = .faild
                             
                         case .unknown:
@@ -546,8 +546,6 @@ class XRVideoPlayer: UIView, UIGestureRecognizerDelegate {
             }else if path == "loadedTimeRanges" {
                 // 加载进度
                 if let item = playerItem {
-                    
-                    debugPrint("rate: \(player!.rate)")
                     
                     let timeArray = item.loadedTimeRanges
                     let timeRange = timeArray.first?.timeRangeValue
@@ -560,7 +558,6 @@ class XRVideoPlayer: UIView, UIGestureRecognizerDelegate {
                         else {
                             let totalRange = startRange + durationRange
                             let precent = totalRange / CMTimeGetSeconds(item.duration)
-                            print("precent: \(precent) total: \(totalRange) duration: \(CMTimeGetSeconds(item.duration))")
                             bottomView?.setProgress(Float(precent))
                         }
                     }

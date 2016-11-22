@@ -8,7 +8,7 @@
 
 import UIKit
 
-class VideoPlayViewController: UIViewController {
+class VideoPlayViewController: UIViewController, XRFileDownloaderDelegate {
     
     var playerView: XRVideoPlayer?
     var descripTextView: UITextView?
@@ -50,7 +50,7 @@ class VideoPlayViewController: UIViewController {
     func setupUI() {
         
         self.view.backgroundColor = UIColor.rgbColor(255, g: 255, b: 255, a: 1.0)
-//        videoURL = "http://zyvideo1.oss-cn-qingdao.aliyuncs.com/zyvd/7c/de/04ec95f4fd42d9d01f63b9683ad0"
+        
         if let url = videoURL {
             setupPlayerView(url)
         }
@@ -71,7 +71,7 @@ class VideoPlayViewController: UIViewController {
                 self.view.addSubview(descripTextView!)
             }
         }
-    
+        
         // back more action.
         if let playView = playerView {
             playView.navigationBar?.backButtonClosure = { [weak self]() -> Void in
@@ -85,8 +85,10 @@ class VideoPlayViewController: UIViewController {
                 }
             }
             
-            playView.navigationBar?.moreButtonClosure = { () -> Void in
-                
+            playView.navigationBar?.downloadButtonClosure = { [weak self]() -> Void in
+                if let weakSelf = self {
+                    XRFileDownloader.shared.downloadFile(weakSelf.videoURL).delegate = weakSelf
+                }
             }
         }
     }
@@ -95,7 +97,6 @@ class VideoPlayViewController: UIViewController {
         super.viewDidLoad()
         
         self.setupUI()
-        XRFileDownloader.shared.downloadFile(videoURL)
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -138,6 +139,25 @@ class VideoPlayViewController: UIViewController {
     // 强制旋转屏幕
     override var shouldAutorotate : Bool {
         return false
+    }
+    
+    // MARK: - XRFileDownloaderDelegate
+    func downloader(downloadProgress progress: Float, speedOfKB speed: Float, totalSizeOfKB totalSize: Float) {
+        debugPrint("progress: \(progress) -- speed: \(speed)KB/s -- totalSize: \(String(format: "%.2f", totalSize / 1024.0))M")
+    }
+    
+    func downloaderFinished(downloadProgress progress: Float, downloadTask: URLSessionDownloadTask, location: URL) {
+        // 下载完成将临时文件保存到需要保存的目录中.
+        let saveFilePath = NSSearchPathForDirectoriesInDomains(FileManager.SearchPathDirectory.documentDirectory, FileManager.SearchPathDomainMask.userDomainMask, true).first?.appendingFormat("/%@", downloadTask.response!.suggestedFilename!)
+        do {
+            if let savePath = saveFilePath {
+                let _ = try FileManager.default.moveItem(at: location, to: URL(fileURLWithPath: savePath))
+                debugPrint("保存文件\(savePath)成功!")
+            }
+        }
+        catch let error {
+            debugPrint("error: \(error.localizedDescription)")
+        }
     }
     
     /*

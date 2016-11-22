@@ -13,14 +13,14 @@ class HttpStreamPlayViewController: UIViewController, UITableViewDelegate, UITab
     @IBOutlet weak var myTableView: UITableView!
     
     fileprivate lazy var tvArray: [[String: String]] = [
-        ["title" : "CCTV-6 电影频道", "url" : "http://ivi.bupt.edu.cn/hls/cctv6hd.m3u8"],
-        ["title" : "Capital TV", "url" : "http://ooyalahd2-f.akamaihd.net/i/globalradio01_delivery@156521/master.m3u8"],
+        ["title" : "CCTV-1", "url" : "http://ivi.bupt.edu.cn/hls/cctv1hd.m3u8"],
+        ["title" : "CCTV-6", "url" : "http://ivi.bupt.edu.cn/hls/cctv6hd.m3u8"],
         ["title" : "Heart tv", "url" : "http://ooyalahd2-f.akamaihd.net/i/globalradio02_delivery@156522/master.m3u8"],
-        ["title" : "TVB-J2", "url" : "http://live1.ms.tvb.com/tvb/tv/j2/04/prog_index.m3u8"],
+        ["title" : "CCTV-3", "url" : "http://ivi.bupt.edu.cn/hls/cctv3hd.m3u8"],
         ["title" : "TVB新闻", "url" : "http://live1.ms.tvb.com/tvb/tv/inews/044.m3u8"],
         ["title" : "TVB高清", "url" : "http://live1.ms.tvb.com/tvb/tv/jade/044.m3u8"],
-        ["title" : "网络视频01", "url" : "http://wsmp32.bbc.co.uk"],
-        ["title" : "网络视频02", "url" : "http://baobab.wdjcdn.com/1456117847747a_x264.mp4"],
+        ["title" : "智取威虎山", "url" : "http://jobsfe.funshion.com/play/v1/mp4/BEDECC98539E761F3142FD35B47D3FB5048B938A.mp4?vf=MCw2QTYyRg==&token=Mzc1RDU3MEUzRTlEMUNBQUJCNTNCNTk3ODdBNDcwQ0EzREI5NDIxQ19td2ViXzE0Nzk3MTc1NTM=&fudid=1472179462a661b&app_code=mweb&user_id=0&user_token="],
+        ["title" : "少年班", "url" : "http://jobsfe.funshion.com/play/v1/mp4/2C69DDCC6A9897BD08A33B8457D65C8DC21405E8.mp4?vf=MCw1QjAyQg==&token=RTU1REQ4RTg2QTc1OTBDQUUyMDgwNjM4RjU3QURDN0EzOTExMzY5RV9td2ViXzE0Nzk3MjU1MDY=&fudid=1472179462a661b&app_code=mweb&user_id=0&user_token="],
         ["title" : "网络视频03", "url" : "http://baobab.wdjcdn.com/14525705791193.mp4"],
         ["title" : "网络视频04", "url" : "http://baobab.wdjcdn.com/1456459181808howtoloseweight_x264.mp4"],
         ["title" : "网络视频05", "url" : "http://baobab.wdjcdn.com/1455968234865481297704.mp4"],

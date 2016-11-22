@@ -15,10 +15,10 @@
 import UIKit
 import Foundation
 
-@objc protocol XRFileDownloaderDelegate {
+@objc protocol XRFileDownloaderDelegate: NSObjectProtocol {
     
-    @objc func downloader(downloadProgress progress: Float , speed: Float , totalSize: Float) -> Swift.Void
-    @objc func downloaderFinished(downloadProgress progress: Float) -> Swift.Void
+    @objc func downloader(downloadProgress progress: Float , speedOfKB: Float , totalSizeOfKB: Float) -> Swift.Void
+    @objc func downloaderFinished(downloadProgress progress: Float, downloadTask: URLSessionDownloadTask, location: URL) -> Swift.Void
 }
 
 class XRFileDownloader: NSObject, URLSessionDownloadDelegate {
@@ -38,34 +38,72 @@ class XRFileDownloader: NSObject, URLSessionDownloadDelegate {
      - 下载文件
      - 参数： URL资源地址
      */
-    func downloadFile(_ urlString: String?) {
+    func downloadFile(_ urlString: String?) -> XRFileDownloader {
         
         guard let fileUrlString = urlString , !fileUrlString.isEmpty else {
             debugPrint("urlString is not available.")
-            return
+            return XRFileDownloader.shared
         }
         
         let downloadURL = URL(string: fileUrlString)
         
         guard let resourceURL = downloadURL else {
-            return
+            return XRFileDownloader.shared
         }
+        
+        // 设置URLString作为backgroundIdentifier
+        self.backgroundIdentifier = resourceURL.absoluteString
         
         urlSession = URLSession(configuration: URLSessionConfiguration.background(withIdentifier: self.backgroundIdentifier), delegate: self, delegateQueue: OperationQueue())
         let urlRequest = URLRequest(url: resourceURL)
         let downloadTask = urlSession.downloadTask(with: urlRequest)
         downloadTask.resume()
         downloadTasks[resourceURL.absoluteString] = downloadTask
+        
+        let downloadModel = XRFileDownloadModel()
+        downloadModel.urlString = downloadURL?.absoluteString
+        
+        return XRFileDownloader.shared
+    }
+    
+    /**
+     - 暂停下载
+     - 参数：URL地址
+     */
+    func suspendDownload(urlString: String?) {
+        
+        if let urlStr = urlString {
+            let downloadTask = downloadTasks[urlStr]
+            downloadTask?.suspend()
+        }
+    }
+    
+    /**
+     - 继续下载
+     - 参数： URL地址
+     */
+    func resumeDownload(urlString: String?) {
+        
+        if let urlStr = urlString {
+            let downloadTask = downloadTasks[urlStr]
+            downloadTask?.resume()
+        }
     }
     
     // MARK: - URLSessionDownloadDelegate
+    func urlSessionDidFinishEvents(forBackgroundURLSession session: URLSession) {
+        
+    }
+    
     func urlSession(_ session: URLSession, downloadTask: URLSessionDownloadTask, didWriteData bytesWritten: Int64, totalBytesWritten: Int64, totalBytesExpectedToWrite: Int64) {
         
         let speed: Float = Float(bytesWritten) / 1024.0
         let recived: Float = Float(totalBytesWritten) / 1024.0
-        let total: Float = Float(totalBytesExpectedToWrite) / 1024.0
+        let total: Float = Float(totalBytesExpectedToWrite) / 1024.0 // (KB)
         
-        debugPrint("progress: \(recived / total * 100.0)% - speed: \(speed)k/s")
+        if self.delegate != nil && delegate!.responds(to: #selector(XRFileDownloaderDelegate.downloader(downloadProgress:speedOfKB:totalSizeOfKB:))) {
+            self.delegate!.downloader(downloadProgress: recived / total, speedOfKB: speed, totalSizeOfKB: total)
+        }
     }
     
     func urlSession(_ session: URLSession, downloadTask: URLSessionDownloadTask, didResumeAtOffset fileOffset: Int64, expectedTotalBytes: Int64) {
@@ -74,7 +112,15 @@ class XRFileDownloader: NSObject, URLSessionDownloadDelegate {
     
     func urlSession(_ session: URLSession, downloadTask: URLSessionDownloadTask, didFinishDownloadingTo location: URL) {
         
-        debugPrint("download finished!")
+        if self.delegate != nil && self.delegate!.responds(to: #selector(XRFileDownloaderDelegate.downloaderFinished(downloadProgress:downloadTask:location:))) {
+            if let urlStr = downloadTask.response?.url?.absoluteString {
+                if let task = downloadTasks[urlStr] {
+                    self.delegate!.downloaderFinished(downloadProgress: 1.0, downloadTask: task, location: location)
+                    task.cancel()
+                    downloadTasks.removeValue(forKey: urlStr)
+                }
+            }
+        }
     }
     
     
