@@ -20,6 +20,7 @@ public enum XRFileDownloadStatus {
 
 class XRFileDownloadModel: NSObject {
     
+    var title: String?
     var urlString: String?
     var fileSession: URLSession?
     var fileBackgroundIdentifier: String?

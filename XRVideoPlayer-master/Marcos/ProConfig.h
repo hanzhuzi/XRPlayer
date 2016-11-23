@@ -18,6 +18,9 @@
 
 #define CustomErrorDomain  @"CustomErrorDomain"
 
+// 添加下载任务到列表的通知
+#define NNKEY_DOWNLOAD_ADD_TO_LIST "NNKEY_DOWNLOAD_ADD_TO_LIST"
+
 // 自定义错误码
 typedef enum {
     

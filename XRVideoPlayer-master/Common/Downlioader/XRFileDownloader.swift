@@ -28,7 +28,7 @@ class XRFileDownloader: NSObject, URLSessionDownloadDelegate {
     fileprivate var urlSession: URLSession!
     fileprivate var downloadTasks: [String : URLSessionDownloadTask] = [:] // 保存下载任务
     public var delegate: XRFileDownloaderDelegate?
-    
+    open var downloadModelArray: [XRFileDownloadModel] = []
     
     fileprivate override init() {
         super.init()
@@ -38,7 +38,7 @@ class XRFileDownloader: NSObject, URLSessionDownloadDelegate {
      - 下载文件
      - 参数： URL资源地址
      */
-    func downloadFile(_ urlString: String?) -> XRFileDownloader {
+    func downloadFile(_ title: String? , urlString: String?) -> XRFileDownloader {
         
         guard let fileUrlString = urlString , !fileUrlString.isEmpty else {
             debugPrint("urlString is not available.")
@@ -61,7 +61,12 @@ class XRFileDownloader: NSObject, URLSessionDownloadDelegate {
         downloadTasks[resourceURL.absoluteString] = downloadTask
         
         let downloadModel = XRFileDownloadModel()
+        downloadModel.title = title
         downloadModel.urlString = downloadURL?.absoluteString
+        downloadModel.fileDownloadTask = downloadTask
+        downloadModelArray.append(downloadModel)
+        
+        NotificationCenter.default.post(Notification(name: Notification.Name(rawValue: NNKEY_DOWNLOAD_ADD_TO_LIST)))
         
         return XRFileDownloader.shared
     }

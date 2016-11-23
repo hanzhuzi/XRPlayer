@@ -20,12 +20,19 @@ class DownloadViewController: UIViewController, UITableViewDelegate, UITableView
         // Do any additional setup after loading the view.
         self.navigationItem.title = "下载"
         
+        NotificationCenter.default.addObserver(self, selector: #selector(DownloadViewController.reloadDownloadList), name: NSNotification.Name(rawValue: NNKEY_DOWNLOAD_ADD_TO_LIST), object: nil)
+        
         myTableView.delegate = self
         myTableView.dataSource = self
-        myTableView.tableHeaderView = UIView()
-        myTableView.tableFooterView = UIView()
     }
-
+    
+    /**
+     - 刷新列表
+     */
+    func reloadDownloadList() {
+        myTableView.reloadData()
+    }
+    
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
@@ -37,7 +44,7 @@ class DownloadViewController: UIViewController, UITableViewDelegate, UITableView
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 10
+        return XRFileDownloader.shared.downloadModelArray.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
@@ -46,7 +53,9 @@ class DownloadViewController: UIViewController, UITableViewDelegate, UITableView
         if cell == nil {
             cell = UITableViewCell(style: .default, reuseIdentifier: cellID)
         }
-        cell?.textLabel?.text = "智取威虎山"
+        
+        let model = XRFileDownloader.shared.downloadModelArray[indexPath.row]
+        cell?.textLabel?.text = model.title
         return cell!
     }
     
