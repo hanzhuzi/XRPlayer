@@ -34,8 +34,9 @@ class VideoPlayLIstViewController: UIViewController, UITableViewDelegate, UITabl
         myTableView.showsHorizontalScrollIndicator = false
         myTableView.separatorColor = UIColor.gray
         myTableView.register(VideoListCell.self, forCellReuseIdentifier: videoCellIdentifier)
+        myTableView.estimatedRowHeight = 44.0
+        myTableView.rowHeight = UITableViewAutomaticDimension
         myTableView.tableFooterView = UIView()
-        
         self.view.addSubview(myTableView)
         self.activityIndicator.frame = CGRect(x: 0, y: 0, width: 60, height: 60)
         self.activityIndicator.center = self.view.center
@@ -68,9 +69,18 @@ class VideoPlayLIstViewController: UIViewController, UITableViewDelegate, UITabl
         super.viewDidLoad()
         
         self.setupUI()
-        self.requestDataFromURL()
         
-        
+        OperationQueue().addOperation { 
+            self.requestDataFromURL()
+        }
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+    }
+    
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
     }
     
     override func didReceiveMemoryWarning() {
@@ -111,12 +121,10 @@ class VideoPlayLIstViewController: UIViewController, UITableViewDelegate, UITabl
     }
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        
         return VideoListCell.cellHeight()
     }
-
+    
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        
         if let model = videoList , model.videoList != nil {
             let video = model.videoList![(indexPath as NSIndexPath).row]
             let videoDetailVc = VideoPlayViewController()
@@ -128,5 +136,6 @@ class VideoPlayLIstViewController: UIViewController, UITableViewDelegate, UITabl
         }
     }
     
-    
 }
+
+

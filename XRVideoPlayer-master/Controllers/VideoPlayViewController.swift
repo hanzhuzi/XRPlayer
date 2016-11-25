@@ -87,7 +87,7 @@ class VideoPlayViewController: UIViewController, XRFileDownloaderDelegate {
             
             playView.navigationBar?.downloadButtonClosure = { [weak self]() -> Void in
                 if let weakSelf = self {
-                    XRFileDownloader.shared.downloadFile(weakSelf.video?.title, urlString: weakSelf.videoURL).delegate = self
+                    XRFileDownloader.shared.downloadFile(weakSelf.video?.title, urlString: weakSelf.videoURL).delegate = weakSelf
                 }
             }
         }
@@ -147,21 +147,7 @@ class VideoPlayViewController: UIViewController, XRFileDownloaderDelegate {
     }
     
     func downloaderFinished(downloadProgress progress: Float, downloadTask: URLSessionDownloadTask, location: URL) {
-        // 下载完成将临时文件保存到需要保存的目录中.
-        if let resp = downloadTask.response , let fileName = resp.suggestedFilename {
-            
-            let saveFilePath = NSSearchPathForDirectoriesInDomains(FileManager.SearchPathDirectory.documentDirectory, FileManager.SearchPathDomainMask.userDomainMask, true).first?.appendingFormat("/%@", fileName)
-            
-            do {
-                if let savePath = saveFilePath {
-                    let _ = try FileManager.default.moveItem(at: location, to: URL(fileURLWithPath: savePath))
-                    debugPrint("保存文件\(savePath)成功!")
-                }
-            }
-            catch let error {
-                debugPrint("error: \(error.localizedDescription)")
-            }
-        }
+        
         
     }
     

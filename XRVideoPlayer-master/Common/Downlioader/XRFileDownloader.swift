@@ -21,14 +21,35 @@ import Foundation
     @objc func downloaderFinished(downloadProgress progress: Float, downloadTask: URLSessionDownloadTask, location: URL) -> Swift.Void
 }
 
+extension URLSessionTask.State {
+    
+    func stateStringFromRawValue() -> String {
+        
+        switch self.rawValue {
+        case 0:
+            return String(format: "code: %d status: %@", self.rawValue, "running")
+        case 1:
+            return String(format: "code: %d status: %@", self.rawValue, "suspend")
+        case 2:
+            return String(format: "code: %d status: %@", self.rawValue, "canceling")
+        case 3:
+            return String(format: "code: %d status: %@", self.rawValue, "complete")
+        default:
+            return "unkown"
+        }
+    }
+}
+
 class XRFileDownloader: NSObject, URLSessionDownloadDelegate {
     
     static let shared: XRFileDownloader = XRFileDownloader()
-    open var backgroundIdentifier: String = "com.background.session"
-    fileprivate var urlSession: URLSession!
-    fileprivate var downloadTasks: [String : URLSessionDownloadTask] = [:] // 保存下载任务
-    public var delegate: XRFileDownloaderDelegate?
+    open var backgroundIdentifier: String = "com.background.session.default"
+    fileprivate var urlSessions: [String : URLSession] = [:]
+    fileprivate var downloadTasks: [String : URLSessionDownloadTask] = [:]
+    open weak var delegate: XRFileDownloaderDelegate?
     open var downloadModelArray: [XRFileDownloadModel] = []
+    open var downloadProgressClosure: (([XRFileDownloadModel]) -> Swift.Void)?
+    open var downloadFinishedClosure: (([XRFileDownloadModel] , URL) -> Swift.Void)?
     
     fileprivate override init() {
         super.init()
@@ -51,13 +72,19 @@ class XRFileDownloader: NSObject, URLSessionDownloadDelegate {
             return XRFileDownloader.shared
         }
         
+        if downloadTasks[fileUrlString] != nil {
+            debugPrint("任务已经存在了")
+            return XRFileDownloader.shared
+        }
+        
         // 设置URLString作为backgroundIdentifier
         self.backgroundIdentifier = resourceURL.absoluteString
         
-        urlSession = URLSession(configuration: URLSessionConfiguration.background(withIdentifier: self.backgroundIdentifier), delegate: self, delegateQueue: OperationQueue())
+        let urlSession = URLSession(configuration: URLSessionConfiguration.background(withIdentifier: self.backgroundIdentifier), delegate: self, delegateQueue: OperationQueue())
         let urlRequest = URLRequest(url: resourceURL)
         let downloadTask = urlSession.downloadTask(with: urlRequest)
         downloadTask.resume()
+        urlSessions[resourceURL.absoluteString] = urlSession
         downloadTasks[resourceURL.absoluteString] = downloadTask
         
         let downloadModel = XRFileDownloadModel()
@@ -79,6 +106,7 @@ class XRFileDownloader: NSObject, URLSessionDownloadDelegate {
         
         if let urlStr = urlString {
             let downloadTask = downloadTasks[urlStr]
+            debugPrint("state: \(downloadTask!.state.stateStringFromRawValue())")
             downloadTask?.suspend()
         }
     }
@@ -88,10 +116,11 @@ class XRFileDownloader: NSObject, URLSessionDownloadDelegate {
      - 参数： URL地址
      */
     func resumeDownload(urlString: String?) {
-        
+         
         if let urlStr = urlString {
             let downloadTask = downloadTasks[urlStr]
             downloadTask?.resume()
+            debugPrint("state: \(downloadTask!.state.stateStringFromRawValue())")
         }
     }
     
@@ -106,8 +135,23 @@ class XRFileDownloader: NSObject, URLSessionDownloadDelegate {
         let recived: Float = Float(totalBytesWritten) / 1024.0
         let total: Float = Float(totalBytesExpectedToWrite) / 1024.0 // (KB)
         
-        if self.delegate != nil && delegate!.responds(to: #selector(XRFileDownloaderDelegate.downloader(downloadProgress:speedOfKB:totalSizeOfKB:))) {
-            self.delegate!.downloader(downloadProgress: recived / total, speedOfKB: speed, totalSizeOfKB: total)
+        if let urlStr = downloadTask.response?.url?.absoluteString {
+            for model in downloadModelArray {
+                if model.urlString == urlStr {
+                    model.speed = speed
+                    model.recivedSize = recived
+                    model.totalSize = total
+                    model.progress = recived / total
+                }
+            }
+        }
+        
+        if let downClosure = self.downloadProgressClosure {
+            DispatchQueue.main.asyncAfter(deadline: DispatchTime.now() + 1.0, execute: { [weak self] in
+                if let weakSelf = self {
+                    downClosure(weakSelf.downloadModelArray)
+                }
+            })
         }
     }
     
@@ -117,12 +161,19 @@ class XRFileDownloader: NSObject, URLSessionDownloadDelegate {
     
     func urlSession(_ session: URLSession, downloadTask: URLSessionDownloadTask, didFinishDownloadingTo location: URL) {
         
-        if self.delegate != nil && self.delegate!.responds(to: #selector(XRFileDownloaderDelegate.downloaderFinished(downloadProgress:downloadTask:location:))) {
-            if let urlStr = downloadTask.response?.url?.absoluteString {
-                if let task = downloadTasks[urlStr] {
-                    self.delegate!.downloaderFinished(downloadProgress: 1.0, downloadTask: task, location: location)
-                    task.cancel()
-                    downloadTasks.removeValue(forKey: urlStr)
+        if let urlStr = downloadTask.response?.url?.absoluteString {
+            if let task = downloadTasks[urlStr] {
+                task.cancel()
+                downloadTasks.removeValue(forKey: urlStr)
+                for model in downloadModelArray {
+                    if model.urlString == urlStr {
+                        model.progress = 1.0
+                    }
+                }
+                if let downClosure = downloadFinishedClosure {
+                    DispatchQueue.main.sync(execute: {
+                        downClosure(downloadModelArray , location)
+                    })
                 }
             }
         }

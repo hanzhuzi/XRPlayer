@@ -27,5 +27,8 @@ class XRFileDownloadModel: NSObject {
     var fileDownloadTask: URLSessionDownloadTask?
     var status: XRFileDownloadStatus = .toReady
     var filePath: String?
-    
+    var progress: Float = 0.0
+    var speed: Float = 0.0
+    var totalSize: Float = 0.0
+    var recivedSize: Float = 0.0
 }
