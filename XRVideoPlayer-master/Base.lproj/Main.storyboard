@@ -22,7 +22,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1009" y="-1443"/>
+            <point key="canvasLocation" x="2006.25" y="-1443.75"/>
         </scene>
         <!--下载-->
         <scene sceneID="96E-YD-ycC">
@@ -195,6 +195,24 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="iQf-Gk-StP" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="1279" y="-721"/>
+        </scene>
+        <!--Navigation Controller-->
+        <scene sceneID="Wjh-AV-wBg">
+            <objects>
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="0KF-QQ-NUL" sceneMemberID="viewController">
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="Kqc-GB-uCc">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="BYZ-38-t0r" kind="relationship" relationship="rootViewController" id="o4C-Zc-4qO"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="wqu-ct-pCy" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1008.75" y="-1443.75"/>
         </scene>
     </scenes>
 </document>

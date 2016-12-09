@@ -10,9 +10,16 @@ import UIKit
 
 fileprivate let cellID = "tableViewCellID"
 
-class DownloadViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
+class DownloadViewController: BaseViewController, UITableViewDelegate, UITableViewDataSource {
     
     @IBOutlet weak var myTableView: UITableView!
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        
+        self.navigationController?.setNavigationBarHidden(false, animated: animated)
+        self.tabBarController?.tabBar.isHidden = false
+    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -44,6 +51,7 @@ class DownloadViewController: UIViewController, UITableViewDelegate, UITableView
                     do {
                         if let savePath = saveFilePath {
                             let _ = try FileManager.default.moveItem(at: location, to: URL(fileURLWithPath: savePath))
+                            model.filePath = savePath
                             debugPrint("保存文件\(savePath)成功!")
                         }
                     }
@@ -106,6 +114,7 @@ class DownloadViewController: UIViewController, UITableViewDelegate, UITableView
             }
             else if task.state == .completed {
                 debugPrint("任务已经下载完成了")
+                debugPrint("filePath -> \(model.filePath ?? "文件路径不存在了!")")
             }
         }
     }

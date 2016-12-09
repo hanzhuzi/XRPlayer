@@ -8,7 +8,7 @@
 
 import UIKit
 
-class VideoPlayViewController: UIViewController, XRFileDownloaderDelegate {
+class VideoPlayViewController: BaseViewController, XRFileDownloaderDelegate {
     
     var playerView: XRVideoPlayer?
     var descripTextView: UITextView?
@@ -109,8 +109,6 @@ class VideoPlayViewController: UIViewController, XRFileDownloaderDelegate {
     override func viewWillDisappear(_ animated: Bool) {
         super.viewWillAppear(animated)
         
-        self.navigationController?.setNavigationBarHidden(false, animated: true)
-        self.tabBarController?.tabBar.isHidden = false
     }
     
     override func viewDidAppear(_ animated: Bool) {

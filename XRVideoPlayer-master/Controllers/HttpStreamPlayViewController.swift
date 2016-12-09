@@ -8,7 +8,7 @@
 
 import UIKit
 
-class HttpStreamPlayViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
+class HttpStreamPlayViewController: BaseViewController, UITableViewDelegate, UITableViewDataSource {
     
     @IBOutlet weak var myTableView: UITableView!
     
@@ -49,6 +49,13 @@ class HttpStreamPlayViewController: UIViewController, UITableViewDelegate, UITab
         myTableView.tableFooterView = UIView()
     }
     
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        
+        self.navigationController?.setNavigationBarHidden(false, animated: animated)
+        self.tabBarController?.tabBar.isHidden = false
+    }
+    
     // 动态添加直播地址
     func addTVUrl() {
         
@@ -73,6 +80,12 @@ class HttpStreamPlayViewController: UIViewController, UITableViewDelegate, UITab
             
             alertVc.addTextField(configurationHandler: { (textField) in
                 textField.placeholder = "请输入直播地址"
+                textField.font = UIFont.systemFont(ofSize: 14.0)
+                textField.textColor = UIColor.black
+            })
+            
+            alertVc.addTextField(configurationHandler: { (textField) in
+                textField.placeholder = "请输入视频标题"
                 textField.font = UIFont.systemFont(ofSize: 14.0)
                 textField.textColor = UIColor.black
             })

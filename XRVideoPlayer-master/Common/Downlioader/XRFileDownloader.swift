@@ -90,6 +90,7 @@ class XRFileDownloader: NSObject, URLSessionDownloadDelegate {
         let downloadModel = XRFileDownloadModel()
         downloadModel.title = title
         downloadModel.urlString = downloadURL?.absoluteString
+        downloadModel.status = .downloading
         downloadModel.fileDownloadTask = downloadTask
         downloadModelArray.append(downloadModel)
         
@@ -168,6 +169,7 @@ class XRFileDownloader: NSObject, URLSessionDownloadDelegate {
                 for model in downloadModelArray {
                     if model.urlString == urlStr {
                         model.progress = 1.0
+                        model.status = .downloadSuccess
                     }
                 }
                 if let downClosure = downloadFinishedClosure {

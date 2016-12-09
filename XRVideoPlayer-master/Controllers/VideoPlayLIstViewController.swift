@@ -11,7 +11,7 @@ import ObjectMapper
 
 private let videoCellIdentifier = "videoCellIdentifier"
 
-class VideoPlayLIstViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
+class VideoPlayLIstViewController: BaseViewController, UITableViewDelegate, UITableViewDataSource {
     
     var videoList: VideoListModel?
     fileprivate let activityIndicator = {
@@ -54,6 +54,7 @@ class VideoPlayLIstViewController: UIViewController, UITableViewDelegate, UITabl
                 weakSelf.activityIndicator.stopAnimating()
                 if error == nil {
                     if let obj = anyObj {
+                        debugPrint("请求成功 -> \(obj)")
                         weakSelf.videoList = Mapper<VideoListModel>().map(JSONObject: obj)
                         weakSelf.myTableView.reloadData()
                     }
@@ -77,6 +78,9 @@ class VideoPlayLIstViewController: UIViewController, UITableViewDelegate, UITabl
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
+        
+        self.navigationController?.setNavigationBarHidden(false, animated: animated)
+        self.tabBarController?.tabBar.isHidden = false
     }
     
     override func viewDidAppear(_ animated: Bool) {
