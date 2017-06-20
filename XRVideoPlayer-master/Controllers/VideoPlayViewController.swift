@@ -14,6 +14,7 @@ class VideoPlayViewController: BaseViewController, XRFileDownloaderDelegate {
     var descripTextView: UITextView?
     var isFull: Bool = false
     var videoURL: String?
+    var isLocalResource: Bool = false
     var videoDescription: String?
     var video: VideoModel?
     
@@ -35,7 +36,7 @@ class VideoPlayViewController: BaseViewController, XRFileDownloaderDelegate {
     
     func setupPlayerView(_ videoURL: String) {
         
-        playerView = XRVideoPlayer(frame: CGRect(x: 0, y: 0, width: self.view.bounds.width, height: 250), videoURL: videoURL, isLocalResource: false)
+        playerView = XRVideoPlayer(frame: CGRect(x: 0, y: 0, width: self.view.bounds.width, height: 250), videoURL: videoURL, isLocalResource: isLocalResource)
         playerView?.backgroundColor = UIColor.black.withAlphaComponent(0.9)
         self.view.addSubview(playerView!)
         playerView?.changedOrientationClosure = {[weak self](isFull) -> () in

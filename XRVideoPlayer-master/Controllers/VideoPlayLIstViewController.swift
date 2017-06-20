@@ -54,9 +54,11 @@ class VideoPlayLIstViewController: BaseViewController, UITableViewDelegate, UITa
                 weakSelf.activityIndicator.stopAnimating()
                 if error == nil {
                     if let obj = anyObj {
-                        debugPrint("请求成功 -> \(obj)")
-                        weakSelf.videoList = Mapper<VideoListModel>().map(JSONObject: obj)
-                        weakSelf.myTableView.reloadData()
+                        if let dict = obj as? NSDictionary {
+                            debugPrint("请求成功 -> \(dict)")
+                            weakSelf.videoList = Mapper<VideoListModel>().map(JSONObject: obj)
+                            weakSelf.myTableView.reloadData()
+                        }
                     }
                 }
                 else {

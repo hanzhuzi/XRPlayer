@@ -115,6 +115,10 @@ class DownloadViewController: BaseViewController, UITableViewDelegate, UITableVi
             else if task.state == .completed {
                 debugPrint("任务已经下载完成了")
                 debugPrint("filePath -> \(model.filePath ?? "文件路径不存在了!")")
+                let videoDetailVc = VideoPlayViewController()
+                videoDetailVc.videoURL = model.filePath
+                videoDetailVc.isLocalResource = true
+                self.navigationController?.pushViewController(videoDetailVc, animated: true)
             }
         }
     }
