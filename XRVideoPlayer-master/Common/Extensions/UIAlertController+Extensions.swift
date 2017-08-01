@@ -8,11 +8,9 @@
 
 import UIKit
 
-@available(iOS 8.0, *)
 extension UIAlertController {
     
     open override var shouldAutorotate: Bool {
         return false
     }
-    
 }

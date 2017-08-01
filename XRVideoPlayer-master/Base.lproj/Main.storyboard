@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="11201" systemVersion="15G31" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="Hdd-W1-dOv">
     <dependencies>
+        <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11161"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -36,23 +37,16 @@
                         <rect key="frame" x="0.0" y="0.0" width="320" height="480"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <webView contentMode="scaleAspectFill" scalesPageToFit="YES" translatesAutoresizingMaskIntoConstraints="NO" id="4qa-zc-vl4">
-                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                            </webView>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="4R2-hk-uKR">
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                             </tableView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
-                            <constraint firstItem="4R2-hk-uKR" firstAttribute="top" secondItem="8jd-El-ioO" secondAttribute="top" constant="64" id="9sa-wK-hXE"/>
-                            <constraint firstAttribute="trailing" secondItem="4qa-zc-vl4" secondAttribute="trailing" id="9xb-Yj-wdP"/>
+                            <constraint firstItem="4R2-hk-uKR" firstAttribute="top" secondItem="8jd-El-ioO" secondAttribute="top" id="9sa-wK-hXE"/>
                             <constraint firstItem="4R2-hk-uKR" firstAttribute="leading" secondItem="8jd-El-ioO" secondAttribute="leading" id="PkS-b1-3dy"/>
-                            <constraint firstItem="4qa-zc-vl4" firstAttribute="leading" secondItem="8jd-El-ioO" secondAttribute="leading" id="SiB-QA-eTd"/>
                             <constraint firstAttribute="trailing" secondItem="4R2-hk-uKR" secondAttribute="trailing" id="WY0-pv-CjA"/>
-                            <constraint firstAttribute="bottom" secondItem="4qa-zc-vl4" secondAttribute="bottom" id="aIQ-wD-34F"/>
-                            <constraint firstAttribute="bottom" secondItem="4R2-hk-uKR" secondAttribute="bottom" constant="49" id="bcW-oA-tt1"/>
-                            <constraint firstItem="4qa-zc-vl4" firstAttribute="top" secondItem="8jd-El-ioO" secondAttribute="top" id="sKK-XX-ySx"/>
+                            <constraint firstAttribute="bottom" secondItem="4R2-hk-uKR" secondAttribute="bottom" id="bcW-oA-tt1"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" title="下载" id="CGY-BV-957"/>

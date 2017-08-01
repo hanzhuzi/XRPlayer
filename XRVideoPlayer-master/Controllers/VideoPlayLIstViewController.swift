@@ -7,7 +7,6 @@
 //
 
 import UIKit
-import ObjectMapper
 
 private let videoCellIdentifier = "videoCellIdentifier"
 
@@ -19,7 +18,7 @@ class VideoPlayLIstViewController: BaseViewController, UITableViewDelegate, UITa
     }()
     fileprivate lazy var myTableView: UITableView = {
        
-        return UITableView(frame: CGRect(x: 0, y: 0, width: self.view.frame.width, height: self.view.frame.height), style: UITableViewStyle.plain)
+        return UITableView(frame: CGRect(x: 0, y: 0, width: self.view.frame.width, height: self.view.frame.height - 49), style: UITableViewStyle.plain)
     }()
     
     
@@ -50,13 +49,16 @@ class VideoPlayLIstViewController: BaseViewController, UITableViewDelegate, UITa
         
         XRRequest.shared.getDataWithCode(codeString: CODE_VIDEOLIST, params: nil) { [weak self](anyObj, error) in
             if let weakSelf = self {
+                DispatchQueue.main.after(3, execute: { 
+                    weakSelf.myTableView.stopPullToRefresh()
+                })
                 weakSelf.activityIndicator.isHidden = false
                 weakSelf.activityIndicator.stopAnimating()
                 if error == nil {
                     if let obj = anyObj {
                         if let dict = obj as? NSDictionary {
-                            debugPrint("请求成功 -> \(dict)")
-                            weakSelf.videoList = Mapper<VideoListModel>().map(JSONObject: obj)
+                            debugPrint("请求成功 -> \(dict.logJSONString()!)")
+                            weakSelf.videoList = Mapper<VideoListModel>().map(JSONObject: dict)
                             weakSelf.myTableView.reloadData()
                         }
                     }
@@ -71,7 +73,12 @@ class VideoPlayLIstViewController: BaseViewController, UITableViewDelegate, UITa
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        self.extendedLayoutIncludesOpaqueBars = false
+        self.myTableView.frame = CGRect(x: 0, y: 0, width: self.view.frame.width, height: self.view.frame.height - 64 - 49)
         self.setupUI()
+        self.myTableView.customAddRefresh { 
+            self.requestDataFromURL()
+        }
         
         OperationQueue().addOperation { 
             self.requestDataFromURL()

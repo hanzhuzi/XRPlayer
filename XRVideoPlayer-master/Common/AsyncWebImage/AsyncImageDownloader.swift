@@ -18,7 +18,7 @@ import UIKit
 
 class AsyncImageDownloader: NSObject {
     
-    private static var __once: () = {
+    fileprivate static var __once: () = {
         if Inner.imageDownloader == nil {
             Inner.imageDownloader = AsyncImageDownloader()
         }
@@ -38,7 +38,8 @@ class AsyncImageDownloader: NSObject {
     fileprivate override init() {
         super.init()
         
-        operationQueue.maxConcurrentOperationCount = 6
+        operationQueue.maxConcurrentOperationCount = 1
+        
     }
     
     fileprivate struct Inner {
@@ -75,7 +76,7 @@ class AsyncImageDownloader: NSObject {
                     
                     dataTask.resume()
                 }
-                })
+            })
         }
     }
     

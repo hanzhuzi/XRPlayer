@@ -7,7 +7,6 @@
 //
 
 import UIKit
-import SnapKit
 
 public let screenSize = UIScreen.main.bounds.size
 

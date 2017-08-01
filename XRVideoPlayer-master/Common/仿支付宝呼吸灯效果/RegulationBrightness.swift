@@ -65,7 +65,7 @@ class RegulationBrightness: NSObject {
     
     func regulationBrightnessToHeigh(_ timer: Timer) {
         
-        print("\(preBrightness), \(systemBrightness)")
+        debugPrint("\(preBrightness), \(systemBrightness)")
         if isToHeigh {
             if preBrightness >= jumpBrightness {
                 preBrightness = jumpBrightness

@@ -15,7 +15,6 @@
 private let requestTimeOutInterval: TimeInterval = 30.0
 
 import Foundation
-import SwiftyJSON
 
 // Method
 fileprivate enum CustomMethod: String {
@@ -117,11 +116,15 @@ open class XRRequest: NSObject, URLSessionDataDelegate {
         sessionManager.dataTask(with: urlRequest) { (data, response, error) in
             if error == nil {
                 XRRequest.parseResultData(reqData: data, complation: { (resObj, err) in
-                    complete(resObj, err)
+                    DispatchQueue.main.async(execute: { 
+                        complete(resObj, err)
+                    })
                 })
             }
             else {
-                complete(nil, error)
+                DispatchQueue.main.async(execute: { 
+                    complete(nil, error)
+                })
             }
         }.resume()
     }
@@ -176,6 +179,7 @@ open class XRRequest: NSObject, URLSessionDataDelegate {
         
     }
     
+    @available(iOS 9.0, *)
     public func urlSession(_ session: URLSession, dataTask: URLSessionDataTask, didBecome streamTask: URLSessionStreamTask) {
         
     }
