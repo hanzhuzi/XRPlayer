@@ -12,16 +12,11 @@ import UIKit
 class AppDelegate: UIResponder, UIApplicationDelegate {
 
     var window: UIWindow?
-    // 手势交互动画必须是全局变量，否则会导致对象释放而无法进行交换转场
-    var hPopInteractionAnimator: XRHorizontalSwipeInteractionAnimator?
-    var sunKenAnimator: XRSunkenTransitionAnimator?
     
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
         // Override point for customization after application launch.
         Thread.sleep(forTimeInterval: 2.0) // after 2 secconds launch
         
-        hPopInteractionAnimator = XRHorizontalSwipeInteractionAnimator()
-        sunKenAnimator = XRSunkenTransitionAnimator()
         return true
     }
     

@@ -49,23 +49,24 @@ class VideoPlayLIstViewController: BaseViewController, UITableViewDelegate, UITa
         
         XRRequest.shared.getDataWithCode(codeString: CODE_VIDEOLIST, params: nil) { [weak self](anyObj, error) in
             if let weakSelf = self {
-                DispatchQueue.main.after(3, execute: { 
-                    weakSelf.myTableView.stopPullToRefresh()
-                })
-                weakSelf.activityIndicator.isHidden = false
-                weakSelf.activityIndicator.stopAnimating()
-                if error == nil {
-                    if let obj = anyObj {
-                        if let dict = obj as? NSDictionary {
-                            debugPrint("请求成功 -> \(dict.logJSONString()!)")
-                            weakSelf.videoList = Mapper<VideoListModel>().map(JSONObject: dict)
-                            weakSelf.myTableView.reloadData()
+                DispatchQueue.main.after(3, execute: {
+                    weakSelf.activityIndicator.isHidden = false
+                    weakSelf.activityIndicator.stopAnimating()
+                    if error == nil {
+                        if let obj = anyObj {
+                            if let dict = obj as? NSDictionary {
+                                debugPrint("请求成功 -> \(dict.logJSONString()!)")
+                                weakSelf.videoList = Mapper<VideoListModel>().map(JSONObject: dict)
+                                weakSelf.myTableView.stopPullToRefresh()
+                                weakSelf.myTableView.reloadData()
+                            }
                         }
                     }
-                }
-                else {
-                    debugPrint("数据加载失败 error: \(error!.localizedDescription)")
-                }
+                    else {
+                        weakSelf.myTableView.stopPullToRefresh()
+                        debugPrint("数据加载失败 error: \(error!.localizedDescription)")
+                    }
+                })
             }
         }
     }

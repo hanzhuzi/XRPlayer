@@ -236,6 +236,7 @@
 		016EF9031F8F4E8C00E164FE /* Utils.swift in Sources */ = {isa = PBXBuildFile; fileRef = 016EF8C31F8F4E8C00E164FE /* Utils.swift */; };
 		016EF9041F8F4E8C00E164FE /* ZeroPadding.swift in Sources */ = {isa = PBXBuildFile; fileRef = 016EF8C41F8F4E8C00E164FE /* ZeroPadding.swift */; };
 		01CDD4321CD3805200E20405 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 01CDD4311CD3805200E20405 /* Assets.xcassets */; };
+		01E1E7AA1F90C9BA00EE6269 /* Config.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01E1E7A91F90C9BA00EE6269 /* Config.swift */; };
 		01E254DC1CCA288A004D7FA2 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01E254DB1CCA288A004D7FA2 /* AppDelegate.swift */; };
 		01E254DE1CCA288A004D7FA2 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01E254DD1CCA288A004D7FA2 /* ViewController.swift */; };
 		01E254E11CCA288A004D7FA2 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 01E254DF1CCA288A004D7FA2 /* Main.storyboard */; };
@@ -549,6 +550,7 @@
 		016EF8C51F8F4E8C00E164FE /* CryptoSwift.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CryptoSwift.h; sourceTree = "<group>"; };
 		01BD7AFF1CCF3EDD00BE6587 /* XRVideoPlayer-master-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "XRVideoPlayer-master-Bridging-Header.h"; sourceTree = "<group>"; };
 		01CDD4311CD3805200E20405 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		01E1E7A91F90C9BA00EE6269 /* Config.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Config.swift; sourceTree = "<group>"; };
 		01E254D81CCA288A004D7FA2 /* XRVideoPlayer-master.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "XRVideoPlayer-master.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		01E254DB1CCA288A004D7FA2 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		01E254DD1CCA288A004D7FA2 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -883,6 +885,7 @@
 			isa = PBXGroup;
 			children = (
 				016EF76E1F8F4C8C00E164FE /* ProConfig.h */,
+				01E1E7A91F90C9BA00EE6269 /* Config.swift */,
 			);
 			path = Marcos;
 			sourceTree = "<group>";
@@ -1316,6 +1319,7 @@
 				016EF81E1F8F4C8C00E164FE /* Mapper.swift in Sources */,
 				016EF8321F8F4C8C00E164FE /* ConstraintInsetTarget.swift in Sources */,
 				016EF7AB1F8F4C8C00E164FE /* Timeline.swift in Sources */,
+				01E1E7AA1F90C9BA00EE6269 /* Config.swift in Sources */,
 				016EF8ED1F8F4E8C00E164FE /* NoPadding.swift in Sources */,
 				016EF8161F8F4C8C00E164FE /* FromJSON.swift in Sources */,
 				016EF8E31F8F4E8C00E164FE /* Data+Extension.swift in Sources */,
