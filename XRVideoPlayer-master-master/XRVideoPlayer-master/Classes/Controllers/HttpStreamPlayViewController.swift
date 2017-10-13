@@ -21,6 +21,10 @@ class HttpStreamPlayViewController: BaseViewController, UITableViewDelegate, UIT
         
         self.navigationItem.title = "网络流媒体列表"
         
+        if #available(iOS 11.0, *) {
+            self.navigationController?.navigationBar.prefersLargeTitles = true
+        }
+        
         //加载本地直播源地址
         if let tvFilePath = Bundle.main.path(forResource: "httpLive", ofType: "m3u8") {
             do {
@@ -48,6 +52,9 @@ class HttpStreamPlayViewController: BaseViewController, UITableViewDelegate, UIT
         
         self.navigationController?.setNavigationBarHidden(false, animated: animated)
         self.tabBarController?.tabBar.isHidden = false
+        
+        
+        debugPrint("statusBarFrame: -> \(UIApplication.shared.statusBarFrame) navBarFrame: -> \(self.navigationController?.navigationBar.frame) TabBar: -> \(self.tabBarController?.tabBar.frame)")
     }
     
     override func didReceiveMemoryWarning() {

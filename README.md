@@ -2,9 +2,9 @@
 基于AVPlayer封装的视频播放器，支持横竖屏切换，支持快进快退，支持Http Live Streamming
 
 # Requirements
-* iOS     8.0+
-* Xcode   9.0+
-* Swift   4.0
+* iOS      8.0+
+* Xcode  9.0+
+* Swift    3.2
 
 # Component
 * Request: [Alamofire](https://github.com/Alamofire/Alamofire)

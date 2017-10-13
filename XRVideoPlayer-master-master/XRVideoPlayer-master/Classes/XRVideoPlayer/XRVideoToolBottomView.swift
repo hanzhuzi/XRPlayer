@@ -108,13 +108,13 @@ class XRVideoToolBottomView: UIView {
     override func layoutSubviews() {
         super.layoutSubviews()
         
-        playButton.frame = CGRect(x: 15, y: (self.frame.height - 30.0) * 0.5, width: 30, height: 30)
+        playButton.frame = CGRect(x: 15, y: (self.bounds.height - 30.0) * 0.5, width: 30, height: 30)
         
-        startTimeLbl.frame = CGRect(x: playButton.frame.maxX + 5.0, y: 0.0, width: 50.0, height: self.frame.height)
+        startTimeLbl.frame = CGRect(x: playButton.frame.maxX + 5.0, y: 0.0, width: 50.0, height: self.bounds.height)
         
-        rotateButton.frame = CGRect(x: self.frame.maxX - 10.0 - 30.0, y: (self.frame.height - 30.0) * 0.5, width: 30, height: 30)
+        rotateButton.frame = CGRect(x: self.bounds.maxX - 10.0 - 30.0, y: (self.bounds.height - 30.0) * 0.5, width: 30, height: 30)
         
-        endTimeLbl.frame = CGRect(x: rotateButton.frame.minX - 50.0, y: 0.0, width: 50.0, height: self.frame.height)
+        endTimeLbl.frame = CGRect(x: rotateButton.frame.minX - 50.0, y: 0.0, width: 50.0, height: self.bounds.height)
         
         progressBar.frame = CGRect(x: startTimeLbl.frame.maxX + 8.0, y: bounds.height * 0.5 - 1.0, width: endTimeLbl.frame.minX - 10.0 - startTimeLbl.frame.maxX - 8.0, height: 2.0)
         slider.frame = CGRect(x: startTimeLbl.frame.maxX + 5.0, y: (bounds.height - 25.0) * 0.5, width: endTimeLbl.frame.minX - 10.0 - startTimeLbl.frame.maxX - 5.0, height: 25.0)

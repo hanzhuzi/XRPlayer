@@ -22,7 +22,7 @@ private let bottomViewHeight: CGFloat = 45.0
 private let navigationBarHeight: CGFloat = 64.0
 private let loadingViewHeight: CGFloat = 60.0
 
-fileprivate enum XRVideoPlayerPlayStatus {
+fileprivate enum XRVideoPlayerPlayStatus: Int {
     
     case ready
     case buffering
@@ -30,6 +30,12 @@ fileprivate enum XRVideoPlayerPlayStatus {
     case pause
     case faild
     case stop
+}
+
+// 资源类型
+enum AssetResourceType: String {
+    case movie // 影片
+    case live  // 直播
 }
 
 class XRVideoPlayer: UIView, UIGestureRecognizerDelegate {
@@ -121,9 +127,9 @@ class XRVideoPlayer: UIView, UIGestureRecognizerDelegate {
             player = AVPlayer(playerItem: playerItem)
             playerLayer = AVPlayerLayer(player: player)
             playerLayer?.frame = self.bounds
-            playerLayer?.videoGravity = AVLayerVideoGravityResizeAspect
+            playerLayer?.videoGravity = AVLayerVideoGravityResize
             self.layer.addSublayer(playerLayer!)
-            playerLayer?.backgroundColor = UIColor.rgbColor(0, g: 0, b: 0, a: 0.95).cgColor
+            playerLayer?.backgroundColor = UIColor.rgbColor(0, g: 0, b: 0, a: 0.9).cgColor
             
             self.observePlayerPlayTime()
             self.observePlayerItemPlayStatus(playerItem!)
@@ -133,11 +139,11 @@ class XRVideoPlayer: UIView, UIGestureRecognizerDelegate {
         }
         
         navigationBar = XRVideoNavigationView(frame: CGRect(x: 0, y: 0, width: self.frame.width, height: navigationBarHeight))
-        navigationBar?.backgroundColor = UIColor.rgbColor(10, g: 10, b: 10, a: 0.7)
+        navigationBar?.backgroundColor = UIColor.rgbColor(10, g: 10, b: 10, a: 0.6)
         self.addSubview(navigationBar!)
         
         bottomView = XRVideoToolBottomView(frame: CGRect(x: 0, y: self.bounds.maxY - bottomViewHeight, width: self.frame.width, height: bottomViewHeight))
-        bottomView?.backgroundColor = UIColor.rgbColor(10, g: 10, b: 10, a: 0.7)
+        bottomView?.backgroundColor = UIColor.rgbColor(10, g: 10, b: 10, a: 0.6)
         self.addSubview(bottomView!)
         
         loadingView = XRActivityInditor(frame: CGRect(x: 0, y: 0, width: loadingViewHeight, height: loadingViewHeight))
@@ -224,13 +230,24 @@ class XRVideoPlayer: UIView, UIGestureRecognizerDelegate {
         super.layoutSubviews()
         
         if isFull {
-            playerLayer?.frame = self.bounds
-            bottomView?.frame = CGRect(x: 0, y: self.bounds.maxY - bottomViewHeight, width: self.bounds.width, height: bottomViewHeight)
-            bottomView?.layoutIfNeeded()
-            navigationBar?.frame = CGRect(x: 0, y: 0, width: self.bounds.width, height: navigationBarHeight)
-            navigationBar?.layoutIfNeeded()
-            loadingView?.center = CGPoint(x: self.frame.height * 0.5, y: self.frame.width * 0.5 + (navigationBar!.frame.height - bottomView!.frame.height) * 0.5)
-            loadingView?.layoutIfNeeded()
+            if iSiPhoneX() {
+                playerLayer?.frame = CGRect(x: 44.0, y: 0, width: self.bounds.size.width - 44.0 - 34.0, height: self.bounds.size.height)
+                bottomView?.frame = CGRect(x: playerLayer!.frame.minX, y: self.bounds.maxY - bottomViewHeight, width: self.bounds.width - playerLayer!.frame.minX - 34.0, height: bottomViewHeight)
+                bottomView?.layoutIfNeeded()
+                navigationBar?.frame = CGRect(x: playerLayer!.frame.minX, y: 0, width: self.bounds.width - playerLayer!.frame.minX - 34.0, height: navigationBarHeight)
+                navigationBar?.layoutIfNeeded()
+                loadingView?.center = CGPoint(x: self.frame.height * 0.5, y: self.frame.width * 0.5 + (navigationBar!.frame.height - bottomView!.frame.height) * 0.5)
+                loadingView?.layoutIfNeeded()
+            }
+            else {
+                playerLayer?.frame = self.bounds
+                bottomView?.frame = CGRect(x: 0, y: self.bounds.maxY - bottomViewHeight, width: self.bounds.width, height: bottomViewHeight)
+                bottomView?.layoutIfNeeded()
+                navigationBar?.frame = CGRect(x: 0, y: 0, width: self.bounds.width, height: navigationBarHeight)
+                navigationBar?.layoutIfNeeded()
+                loadingView?.center = CGPoint(x: self.frame.height * 0.5, y: self.frame.width * 0.5 + (navigationBar!.frame.height - bottomView!.frame.height) * 0.5)
+                loadingView?.layoutIfNeeded()
+            }
         }else {
             playerLayer?.frame = self.bounds
             bottomView?.frame = CGRect(x: 0, y: self.bounds.maxY - bottomViewHeight, width: self.frame.width, height: bottomViewHeight)

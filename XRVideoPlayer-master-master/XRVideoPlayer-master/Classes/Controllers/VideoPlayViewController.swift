@@ -36,14 +36,21 @@ class VideoPlayViewController: BaseViewController, XRFileDownloaderDelegate {
     
     func setupPlayerView(_ videoURL: String) {
         
-        // iPhoneX statusBar 44.0 largeTitleNavBar: 140 normalNavBar: 88 底部虚拟区域：34
+        // iPhoneX statusBar: (0.0, 0.0, 375.0, 44.0)
+        // largeTitleNavBar:  (0.0, 44.0, 375.0, 96.0)
+        // normalNavBar: (0.0, 44.0, 375.0, 44.0)
+        // TabBar: (0.0, 729.0, 375.0, 83.0)
+        // 底部虚拟区域: H: 83 - 49 = 34
         var playViewY: CGFloat = 0
         if iSiPhoneX() {
             playViewY = 44
         }
         
-        playerView = XRVideoPlayer(frame: CGRect(x: 0, y: playViewY, width: self.view.bounds.width, height: 260), videoURL: videoURL, isLocalResource: isLocalResource)
+        // size: 16:9  4:3 原始 Fill
+        playerView = XRVideoPlayer(frame: CGRect(x: 0, y: playViewY, width: self.view.bounds.width, height: self.view.bounds.width / 16.0 * 9.0), videoURL: videoURL, isLocalResource: isLocalResource)
         self.view.addSubview(playerView!)
+        playerView?.backgroundColor = UIColor.black.withAlphaComponent(0.8)
+        
         playerView?.changedOrientationClosure = {[weak self](isFull) -> () in
             // 旋转屏幕执行动画改变子控件的frame
             if let weakSelf = self {
@@ -55,7 +62,7 @@ class VideoPlayViewController: BaseViewController, XRFileDownloaderDelegate {
     
     func setupUI() {
         
-        self.view.backgroundColor = UIColor.white
+        self.view.backgroundColor = UIColor.orange
         
         if let url = videoURL {
             setupPlayerView(url)

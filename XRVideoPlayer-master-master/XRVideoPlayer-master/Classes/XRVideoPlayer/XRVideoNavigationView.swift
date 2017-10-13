@@ -30,7 +30,7 @@ class XRVideoNavigationView: UIView {
         super.init(frame: frame)
         
         backButton.frame = CGRect(x: itemToLeft, y: statusBarHeight + (self.frame.height - statusBarHeight - navigationItemButtonWH) * 0.5, width: navigationItemButtonWH, height: navigationItemButtonWH)
-        backButton.setImage(UIImage(named: "back"), for: UIControlState())
+        backButton.setImage(UIImage(named: "back"), for: .normal)
         backButton.addTarget(self, action: #selector(self.backButtonAction), for: .touchUpInside)
         self.addSubview(backButton)
         
@@ -40,8 +40,8 @@ class XRVideoNavigationView: UIView {
         titleLabel.textAlignment = .center
         self.addSubview(titleLabel)
         
-        downloadButton.frame = CGRect(x: frame.maxX - navigationItemButtonWH - itemToLeft, y: statusBarHeight + (frame.height  - statusBarHeight - navigationItemButtonWH) * 0.5, width: navigationItemButtonWH, height: navigationItemButtonWH)
-        downloadButton.setImage(UIImage(named: "downloading"), for: UIControlState())
+        downloadButton.frame = CGRect(x: self.bounds.maxX - navigationItemButtonWH - itemToLeft, y: statusBarHeight + (frame.height  - statusBarHeight - navigationItemButtonWH) * 0.5, width: navigationItemButtonWH, height: navigationItemButtonWH)
+        downloadButton.setImage(UIImage(named: "downloading"), for: .normal)
         downloadButton.addTarget(self, action: #selector(self.moreButtonAction), for: .touchUpInside)
         self.addSubview(downloadButton)
     }
@@ -55,7 +55,7 @@ class XRVideoNavigationView: UIView {
         
         backButton.frame = CGRect(x: 8.0, y: 20.0 + (self.frame.height - 20.0 - navigationItemButtonWH) * 0.5, width: navigationItemButtonWH, height: navigationItemButtonWH)
         titleLabel.frame = CGRect(x: backButton.frame.maxX + 10.0, y: 20.0 + (frame.height  - 20.0 - navigationItemButtonWH) * 0.5, width: frame.width - (backButton.frame.maxX + 10.0) * 2.0, height: navigationItemButtonWH)
-        downloadButton.frame = CGRect(x: frame.maxX - navigationItemButtonWH - 8.0, y: 20.0 + (frame.height  - 20.0 - navigationItemButtonWH) * 0.5, width: navigationItemButtonWH, height: navigationItemButtonWH)
+        downloadButton.frame = CGRect(x: bounds.maxX - navigationItemButtonWH - 8.0, y: 20.0 + (frame.height  - 20.0 - navigationItemButtonWH) * 0.5, width: navigationItemButtonWH, height: navigationItemButtonWH)
     }
     
     func backButtonAction() {
