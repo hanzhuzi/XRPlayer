@@ -114,8 +114,6 @@ class XRVideoPlayer: UIView, UIGestureRecognizerDelegate {
         
         if let vURL =  self.videoURL , !vURL.isEmpty {
             if !isLocalResource {
-                // 播放网络资源
-                debugPrint("编码的URL-> \(vURL)")
                 let httpURL = URL(string: vURL)
                 let asset = AVAsset(url: httpURL!)
                 playerItem = AVPlayerItem(asset: asset)
@@ -128,7 +126,7 @@ class XRVideoPlayer: UIView, UIGestureRecognizerDelegate {
             player = AVPlayer(playerItem: playerItem)
             playerLayer = AVPlayerLayer(player: player)
             playerLayer?.frame = self.bounds
-            playerLayer?.videoGravity = AVLayerVideoGravityResize
+            playerLayer?.videoGravity = AVLayerVideoGravityResizeAspect
             
             if let layers = self.layer.sublayers {
                 for subLayer in layers {
@@ -403,12 +401,15 @@ class XRVideoPlayer: UIView, UIGestureRecognizerDelegate {
         if isBuffering { return }
         debugPrint("开始缓冲...")
         isBuffering = true
+        self.loadingView?.startAnimation()
         
         DispatchQueue.main.asyncAfter(deadline: DispatchTime.now() + 5.0) { [weak self] in
             if let weakSelf = self {
-                debugPrint("缓冲OK")
-                weakSelf.playVideo()
-                isBuffering = false
+                if let item = weakSelf.playerItem, item.isPlaybackLikelyToKeepUp {
+                    isBuffering = false
+                    weakSelf.playVideo()
+                    debugPrint("缓冲完成!")
+                }
                 // 若缓冲还不够，则再缓冲一段时间
                 if let item = weakSelf.playerItem , !item.isPlaybackLikelyToKeepUp {
                     weakSelf.bufferingSomeSecconds()
