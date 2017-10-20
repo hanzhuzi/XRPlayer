@@ -61,7 +61,7 @@ class XRFileDownloader: NSObject, URLSessionDownloadDelegate {
      */
     func downloadFile(_ title: String? , urlString: String?) -> XRFileDownloader {
         
-        guard let fileUrlString = urlString , !fileUrlString.isEmpty else {
+        guard let fileUrlString = urlString?.urlEncoding() , !fileUrlString.isEmpty else {
             debugPrint("urlString is not available.")
             return XRFileDownloader.shared
         }

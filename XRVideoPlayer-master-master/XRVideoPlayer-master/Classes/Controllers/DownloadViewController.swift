@@ -42,12 +42,11 @@ class DownloadViewController: BaseViewController, UITableViewDelegate, UITableVi
             // 下载完成
             XRFileDownloader.shared.downloadModelArray = downloadModelArray
             self.myTableView.reloadData()
-            
+            debugPrint("location: \(location)")
             for model in XRFileDownloader.shared.downloadModelArray {
                 // 下载完成将临时文件保存到需要保存的目录中.
                 if let resp = model.fileDownloadTask?.response , let fileName = resp.suggestedFilename {
                     let saveFilePath = NSSearchPathForDirectoriesInDomains(FileManager.SearchPathDirectory.documentDirectory, FileManager.SearchPathDomainMask.userDomainMask, true).first?.appendingFormat("/%@", fileName)
-                    
                     do {
                         if let savePath = saveFilePath {
                             let _ = try FileManager.default.moveItem(at: location, to: URL(fileURLWithPath: savePath))

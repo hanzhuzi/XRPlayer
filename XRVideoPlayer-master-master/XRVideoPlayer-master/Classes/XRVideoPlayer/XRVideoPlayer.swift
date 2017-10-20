@@ -115,6 +115,7 @@ class XRVideoPlayer: UIView, UIGestureRecognizerDelegate {
         if let vURL =  self.videoURL , !vURL.isEmpty {
             if !isLocalResource {
                 // 播放网络资源
+                debugPrint("编码的URL-> \(vURL)")
                 let httpURL = URL(string: vURL)
                 let asset = AVAsset(url: httpURL!)
                 playerItem = AVPlayerItem(asset: asset)
@@ -128,6 +129,15 @@ class XRVideoPlayer: UIView, UIGestureRecognizerDelegate {
             playerLayer = AVPlayerLayer(player: player)
             playerLayer?.frame = self.bounds
             playerLayer?.videoGravity = AVLayerVideoGravityResize
+            
+            if let layers = self.layer.sublayers {
+                for subLayer in layers {
+                    if subLayer is AVPlayerLayer {
+                        subLayer.removeFromSuperlayer()
+                    }
+                }
+            }
+            
             self.layer.addSublayer(playerLayer!)
             playerLayer?.backgroundColor = UIColor.rgbColor(0, g: 0, b: 0, a: 0.9).cgColor
             
