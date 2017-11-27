@@ -3,11 +3,11 @@
 
 # Requirements
 * iOS      8.0+
-* Xcode  9.0+
+* Xcode    9.0+
 
 # Supports
-iOS 8.0+
-Swift 3.2
+* iOS 8.0+
+* Swift 3.2
 
 # Component
 * Request: [Alamofire](https://github.com/Alamofire/Alamofire)
