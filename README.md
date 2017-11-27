@@ -4,7 +4,10 @@
 # Requirements
 * iOS      8.0+
 * Xcode  9.0+
-* Swift    3.2
+
+# Supports
+iOS 8.0+
+Swift 3.2
 
 # Component
 * Request: [Alamofire](https://github.com/Alamofire/Alamofire)
@@ -42,4 +45,3 @@ videoDetailVc.videoDescription = video.description
 videoDetailVc.video = video
 self.navigationController?.pushViewController(videoDetailVc, animated: true)
 ```
-# 待更新...
