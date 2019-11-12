@@ -1,0 +1,727 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 51;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		01E8146B237A9865008E8523 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01E8146A237A9865008E8523 /* AppDelegate.swift */; };
+		01E8146D237A9865008E8523 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01E8146C237A9865008E8523 /* SceneDelegate.swift */; };
+		01E8146F237A9865008E8523 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01E8146E237A9865008E8523 /* ViewController.swift */; };
+		01E81472237A9865008E8523 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 01E81470237A9865008E8523 /* Main.storyboard */; };
+		01E81474237A9867008E8523 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 01E81473237A9867008E8523 /* Assets.xcassets */; };
+		01E81477237A9867008E8523 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 01E81475237A9867008E8523 /* LaunchScreen.storyboard */; };
+		01E81482237A9867008E8523 /* XRPlayerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01E81481237A9867008E8523 /* XRPlayerTests.swift */; };
+		01E8148D237A9867008E8523 /* XRPlayerUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01E8148C237A9867008E8523 /* XRPlayerUITests.swift */; };
+		01E814A6237A9925008E8523 /* XRPlaybackProgressView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01E8149B237A9925008E8523 /* XRPlaybackProgressView.swift */; };
+		01E814A7237A9925008E8523 /* XRProgressView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01E8149C237A9925008E8523 /* XRProgressView.swift */; };
+		01E814A8237A9926008E8523 /* UINavigationController+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01E8149D237A9925008E8523 /* UINavigationController+Extension.swift */; };
+		01E814A9237A9926008E8523 /* XRPlayer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01E8149E237A9925008E8523 /* XRPlayer.swift */; };
+		01E814AA237A9926008E8523 /* XRPlayerCoverEffectView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01E8149F237A9925008E8523 /* XRPlayerCoverEffectView.swift */; };
+		01E814AB237A9926008E8523 /* XRToast.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01E814A0237A9925008E8523 /* XRToast.swift */; };
+		01E814AC237A9926008E8523 /* XPlayerNavigationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01E814A1237A9925008E8523 /* XPlayerNavigationView.swift */; };
+		01E814AD237A9926008E8523 /* XRPlayerToolBarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01E814A2237A9925008E8523 /* XRPlayerToolBarView.swift */; };
+		01E814AE237A9926008E8523 /* XRPlayerMarcos.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01E814A3237A9925008E8523 /* XRPlayerMarcos.swift */; };
+		01E814B0237A9926008E8523 /* XRPlayer.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 01E814A5237A9925008E8523 /* XRPlayer.bundle */; };
+		01E814B2237A9B27008E8523 /* XRCircleStrokeLoadingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01E814B1237A9B27008E8523 /* XRCircleStrokeLoadingView.swift */; };
+		01E814B4237A9B83008E8523 /* XRPlayer+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01E814B3237A9B83008E8523 /* XRPlayer+Extension.swift */; };
+		01E814BD237AA32A008E8523 /* PlayViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01E814BC237AA32A008E8523 /* PlayViewController.swift */; };
+		63282187ABF7AF6663EB2B44 /* Pods_XRPlayer.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 18F737A3689D78A6B16B1D75 /* Pods_XRPlayer.framework */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		01E8147E237A9867008E8523 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 01E8145F237A9865008E8523 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 01E81466237A9865008E8523;
+			remoteInfo = XRPlayer;
+		};
+		01E81489237A9867008E8523 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 01E8145F237A9865008E8523 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 01E81466237A9865008E8523;
+			remoteInfo = XRPlayer;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXFileReference section */
+		01E81467237A9865008E8523 /* XRPlayer.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = XRPlayer.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		01E8146A237A9865008E8523 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
+		01E8146C237A9865008E8523 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
+		01E8146E237A9865008E8523 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		01E81471237A9865008E8523 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		01E81473237A9867008E8523 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		01E81476237A9867008E8523 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
+		01E81478237A9867008E8523 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		01E8147D237A9867008E8523 /* XRPlayerTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = XRPlayerTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		01E81481237A9867008E8523 /* XRPlayerTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = XRPlayerTests.swift; sourceTree = "<group>"; };
+		01E81483237A9867008E8523 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		01E81488237A9867008E8523 /* XRPlayerUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = XRPlayerUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		01E8148C237A9867008E8523 /* XRPlayerUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = XRPlayerUITests.swift; sourceTree = "<group>"; };
+		01E8148E237A9867008E8523 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		01E8149B237A9925008E8523 /* XRPlaybackProgressView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = XRPlaybackProgressView.swift; sourceTree = "<group>"; };
+		01E8149C237A9925008E8523 /* XRProgressView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = XRProgressView.swift; sourceTree = "<group>"; };
+		01E8149D237A9925008E8523 /* UINavigationController+Extension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UINavigationController+Extension.swift"; sourceTree = "<group>"; };
+		01E8149E237A9925008E8523 /* XRPlayer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = XRPlayer.swift; sourceTree = "<group>"; };
+		01E8149F237A9925008E8523 /* XRPlayerCoverEffectView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = XRPlayerCoverEffectView.swift; sourceTree = "<group>"; };
+		01E814A0237A9925008E8523 /* XRToast.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = XRToast.swift; sourceTree = "<group>"; };
+		01E814A1237A9925008E8523 /* XPlayerNavigationView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = XPlayerNavigationView.swift; sourceTree = "<group>"; };
+		01E814A2237A9925008E8523 /* XRPlayerToolBarView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = XRPlayerToolBarView.swift; sourceTree = "<group>"; };
+		01E814A3237A9925008E8523 /* XRPlayerMarcos.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = XRPlayerMarcos.swift; sourceTree = "<group>"; };
+		01E814A5237A9925008E8523 /* XRPlayer.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = XRPlayer.bundle; sourceTree = "<group>"; };
+		01E814B1237A9B27008E8523 /* XRCircleStrokeLoadingView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = XRCircleStrokeLoadingView.swift; sourceTree = "<group>"; };
+		01E814B3237A9B83008E8523 /* XRPlayer+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "XRPlayer+Extension.swift"; sourceTree = "<group>"; };
+		01E814BC237AA32A008E8523 /* PlayViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlayViewController.swift; sourceTree = "<group>"; };
+		18F737A3689D78A6B16B1D75 /* Pods_XRPlayer.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_XRPlayer.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		1DF44105D40586DBA31B57A0 /* Pods-XRPlayer.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-XRPlayer.debug.xcconfig"; path = "Target Support Files/Pods-XRPlayer/Pods-XRPlayer.debug.xcconfig"; sourceTree = "<group>"; };
+		4A94B701454200DC8F015DFE /* Pods-XRPlayer.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-XRPlayer.release.xcconfig"; path = "Target Support Files/Pods-XRPlayer/Pods-XRPlayer.release.xcconfig"; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		01E81464237A9865008E8523 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				63282187ABF7AF6663EB2B44 /* Pods_XRPlayer.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		01E8147A237A9867008E8523 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		01E81485237A9867008E8523 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		01E8145E237A9865008E8523 = {
+			isa = PBXGroup;
+			children = (
+				01E81469237A9865008E8523 /* XRPlayer */,
+				01E81480237A9867008E8523 /* XRPlayerTests */,
+				01E8148B237A9867008E8523 /* XRPlayerUITests */,
+				01E81468237A9865008E8523 /* Products */,
+				9E004FBD3EB2FAEC9883930E /* Pods */,
+				E6FA4800FEB2D28EDE789DBC /* Frameworks */,
+			);
+			sourceTree = "<group>";
+		};
+		01E81468237A9865008E8523 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				01E81467237A9865008E8523 /* XRPlayer.app */,
+				01E8147D237A9867008E8523 /* XRPlayerTests.xctest */,
+				01E81488237A9867008E8523 /* XRPlayerUITests.xctest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		01E81469237A9865008E8523 /* XRPlayer */ = {
+			isa = PBXGroup;
+			children = (
+				01E8149A237A9925008E8523 /* Source */,
+				01E8146A237A9865008E8523 /* AppDelegate.swift */,
+				01E8146C237A9865008E8523 /* SceneDelegate.swift */,
+				01E814BC237AA32A008E8523 /* PlayViewController.swift */,
+				01E8146E237A9865008E8523 /* ViewController.swift */,
+				01E81470237A9865008E8523 /* Main.storyboard */,
+				01E81473237A9867008E8523 /* Assets.xcassets */,
+				01E81475237A9867008E8523 /* LaunchScreen.storyboard */,
+				01E81478237A9867008E8523 /* Info.plist */,
+			);
+			path = XRPlayer;
+			sourceTree = "<group>";
+		};
+		01E81480237A9867008E8523 /* XRPlayerTests */ = {
+			isa = PBXGroup;
+			children = (
+				01E81481237A9867008E8523 /* XRPlayerTests.swift */,
+				01E81483237A9867008E8523 /* Info.plist */,
+			);
+			path = XRPlayerTests;
+			sourceTree = "<group>";
+		};
+		01E8148B237A9867008E8523 /* XRPlayerUITests */ = {
+			isa = PBXGroup;
+			children = (
+				01E8148C237A9867008E8523 /* XRPlayerUITests.swift */,
+				01E8148E237A9867008E8523 /* Info.plist */,
+			);
+			path = XRPlayerUITests;
+			sourceTree = "<group>";
+		};
+		01E8149A237A9925008E8523 /* Source */ = {
+			isa = PBXGroup;
+			children = (
+				01E814B1237A9B27008E8523 /* XRCircleStrokeLoadingView.swift */,
+				01E8149B237A9925008E8523 /* XRPlaybackProgressView.swift */,
+				01E8149C237A9925008E8523 /* XRProgressView.swift */,
+				01E8149D237A9925008E8523 /* UINavigationController+Extension.swift */,
+				01E8149E237A9925008E8523 /* XRPlayer.swift */,
+				01E8149F237A9925008E8523 /* XRPlayerCoverEffectView.swift */,
+				01E814A0237A9925008E8523 /* XRToast.swift */,
+				01E814A1237A9925008E8523 /* XPlayerNavigationView.swift */,
+				01E814A2237A9925008E8523 /* XRPlayerToolBarView.swift */,
+				01E814A3237A9925008E8523 /* XRPlayerMarcos.swift */,
+				01E814A5237A9925008E8523 /* XRPlayer.bundle */,
+				01E814B3237A9B83008E8523 /* XRPlayer+Extension.swift */,
+			);
+			path = Source;
+			sourceTree = "<group>";
+		};
+		9E004FBD3EB2FAEC9883930E /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				1DF44105D40586DBA31B57A0 /* Pods-XRPlayer.debug.xcconfig */,
+				4A94B701454200DC8F015DFE /* Pods-XRPlayer.release.xcconfig */,
+			);
+			path = Pods;
+			sourceTree = "<group>";
+		};
+		E6FA4800FEB2D28EDE789DBC /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				18F737A3689D78A6B16B1D75 /* Pods_XRPlayer.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		01E81466237A9865008E8523 /* XRPlayer */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 01E81491237A9867008E8523 /* Build configuration list for PBXNativeTarget "XRPlayer" */;
+			buildPhases = (
+				C3C5B5A458C1FEF6C44AF34E /* [CP] Check Pods Manifest.lock */,
+				01E81463237A9865008E8523 /* Sources */,
+				01E81464237A9865008E8523 /* Frameworks */,
+				01E81465237A9865008E8523 /* Resources */,
+				26EC46A1B03A77F95E4A83AA /* [CP] Embed Pods Frameworks */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = XRPlayer;
+			productName = XRPlayer;
+			productReference = 01E81467237A9865008E8523 /* XRPlayer.app */;
+			productType = "com.apple.product-type.application";
+		};
+		01E8147C237A9867008E8523 /* XRPlayerTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 01E81494237A9867008E8523 /* Build configuration list for PBXNativeTarget "XRPlayerTests" */;
+			buildPhases = (
+				01E81479237A9867008E8523 /* Sources */,
+				01E8147A237A9867008E8523 /* Frameworks */,
+				01E8147B237A9867008E8523 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				01E8147F237A9867008E8523 /* PBXTargetDependency */,
+			);
+			name = XRPlayerTests;
+			productName = XRPlayerTests;
+			productReference = 01E8147D237A9867008E8523 /* XRPlayerTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
+		01E81487237A9867008E8523 /* XRPlayerUITests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 01E81497237A9867008E8523 /* Build configuration list for PBXNativeTarget "XRPlayerUITests" */;
+			buildPhases = (
+				01E81484237A9867008E8523 /* Sources */,
+				01E81485237A9867008E8523 /* Frameworks */,
+				01E81486237A9867008E8523 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				01E8148A237A9867008E8523 /* PBXTargetDependency */,
+			);
+			name = XRPlayerUITests;
+			productName = XRPlayerUITests;
+			productReference = 01E81488237A9867008E8523 /* XRPlayerUITests.xctest */;
+			productType = "com.apple.product-type.bundle.ui-testing";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		01E8145F237A9865008E8523 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastSwiftUpdateCheck = 1100;
+				LastUpgradeCheck = 1100;
+				ORGANIZATIONNAME = xuran;
+				TargetAttributes = {
+					01E81466237A9865008E8523 = {
+						CreatedOnToolsVersion = 11.0;
+					};
+					01E8147C237A9867008E8523 = {
+						CreatedOnToolsVersion = 11.0;
+						TestTargetID = 01E81466237A9865008E8523;
+					};
+					01E81487237A9867008E8523 = {
+						CreatedOnToolsVersion = 11.0;
+						TestTargetID = 01E81466237A9865008E8523;
+					};
+				};
+			};
+			buildConfigurationList = 01E81462237A9865008E8523 /* Build configuration list for PBXProject "XRPlayer" */;
+			compatibilityVersion = "Xcode 9.3";
+			developmentRegion = en;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = 01E8145E237A9865008E8523;
+			productRefGroup = 01E81468237A9865008E8523 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				01E81466237A9865008E8523 /* XRPlayer */,
+				01E8147C237A9867008E8523 /* XRPlayerTests */,
+				01E81487237A9867008E8523 /* XRPlayerUITests */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		01E81465237A9865008E8523 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				01E81477237A9867008E8523 /* LaunchScreen.storyboard in Resources */,
+				01E81474237A9867008E8523 /* Assets.xcassets in Resources */,
+				01E814B0237A9926008E8523 /* XRPlayer.bundle in Resources */,
+				01E81472237A9865008E8523 /* Main.storyboard in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		01E8147B237A9867008E8523 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		01E81486237A9867008E8523 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		26EC46A1B03A77F95E4A83AA /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-XRPlayer/Pods-XRPlayer-frameworks-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-XRPlayer/Pods-XRPlayer-frameworks-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-XRPlayer/Pods-XRPlayer-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		C3C5B5A458C1FEF6C44AF34E /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-XRPlayer-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		01E81463237A9865008E8523 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				01E814A7237A9925008E8523 /* XRProgressView.swift in Sources */,
+				01E814BD237AA32A008E8523 /* PlayViewController.swift in Sources */,
+				01E814A6237A9925008E8523 /* XRPlaybackProgressView.swift in Sources */,
+				01E814A9237A9926008E8523 /* XRPlayer.swift in Sources */,
+				01E814AE237A9926008E8523 /* XRPlayerMarcos.swift in Sources */,
+				01E814B2237A9B27008E8523 /* XRCircleStrokeLoadingView.swift in Sources */,
+				01E8146F237A9865008E8523 /* ViewController.swift in Sources */,
+				01E814B4237A9B83008E8523 /* XRPlayer+Extension.swift in Sources */,
+				01E814AC237A9926008E8523 /* XPlayerNavigationView.swift in Sources */,
+				01E8146B237A9865008E8523 /* AppDelegate.swift in Sources */,
+				01E8146D237A9865008E8523 /* SceneDelegate.swift in Sources */,
+				01E814AA237A9926008E8523 /* XRPlayerCoverEffectView.swift in Sources */,
+				01E814A8237A9926008E8523 /* UINavigationController+Extension.swift in Sources */,
+				01E814AB237A9926008E8523 /* XRToast.swift in Sources */,
+				01E814AD237A9926008E8523 /* XRPlayerToolBarView.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		01E81479237A9867008E8523 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				01E81482237A9867008E8523 /* XRPlayerTests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		01E81484237A9867008E8523 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				01E8148D237A9867008E8523 /* XRPlayerUITests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		01E8147F237A9867008E8523 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 01E81466237A9865008E8523 /* XRPlayer */;
+			targetProxy = 01E8147E237A9867008E8523 /* PBXContainerItemProxy */;
+		};
+		01E8148A237A9867008E8523 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 01E81466237A9865008E8523 /* XRPlayer */;
+			targetProxy = 01E81489237A9867008E8523 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin PBXVariantGroup section */
+		01E81470237A9865008E8523 /* Main.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				01E81471237A9865008E8523 /* Base */,
+			);
+			name = Main.storyboard;
+			sourceTree = "<group>";
+		};
+		01E81475237A9867008E8523 /* LaunchScreen.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				01E81476237A9867008E8523 /* Base */,
+			);
+			name = LaunchScreen.storyboard;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		01E8148F237A9867008E8523 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
+				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
+				MTL_FAST_MATH = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+			};
+			name = Debug;
+		};
+		01E81490237A9867008E8523 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				MTL_FAST_MATH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_COMPILATION_MODE = wholemodule;
+				SWIFT_OPTIMIZATION_LEVEL = "-O";
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		01E81492237A9867008E8523 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 1DF44105D40586DBA31B57A0 /* Pods-XRPlayer.debug.xcconfig */;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				CODE_SIGN_STYLE = Manual;
+				DEVELOPMENT_TEAM = 23PU435V7A;
+				INFOPLIST_FILE = XRPlayer/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = com.xr.XRPlayer;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE_SPECIFIER = xc_devAll;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		01E81493237A9867008E8523 /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 4A94B701454200DC8F015DFE /* Pods-XRPlayer.release.xcconfig */;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				CODE_SIGN_STYLE = Manual;
+				DEVELOPMENT_TEAM = 23PU435V7A;
+				INFOPLIST_FILE = XRPlayer/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = com.xr.XRPlayer;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE_SPECIFIER = xc_devAll;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Release;
+		};
+		01E81495237A9867008E8523 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				INFOPLIST_FILE = XRPlayerTests/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = com.xr.XRPlayerTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/XRPlayer.app/XRPlayer";
+			};
+			name = Debug;
+		};
+		01E81496237A9867008E8523 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				INFOPLIST_FILE = XRPlayerTests/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = com.xr.XRPlayerTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/XRPlayer.app/XRPlayer";
+			};
+			name = Release;
+		};
+		01E81498237A9867008E8523 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				CODE_SIGN_STYLE = Automatic;
+				INFOPLIST_FILE = XRPlayerUITests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = com.xr.XRPlayerUITests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_TARGET_NAME = XRPlayer;
+			};
+			name = Debug;
+		};
+		01E81499237A9867008E8523 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				CODE_SIGN_STYLE = Automatic;
+				INFOPLIST_FILE = XRPlayerUITests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = com.xr.XRPlayerUITests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_TARGET_NAME = XRPlayer;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		01E81462237A9865008E8523 /* Build configuration list for PBXProject "XRPlayer" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				01E8148F237A9867008E8523 /* Debug */,
+				01E81490237A9867008E8523 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		01E81491237A9867008E8523 /* Build configuration list for PBXNativeTarget "XRPlayer" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				01E81492237A9867008E8523 /* Debug */,
+				01E81493237A9867008E8523 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		01E81494237A9867008E8523 /* Build configuration list for PBXNativeTarget "XRPlayerTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				01E81495237A9867008E8523 /* Debug */,
+				01E81496237A9867008E8523 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		01E81497237A9867008E8523 /* Build configuration list for PBXNativeTarget "XRPlayerUITests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				01E81498237A9867008E8523 /* Debug */,
+				01E81499237A9867008E8523 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = 01E8145F237A9865008E8523 /* Project object */;
+}
