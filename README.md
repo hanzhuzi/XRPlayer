@@ -9,7 +9,6 @@ The video player based on avplayer package supports horizontal and vertical scre
 * Swift 4.2+
 
 # Component
-* Request: [Alamofire](https://github.com/Alamofire/Alamofire)
 * Layout : [SnapKit](https://github.com/SnapKit)
 
 # Usage
