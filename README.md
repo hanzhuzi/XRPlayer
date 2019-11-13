@@ -42,3 +42,6 @@ playerView.playerBackButtonActionClosure = { [weak self] in
 }
 
 ```
+
+# Real
+![image-w200](https://github.com/hanzhuzi/XRPlayer/blob/master/snaps/1.png)
