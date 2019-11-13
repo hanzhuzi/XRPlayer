@@ -98,6 +98,7 @@ class PlayViewController: UIViewController, XRPlayerPlaybackDelegate {
     // MARK: - 屏幕旋转控制 (默认是竖屏)
     override var shouldAutorotate: Bool {
         return false
+        
     }
 
     // MARK: - XRPlayerPlaybackDelegate
