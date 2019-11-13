@@ -1,6 +1,7 @@
 # XRPlayer
 
-基于AVPlayer封装的视频播放器，支持横竖屏切换，支持快进快退，支持Http协议视频流
+基于AVPlayer封装的视频播放器，支持横竖屏切换，支持快进快退，支持Http协议视频流。
+The video player based on avplayer package supports horizontal and vertical screen switching, fast forward and backward, and HTTP protocol video stream.
 
 # Requirements
 * iOS 9.0+
